@@ -2,6 +2,7 @@ import { AppBar, Button, Toolbar, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import { appTitle, contactUs, home, shop } from "../Constants/navBar";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import { NavLink } from "react-router-dom";
 
 const NavBar = () => {
   return (
@@ -11,10 +12,18 @@ const NavBar = () => {
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             {appTitle}
           </Typography>
-          <Button color="inherit">{home}</Button>
-          <Button color="inherit">{contactUs}</Button>
-          <Button color="inherit">{shop}</Button>
-          <Button color="inherit">{<ShoppingCartIcon />}</Button>
+          <NavLink to="/" exact>
+            <Button color="inherit">{home}</Button>
+          </NavLink>
+          <NavLink to="/contact">
+            <Button color="inherit">{contactUs}</Button>
+          </NavLink>
+          <NavLink to="/shop">
+            <Button color="inherit">{shop}</Button>
+          </NavLink>
+          <NavLink to="/cart">
+            <Button color="inherit">{<ShoppingCartIcon />}</Button>
+          </NavLink>
         </Toolbar>
       </AppBar>
     </Box>
