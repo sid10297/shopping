@@ -1,0 +1,35 @@
+.brandsContainer {
+  overflow: hidden;
+  position: relative;
+}
+
+.background {
+  height: 100vh;
+  width: 100vw;
+  /* position: relative; */
+}
+
+.brandLogos {
+  /* position: absolute; */
+  display: grid;
+  grid-template-columns: repeat(300px, 300px, 300px);
+  background: black;
+  padding: 2rem;
+}
+
+.image {
+  height: 200px;
+  width: 300px;
+  /* border: 2px solid green; */
+  padding: 0.5rem;
+  margin: 0.5rem;
+}
+
+.brands {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  padding: 10px;
+  position: absolute;
+  top: 20%;
+  left: 25%;
+}

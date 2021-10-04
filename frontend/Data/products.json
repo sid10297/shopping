@@ -1,0 +1,11 @@
+{
+  "products": [
+    {
+      "id": "1",
+      "product": "Nike",
+      "price": 2000
+    },
+    { "id": "2", "product": "Adidas", "price": 3000 },
+    { "id": "3", "product": "New Balance", "price": 5000 }
+  ]
+}

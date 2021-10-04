@@ -1,21 +1,17 @@
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { CssBaseline } from "@mui/material";
+import { BrowserRouter } from "react-router-dom";
 import NavBar from "../Components/NavBar";
-import Cart from "../Screens/Cart";
-import ContactUs from "../Screens/ContactUs";
-import Home from "../Screens/Home";
-import Shop from "../Screens/Shop";
+import Routes from "../Routes";
 
 const App = () => {
   return (
-    <BrowserRouter>
-      <NavBar />
-      <Switch>
-        <Route path="/" component={Home} exact />
-        <Route path="/contact" component={ContactUs} />
-        <Route path="/shop" component={Shop} />
-        <Route path="/cart" component={Cart} />
-      </Switch>
-    </BrowserRouter>
+    <>
+      <CssBaseline />
+      <BrowserRouter>
+        <NavBar />
+        <Routes />
+      </BrowserRouter>
+    </>
   );
 };
 

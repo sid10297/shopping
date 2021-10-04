@@ -1,0 +1,52 @@
+.advertismentContainer {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+}
+
+.advertisment {
+  height: 100vh;
+  width: 100vw;
+  object-fit: cover;
+  background: linear-gradient(rgba(0, 0, 0, 0.527), rgba(0, 0, 0, 0.5))
+    url("../Assets/Images/PosterShoe.jpg");
+}
+
+.advertismentDescription {
+  color: white;
+  position: absolute;
+  top: 20%;
+  left: 10%;
+}
+
+.brandImage {
+  height: 8rem;
+  width: 20rem;
+  z-index: 1;
+  margin-top: 2rem;
+  position: absolute;
+  right: 10%;
+}
+
+.descriptionLeftTagLine {
+  color: #6200ee;
+}
+
+.descriptionRight {
+  position: absolute;
+  color: white;
+  max-width: 30%;
+  right: 15%;
+  top: 15%;
+}
+
+.descriptionRightHeader {
+  margin: 1rem;
+}
+
+.descriptionRightDesc {
+  margin: 1rem;
+}
+.descriptionRightButton {
+  margin: 1rem;
+}
