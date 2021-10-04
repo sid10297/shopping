@@ -1,18 +1,13 @@
 import { Container, Grid } from "@mui/material";
-import { useState, useEffect } from "react";
+import { useEffect, useContext } from "react";
 
 import Advertisment from "../Components/Advertisment";
 import Brands from "../Components/Brands";
 import Specials from "../Components/Specials";
+import ProductsContext from "../Contexts/ProductsContext";
 
 const Home = () => {
-  const [specials, setSpecials] = useState([]);
-
-  useEffect(() => {
-    fetch("http://localhost:8000/products")
-      .then((response) => response.json())
-      .then((data) => setSpecials(data));
-  }, []);
+  const { specials } = useContext(ProductsContext);
 
   return (
     <>
@@ -29,7 +24,7 @@ const Home = () => {
             margin: "0 5%",
           }}
         > */}
-        {specials.map((product) => (
+        {specials.slice(0, 3).map((product) => (
           <Specials product={product} key={product.id} />
         ))}
         {/* </div> */}
