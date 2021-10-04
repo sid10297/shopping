@@ -1,5 +1,5 @@
-import { Container, Grid } from "@mui/material";
-import { useEffect, useContext } from "react";
+import { Grid } from "@mui/material";
+import { useContext } from "react";
 
 import Advertisment from "../Components/Advertisment";
 import Brands from "../Components/Brands";
@@ -7,14 +7,14 @@ import Specials from "../Components/Specials";
 import ProductsContext from "../Contexts/ProductsContext";
 
 const Home = () => {
-  const { specials } = useContext(ProductsContext);
+  const { productList } = useContext(ProductsContext);
 
   return (
     <>
       {/* <Container> */}
       <Advertisment />
       <Brands />
-      <Grid container>
+      <Grid container spacing={3} justifyContent="center">
         {/* <div
           style={{
             display: "flex",
@@ -24,7 +24,7 @@ const Home = () => {
             margin: "0 5%",
           }}
         > */}
-        {specials.slice(0, 3).map((product) => (
+        {productList.slice(0, 3).map((product) => (
           <Specials product={product} key={product.id} />
         ))}
         {/* </div> */}

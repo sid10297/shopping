@@ -1,0 +1,64 @@
+{
+  "products": [
+    {
+      "id": "1",
+      "product": "Nike",
+      "price": 2000
+    },
+    {
+      "id": "2",
+      "product": "Adidas",
+      "price": 3000
+    },
+    {
+      "id": "3",
+      "product": "Lotto",
+      "price": 5000
+    },
+    {
+      "id": "4",
+      "product": "Adidas",
+      "price": 5000
+    },
+    {
+      "id": "5",
+      "product": "Nike",
+      "price": 5000
+    },
+    {
+      "id": "6",
+      "product": "Puma",
+      "price": 5000
+    },
+    {
+      "id": "7",
+      "product": "Puma",
+      "price": 5000
+    },
+    {
+      "id": "8",
+      "product": "Red Chief",
+      "price": 5000
+    },
+    {
+      "id": "9",
+      "product": "Adidas",
+      "price": 5000
+    },
+    {
+      "id": "10",
+      "product": "Nike",
+      "price": 5000
+    },
+    {
+      "id": "11",
+      "product": "New Balance",
+      "price": 5000
+    },
+    {
+      "id": "12",
+      "product": "New Balance",
+      "price": 5000
+    }
+  ]
+}

@@ -3,9 +3,14 @@
     {
       "id": "1",
       "product": "Nike",
-      "price": 2000
+      "price": 2000,
+      "image": "https://static.nike.com/a/images/t_PDP_1280_v1/f_auto,q_auto:eco/jvcf7clhvzyavyopsi9n/revolution-5-running-shoe-8P3bh3.png"
     },
-    { "id": "2", "product": "Adidas", "price": 3000 },
+    {
+      "id": "2",
+      "product": "Adidas",
+      "price": 3000
+    },
     { "id": "3", "product": "Lotto", "price": 5000 },
     { "id": "4", "product": "Adidas", "price": 5000 },
     { "id": "5", "product": "Nike", "price": 5000 },

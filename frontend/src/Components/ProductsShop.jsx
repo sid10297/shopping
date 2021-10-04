@@ -1,33 +1,19 @@
-import {
-  Button,
-  Card,
-  CardContent,
-  CardMedia,
-  Typography,
-} from "@mui/material";
+import { Container, Grid } from "@mui/material";
+import { useContext } from "react";
+import ProductsContext from "../Contexts/ProductsContext";
+import Product from "./Product";
 
 const ProductsShop = () => {
+  const { productList } = useContext(ProductsContext);
+
   return (
-    <Card sx={{ maxWidth: 350 }}>
-      <CardContent>
-        <CardMedia
-          component="img"
-          height="150"
-          image="../Assets/Images/adidas.jpeg"
-          //   image={require("../Assets/Images/imageUrl")}
-        />
-        <Typography variant="body1" gutterBottom>
-          Shoe
-        </Typography>
-        <Typography variant="caption" gutterBottom>
-          Brilliant Shoe
-        </Typography>
-        <Typography variant="body2" gutterBottom>
-          3000 Rs
-        </Typography>
-        <Button variant="contained">Add to cart</Button>
-      </CardContent>
-    </Card>
+    <Container maxWidth="xl">
+      <Grid container spacing={3} justifyContent="center">
+        {productList.map((_product) => (
+          <Product product={_product} key={_product.id} />
+        ))}
+      </Grid>
+    </Container>
   );
 };
 
