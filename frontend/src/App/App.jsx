@@ -36,12 +36,12 @@ const App = () => {
   };
 
   const changeQuantity = (product, quantity) => {
-    console.log("Product : ", product, "Quantity : ", quantity);
+    // console.log("Product : ", product, "Quantity : ", quantity);
     const productQuantityToIncrease = addedProducts.find(
       (_product) => _product.product.id === product.id
     );
 
-    console.log(productQuantityToIncrease);
+    // console.log(productQuantityToIncrease);
 
     if (productQuantityToIncrease) {
       product.quantityAvailable -= 1;
@@ -55,7 +55,7 @@ const App = () => {
       (_product) => _product.product.id === product.id
     );
 
-    if (productQuantityToDecrease.quantity === 0) {
+    if (productQuantityToDecrease.quantity < 1) {
       const filterOut = addedProducts.filter(
         (_product) => _product.product.id !== product.id
       );

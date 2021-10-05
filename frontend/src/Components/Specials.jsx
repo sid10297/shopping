@@ -23,7 +23,7 @@ const Specials = ({ product }) => {
     //   <Button variant="contained">Buy Now</Button>
     // </div>
     <>
-      <Grid item xs={12} sm={6} md={3} margin={3}>
+      <Grid item xs={12} sm={8} md={6} lg={3} margin={3}>
         <Paper variant="outlined">
           <Card
             sx={{

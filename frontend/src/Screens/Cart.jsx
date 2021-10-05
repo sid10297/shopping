@@ -9,12 +9,29 @@ import {
   Paper,
   Typography,
 } from "@mui/material";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import CartProduct from "../Components/CartProduct";
 import ProductsContext from "../Contexts/ProductsContext";
 
 const Cart = () => {
+  const [state, setState] = useState(0);
   const { addedProducts } = useContext(ProductsContext);
+
+  useEffect(() => {
+    calculateTotal(addedProducts);
+  }, [addedProducts]);
+
+  const calculateTotal = (addedProducts) => {
+    const quantity = addedProducts.map((_product) => _product.quantity);
+    const price = addedProducts.map((_product) => _product.product.price);
+    let total = 0;
+
+    for (let i = 0; i <= addedProducts.length - 1; i++) {
+      total += quantity[i] * price[i];
+      console.log(total);
+      setState(total);
+    }
+  };
   return (
     <Grid container justifyContent="center">
       {addedProducts.length > 0 ? (
@@ -53,6 +70,11 @@ const Cart = () => {
             </Paper>
           </Grid>
         </Grid>
+      )}
+      {addedProducts.length > 0 && (
+        <div>
+          <h1>Total cart value is : {state} Rs</h1>
+        </div>
       )}
     </Grid>
   );

@@ -1,7 +1,7 @@
 import styles from "../Styles/brands.module.css";
 import NewBalanceLogo from "../Assets/Images/new-balance-logo.png";
 import brandsBackground from "../Assets/Images/brandsBackground.jpg";
-import { Grid } from "@mui/material";
+import { Container, Grid } from "@mui/material";
 
 const arr = [1, 2, 3, 4, 5, 6];
 

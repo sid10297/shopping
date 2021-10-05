@@ -28,7 +28,7 @@ const NavBar = () => {
           <NavLink to="/cart">
             <Button color="inherit">
               {<ShoppingCartIcon />}
-              <span>{addedProducts.length}</span>
+              {addedProducts.length > 0 && <span>{addedProducts.length}</span>}
             </Button>
           </NavLink>
         </Toolbar>
