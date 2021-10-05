@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { BrowserRouter } from "react-router-dom";
 import NavBar from "../Components/NavBar";
 import ProductsContext from "../Contexts/ProductsContext";
-import Routes from "../Routes";
+import Routes from "../Routes/Routes";
 
 const App = () => {
   const [productList, setProductList] = useState([]);
@@ -36,12 +36,9 @@ const App = () => {
   };
 
   const changeQuantity = (product, quantity) => {
-    // console.log("Product : ", product, "Quantity : ", quantity);
     const productQuantityToIncrease = addedProducts.find(
       (_product) => _product.product.id === product.id
     );
-
-    // console.log(productQuantityToIncrease);
 
     if (productQuantityToIncrease) {
       product.quantityAvailable -= 1;

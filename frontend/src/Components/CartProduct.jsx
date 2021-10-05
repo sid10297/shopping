@@ -26,7 +26,6 @@ const CartProduct = ({ product, quantity }) => {
         <Paper variant="outlined">
           <Card
             sx={{
-              // width: "300",
               height: "100%",
               minWidth: "400px",
               textAlign: "center",

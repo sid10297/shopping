@@ -11,28 +11,10 @@ import {
 
 const Specials = ({ product }) => {
   return (
-    // <div style={{ width: "100%", margin: "2rem", textAlign: "center" }}>
-    //   <h1>{product.product}</h1>
-    //   <p>{product.price} Rs</p>
-    //   <img
-    //     src={product.img}
-    //     style={{ height: "150px", backgroundColor: "black" }}
-    //     alt=""
-    //   />
-    //   <br />
-    //   <Button variant="contained">Buy Now</Button>
-    // </div>
     <>
       <Grid item xs={12} sm={8} md={6} lg={3} margin={3}>
         <Paper variant="outlined">
           <Card
-            sx={{
-              // width: "300",
-              height: "100%",
-              minWidth: "400px",
-              textAlign: "center",
-              justifyContent: "center",
-            }}
             style={{
               height: "100%",
               minWidth: "400px",
