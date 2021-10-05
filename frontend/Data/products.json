@@ -4,22 +4,22 @@
       "id": "1",
       "product": "Nike",
       "price": 2000,
-      "image": "https://static.nike.com/a/images/t_PDP_1280_v1/f_auto,q_auto:eco/jvcf7clhvzyavyopsi9n/revolution-5-running-shoe-8P3bh3.png"
+      "image": "https://static.nike.com/a/images/t_PDP_1280_v1/f_auto,q_auto:eco/jvcf7clhvzyavyopsi9n/revolution-5-running-shoe-8P3bh3.png",
+      "quantityAvailable": 3
     },
     {
       "id": "2",
       "product": "Adidas",
-      "price": 3000
+      "price": 3000,
+      "image": "https://rukminim1.flixcart.com/image/714/857/ki6bgcw0-0/shoe/n/0/m/eh0001-6-adidas-grey-original-imafyf2uhxz3dwgh.jpeg?q=50",
+      "quantityAvailable": 1
     },
-    { "id": "3", "product": "Lotto", "price": 5000 },
-    { "id": "4", "product": "Adidas", "price": 5000 },
-    { "id": "5", "product": "Nike", "price": 5000 },
-    { "id": "6", "product": "Puma", "price": 5000 },
-    { "id": "7", "product": "Puma", "price": 5000 },
-    { "id": "8", "product": "Red Chief", "price": 5000 },
-    { "id": "9", "product": "Adidas", "price": 5000 },
-    { "id": "10", "product": "Nike", "price": 5000 },
-    { "id": "11", "product": "New Balance", "price": 5000 },
-    { "id": "12", "product": "New Balance", "price": 5000 }
+    {
+      "id": "3",
+      "product": "Lotto",
+      "price": 5000,
+      "image": "https://assets.ajio.com/medias/sys_master/root/h9c/hc3/13676155830302/-1117Wx1400H-450111728-white-OUTFIT.jpg",
+      "quantityAvailable": 2
+    }
   ]
 }

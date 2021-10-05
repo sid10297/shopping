@@ -21,14 +21,17 @@ const App = () => {
   };
 
   const addToCart = (product) => {
-    console.log(product);
     const productInCart = addedProducts.find(
       (_product) => _product.product.id === product.id
     );
+
     if (productInCart) {
       productInCart.quantity += 1;
+
+      productInCart.product.quantityAvailable -= 1;
       setAddedProducts([...addedProducts]);
     } else {
+      product.quantityAvailable -= 1;
       setAddedProducts([...addedProducts, { product, quantity: 1 }]);
     }
   };

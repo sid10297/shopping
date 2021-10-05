@@ -46,8 +46,15 @@ const Product = ({ product }) => {
             <Typography variant="body2" gutterBottom>
               {product.price} Rs
             </Typography>
-            <Button variant="contained" onClick={addToCartHandler}>
-              Add to cart
+            <Typography variant="body2" gutterBottom>
+              Quantity Available : {product.quantityAvailable}
+            </Typography>
+            <Button
+              variant="contained"
+              onClick={addToCartHandler}
+              disabled={product.quantityAvailable === 0}
+            >
+              {product.quantityAvailable === 0 ? "Out of stock" : "Add to cart"}
             </Button>
           </CardContent>
         </Card>
