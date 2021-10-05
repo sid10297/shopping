@@ -27,16 +27,48 @@ const App = () => {
 
     if (productInCart) {
       productInCart.quantity += 1;
-
-      productInCart.product.quantityAvailable -= 1;
-      setAddedProducts([...addedProducts]);
+      product.quantityAvailable -= 1;
+      return setAddedProducts([...addedProducts]);
     } else {
       product.quantityAvailable -= 1;
-      setAddedProducts([...addedProducts, { product, quantity: 1 }]);
+      return setAddedProducts([...addedProducts, { product, quantity: 1 }]);
     }
   };
 
-  const removeFromCart = (product) => {};
+  const changeQuantity = (product, quantity) => {
+    console.log("Product : ", product, "Quantity : ", quantity);
+    const productQuantityToIncrease = addedProducts.find(
+      (_product) => _product.product.id === product.id
+    );
+
+    console.log(productQuantityToIncrease);
+
+    if (productQuantityToIncrease) {
+      product.quantityAvailable -= 1;
+      productQuantityToIncrease.quantity += 1;
+      return setAddedProducts([...addedProducts]);
+    }
+  };
+
+  const removeFromCart = (product, quantity) => {
+    const productQuantityToDecrease = addedProducts.find(
+      (_product) => _product.product.id === product.id
+    );
+
+    if (productQuantityToDecrease.quantity === 0) {
+      const filterOut = addedProducts.filter(
+        (_product) => _product.product.id !== product.id
+      );
+
+      return setAddedProducts(filterOut);
+    }
+
+    if (productQuantityToDecrease) {
+      product.quantityAvailable += 1;
+      productQuantityToDecrease.quantity -= 1;
+      return setAddedProducts([...addedProducts]);
+    }
+  };
 
   const productsValue = {
     productList,
@@ -44,6 +76,7 @@ const App = () => {
     total,
     addToCart,
     removeFromCart,
+    changeQuantity,
   };
   return (
     <>

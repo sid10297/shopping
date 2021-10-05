@@ -8,8 +8,18 @@ import {
   Paper,
   Typography,
 } from "@mui/material";
+import { useContext } from "react";
+import ProductsContext from "../Contexts/ProductsContext";
 
 const CartProduct = ({ product, quantity }) => {
+  const { changeQuantity, removeFromCart } = useContext(ProductsContext);
+  const incrementQuantity = () => {
+    changeQuantity(product, quantity);
+  };
+  const decrementQuantity = () => {
+    removeFromCart(product, quantity);
+  };
+
   return (
     <>
       <Grid item xs={12} sm={6} md={3} margin={3}>
@@ -47,10 +57,21 @@ const CartProduct = ({ product, quantity }) => {
               </Typography>
             </CardContent>
             <CardActions style={{ justifyContent: "center" }}>
-              <Button size="small" color="primary" variant="contained">
+              <Button
+                size="small"
+                color="primary"
+                variant="contained"
+                onClick={incrementQuantity}
+                disabled={product.quantityAvailable === 0}
+              >
                 +
               </Button>
-              <Button size="small" color="primary" variant="contained">
+              <Button
+                size="small"
+                color="primary"
+                variant="contained"
+                onClick={decrementQuantity}
+              >
                 -
               </Button>
             </CardActions>
