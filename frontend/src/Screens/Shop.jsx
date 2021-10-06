@@ -1,10 +1,12 @@
 import ProductsShop from "../Components/ProductsShop";
+import ShopFilters from "../Components/ShopFilters";
 
 const Shop = () => {
   return (
-    <div>
+    <>
+      <ShopFilters />
       <ProductsShop />
-    </div>
+    </>
   );
 };
 

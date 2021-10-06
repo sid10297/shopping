@@ -4,7 +4,7 @@ import CartProduct from "../Components/CartProduct";
 import ProductsContext from "../Contexts/ProductsContext";
 
 const Cart = () => {
-  const [state, setState] = useState(0);
+  const [cartTotal, setCartTotal] = useState(0);
   const { addedProducts } = useContext(ProductsContext);
 
   useEffect(() => {
@@ -19,7 +19,7 @@ const Cart = () => {
     for (let i = 0; i <= addedProducts.length - 1; i++) {
       total += quantity[i] * price[i];
       console.log(total);
-      setState(total);
+      setCartTotal(total);
     }
   };
   return (
@@ -67,7 +67,7 @@ const Cart = () => {
               >
                 <CardContent>
                   <Typography gutterBottom variant="h4">
-                    Cart Total is : {state}
+                    Cart Total is : {cartTotal}
                   </Typography>
                 </CardContent>
               </Card>

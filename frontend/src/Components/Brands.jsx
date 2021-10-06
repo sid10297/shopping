@@ -14,7 +14,7 @@ const Brands = () => {
       spacing={3}
     >
       {arr.map((i) => (
-        <Grid item xs={12} md={6} lg={4}>
+        <Grid item xs={12} md={6} lg={4} key={i}>
           <img src={NewBalanceLogo} alt="logo" className={styles.image} />
         </Grid>
       ))}

@@ -2,24 +2,30 @@
   "products": [
     {
       "id": "1",
+      "brand": "Nike",
       "product": "Nike",
       "price": 2000,
       "image": "https://static.nike.com/a/images/t_PDP_1280_v1/f_auto,q_auto:eco/jvcf7clhvzyavyopsi9n/revolution-5-running-shoe-8P3bh3.png",
-      "quantityAvailable": 3
+      "quantityAvailable": 3,
+      "color": "Black"
     },
     {
       "id": "2",
+      "brand": "Adidas",
       "product": "Adidas",
       "price": 3000,
       "image": "https://rukminim1.flixcart.com/image/714/857/ki6bgcw0-0/shoe/n/0/m/eh0001-6-adidas-grey-original-imafyf2uhxz3dwgh.jpeg?q=50",
-      "quantityAvailable": 1
+      "quantityAvailable": 1,
+      "color": "Grey"
     },
     {
       "id": "3",
+      "brand": "Lotto",
       "product": "Lotto",
       "price": 5000,
       "image": "https://assets.ajio.com/medias/sys_master/root/h9c/hc3/13676155830302/-1117Wx1400H-450111728-white-OUTFIT.jpg",
-      "quantityAvailable": 2
+      "quantityAvailable": 2,
+      "color": "White"
     }
   ]
 }

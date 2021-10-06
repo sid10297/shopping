@@ -40,6 +40,9 @@ const Product = ({ product }) => {
             <Typography variant="body1" gutterBottom margin={2}>
               {product.product}
             </Typography>
+            <Typography variant="body1" gutterBottom margin={2}>
+              {product.color}
+            </Typography>
             <Typography variant="caption" gutterBottom>
               Brilliant Shoe
             </Typography>

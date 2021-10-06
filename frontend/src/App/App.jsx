@@ -1,14 +1,23 @@
 import { CssBaseline } from "@mui/material";
-import { useEffect, useState } from "react";
+import { useEffect, useReducer, useState } from "react";
 import { BrowserRouter } from "react-router-dom";
 import NavBar from "../Components/NavBar";
 import ProductsContext from "../Contexts/ProductsContext";
+import {
+  brandFilterReducer,
+  brandFilterReducerDefaultState,
+} from "../Reducers/BrandFilterReducer";
 import Routes from "../Routes/Routes";
 
 const App = () => {
   const [productList, setProductList] = useState([]);
   const [addedProducts, setAddedProducts] = useState([]);
   const [total, setTotal] = useState(0);
+  const [sortedProducts, setSortedProducts] = useState([]);
+  const [brandReducerState, dispatchBrandReducerAction] = useReducer(
+    brandFilterReducer,
+    brandFilterReducerDefaultState
+  );
 
   useEffect(() => {
     getProducts();
@@ -67,6 +76,13 @@ const App = () => {
     }
   };
 
+  const selectAction = (option) => {
+    dispatchBrandReducerAction({
+      type: option,
+      payload: { productList, setSortedProducts, sortedProducts },
+    });
+  };
+
   const productsValue = {
     productList,
     addedProducts,
@@ -74,7 +90,10 @@ const App = () => {
     addToCart,
     removeFromCart,
     changeQuantity,
+    selectAction,
+    brandReducerState,
   };
+
   return (
     <>
       <CssBaseline />
