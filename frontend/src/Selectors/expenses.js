@@ -3,11 +3,10 @@ const getVisibleProducts = (products, { brand, availability }) => {
     const brandFilter = product.brand.toLowerCase() === brand;
     const availabileProducts =
       availability === "in-stock" && product.quantityAvailable !== 0;
-    // const unAvailableProducts =
-    //   availability === "out-of-stock" && product.quantityAvailable === 0;
-    // console.log(unAvailableProducts);
+    const unavailableProducts =
+      availability === "out-of-stock" && product.quantityAvailable === 0;
 
-    return brandFilter && availabileProducts;
+    return brandFilter && availabileProducts && unavailableProducts;
   });
 };
 

@@ -8,7 +8,6 @@ import { ProductsContext } from "../Contexts/ProductsContext";
 
 const Home = () => {
   const products = useContext(ProductsContext);
-  // console.log(products, "from home");
   return (
     <>
       <Advertisment />
