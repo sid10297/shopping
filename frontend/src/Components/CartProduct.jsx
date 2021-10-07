@@ -9,15 +9,15 @@ import {
   Typography,
 } from "@mui/material";
 import { useContext } from "react";
-import ProductsContext from "../Contexts/ProductsContext";
+import { CartContext } from "../Contexts/CartContext";
 
 const CartProduct = ({ product, quantity }) => {
-  const { changeQuantity, removeFromCart } = useContext(ProductsContext);
+  const { increaseQuantity, decreaseQuantity } = useContext(CartContext);
   const incrementQuantity = () => {
-    changeQuantity(product, quantity);
+    increaseQuantity(product);
   };
   const decrementQuantity = () => {
-    removeFromCart(product, quantity);
+    decreaseQuantity(product);
   };
 
   return (

@@ -4,10 +4,10 @@ import { appTitle, contactUs, home, shop } from "../Constants/navBar";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { NavLink } from "react-router-dom";
 import { useContext } from "react";
-import ProductsContext from "../Contexts/ProductsContext";
+import { CartContext } from "../Contexts/CartContext";
 
 const NavBar = () => {
-  const { addedProducts } = useContext(ProductsContext);
+  const { cartItems } = useContext(CartContext);
 
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -28,7 +28,7 @@ const NavBar = () => {
           <NavLink to="/cart">
             <Button color="inherit">
               {<ShoppingCartIcon />}
-              {addedProducts.length > 0 && <span>{addedProducts.length}</span>}
+              {cartItems.length > 0 && <span>{cartItems.length}</span>}
             </Button>
           </NavLink>
         </Toolbar>

@@ -1,9 +1,11 @@
-export const brandFilterReducerDefaultState = "all";
+export const brandFilterReducerDefaultState = "none";
 
 export const brandFilterReducer = (state, action) => {
+  // console.log(action.type, "typeee");
   const includesInBrand = action.payload.productList.filter(
     (product) => product.brand.toLowerCase() === action.type.toLowerCase()
   );
+  // console.log(includesInBrand);
 
   const includesInDefault = action.payload.productList.map(
     (product) => product
@@ -19,7 +21,9 @@ export const brandFilterReducer = (state, action) => {
     case "lotto":
       return includesInBrand;
 
-    default:
+    case "all":
       return includesInDefault;
+    default:
+      return [];
   }
 };

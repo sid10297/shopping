@@ -1,31 +1,30 @@
 import { Card, CardContent, Grid, Paper, Typography } from "@mui/material";
 import { useContext, useEffect, useState } from "react";
 import CartProduct from "../Components/CartProduct";
-import ProductsContext from "../Contexts/ProductsContext";
+import { CartContext } from "../Contexts/CartContext";
 
 const Cart = () => {
   const [cartTotal, setCartTotal] = useState(0);
-  const { addedProducts } = useContext(ProductsContext);
+  const { cartItems } = useContext(CartContext);
 
   useEffect(() => {
-    calculateTotal(addedProducts);
-  }, [addedProducts]);
+    calculateTotal(cartItems);
+  }, [cartItems]);
 
-  const calculateTotal = (addedProducts) => {
-    const quantity = addedProducts.map((_product) => _product.quantity);
-    const price = addedProducts.map((_product) => _product.product.price);
+  const calculateTotal = (cartItems) => {
+    const quantity = cartItems.map((_product) => _product.quantity);
+    const price = cartItems.map((_product) => _product.product.price);
     let total = 0;
 
-    for (let i = 0; i <= addedProducts.length - 1; i++) {
+    for (let i = 0; i <= cartItems.length - 1; i++) {
       total += quantity[i] * price[i];
-      console.log(total);
       setCartTotal(total);
     }
   };
   return (
     <Grid container justifyContent="center">
-      {addedProducts.length > 0 ? (
-        addedProducts.map((_product) => (
+      {cartItems.length > 0 ? (
+        cartItems.map((_product) => (
           <CartProduct
             product={_product.product}
             key={_product.product.id}
@@ -54,7 +53,7 @@ const Cart = () => {
           </Grid>
         </Grid>
       )}
-      {addedProducts.length > 0 && (
+      {cartItems.length > 0 && (
         <Grid container justifyContent="center">
           <Grid item xs={12} sm={6} md={4} lg={3} margin={3}>
             <Paper variant="outlined">

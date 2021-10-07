@@ -8,10 +8,10 @@ import {
   Typography,
 } from "@mui/material";
 import { useContext } from "react";
-import ProductsContext from "../Contexts/ProductsContext";
+import { CartContext } from "../Contexts/CartContext";
 
 const Product = ({ product }) => {
-  const { addToCart } = useContext(ProductsContext);
+  const { addToCart } = useContext(CartContext);
 
   const addToCartHandler = () => {
     addToCart(product);

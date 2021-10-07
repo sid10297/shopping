@@ -4,19 +4,20 @@ import { useContext } from "react";
 import Advertisment from "../Components/Advertisment";
 import Brands from "../Components/Brands";
 import Specials from "../Components/Specials";
-import ProductsContext from "../Contexts/ProductsContext";
+import { ProductsContext } from "../Contexts/ProductsContext";
 
 const Home = () => {
-  const { productList } = useContext(ProductsContext);
-
+  const products = useContext(ProductsContext);
+  // console.log(products, "from home");
   return (
     <>
       <Advertisment />
       <Brands />
       <Grid container spacing={3} justifyContent="center">
-        {productList.slice(0, 3).map((product) => (
-          <Specials product={product} key={product.id} />
-        ))}
+        {products &&
+          products
+            .slice(0, 3)
+            .map((product) => <Specials product={product} key={product.id} />)}
       </Grid>
     </>
   );

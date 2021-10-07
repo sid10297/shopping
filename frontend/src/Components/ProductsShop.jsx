@@ -1,27 +1,20 @@
 import { Container, Grid } from "@mui/material";
 import { useContext } from "react";
-import ProductsContext from "../Contexts/ProductsContext";
+import { ProductsContext } from "../Contexts/ProductsContext";
 import Product from "./Product";
 
 const ProductsShop = () => {
-  const { productList, brandReducerState } = useContext(ProductsContext);
+  const products = useContext(ProductsContext);
+  console.log(products, "from shop");
 
   return (
     <Container maxWidth="xl">
-      {typeof brandReducerState === "string" && (
-        <Grid container spacing={3} justifyContent="center">
-          {productList.map((_product) => (
+      <Grid container spacing={3} justifyContent="center">
+        {products &&
+          products.map((_product) => (
             <Product product={_product} key={_product.id} />
           ))}
-        </Grid>
-      )}
-      {typeof brandReducerState === "object" && (
-        <Grid container spacing={3} justifyContent="center">
-          {brandReducerState.map((_product) => (
-            <Product product={_product} key={_product.id} />
-          ))}
-        </Grid>
-      )}
+      </Grid>
     </Container>
   );
 };

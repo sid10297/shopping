@@ -1,5 +1,23 @@
-import { createContext } from "react";
+import { createContext, useEffect, useState } from "react";
 
-const ProductsContext = createContext({});
+export const ProductsContext = createContext({});
 
-export default ProductsContext;
+export const ProductsProvider = ({ children }) => {
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    getProducts();
+  }, []);
+
+  const getProducts = async () => {
+    const response = await fetch("http://localhost:8000/products");
+    const _products = await response.json();
+    return setProducts(_products);
+  };
+
+  return (
+    <ProductsContext.Provider value={products}>
+      {children}
+    </ProductsContext.Provider>
+  );
+};
