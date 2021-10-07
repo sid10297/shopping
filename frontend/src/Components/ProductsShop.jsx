@@ -5,7 +5,6 @@ import Product from "./Product";
 
 const ProductsShop = () => {
   const products = useContext(ProductsContext);
-  console.log(products, "from shop");
 
   return (
     <Container maxWidth="xl">

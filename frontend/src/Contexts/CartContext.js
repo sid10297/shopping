@@ -4,7 +4,7 @@ export const CartContext = createContext({});
 
 export const CartProvider = ({ children }) => {
   const [items, setItems] = useState([]);
-  // const [total, setTotal] = useState(0);
+  const [total, setTotal] = useState(0);
 
   const addToCart = (product) => {
     const productInCart = items.find(
@@ -53,11 +53,17 @@ export const CartProvider = ({ children }) => {
     }
   };
 
+  const getCartTotal = (total) => {
+    setTotal(total);
+  };
+
   const cartContextValues = {
     cartItems: items,
     addToCart,
     increaseQuantity,
     decreaseQuantity,
+    cartTotal: total,
+    getCartTotal,
   };
 
   return (

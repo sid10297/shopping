@@ -1,15 +1,14 @@
 import { Card, CardContent, Grid, Paper, Typography } from "@mui/material";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 import CartProduct from "../Components/CartProduct";
 import { CartContext } from "../Contexts/CartContext";
 
 const Cart = () => {
-  const [cartTotal, setCartTotal] = useState(0);
-  const { cartItems } = useContext(CartContext);
+  const { cartItems, cartTotal, getCartTotal } = useContext(CartContext);
 
   useEffect(() => {
     calculateTotal(cartItems);
-  }, [cartItems]);
+  });
 
   const calculateTotal = (cartItems) => {
     const quantity = cartItems.map((_product) => _product.quantity);
@@ -18,7 +17,7 @@ const Cart = () => {
 
     for (let i = 0; i <= cartItems.length - 1; i++) {
       total += quantity[i] * price[i];
-      setCartTotal(total);
+      getCartTotal(total);
     }
   };
   return (
