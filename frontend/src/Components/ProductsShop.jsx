@@ -1,11 +1,8 @@
 import { Container, Grid } from "@mui/material";
-import { useContext } from "react";
-import { ProductsContext } from "../Contexts/ProductsContext";
+
 import Product from "./Product";
 
-const ProductsShop = () => {
-  const products = useContext(ProductsContext);
-
+const ProductsShop = ({ products }) => {
   return (
     <Container maxWidth="xl">
       <Grid container spacing={3} justifyContent="center">

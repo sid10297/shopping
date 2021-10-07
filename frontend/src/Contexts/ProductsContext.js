@@ -15,8 +15,12 @@ export const ProductsProvider = ({ children }) => {
     return setProducts(_products);
   };
 
+  const providerValue = {
+    products,
+  };
+
   return (
-    <ProductsContext.Provider value={products}>
+    <ProductsContext.Provider value={providerValue}>
       {children}
     </ProductsContext.Provider>
   );

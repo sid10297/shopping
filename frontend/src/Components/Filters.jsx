@@ -1,8 +1,14 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-const Filters = () => {
-  const [selectedBrand, setSelectedBrand] = useState("");
-  const [availability, setAvailability] = useState(false);
+const Filters = ({ onFiltersUpdate }) => {
+  const [filters, setFilters] = useState({
+    brand: "none",
+    includesOutOfStock: false,
+  });
+
+  useEffect(() => {
+    onFiltersUpdate(filters);
+  }, [filters, onFiltersUpdate]);
 
   return (
     <div>
@@ -10,21 +16,36 @@ const Filters = () => {
         <label htmlFor="brand">Brand</label> &nbsp;
         <select
           name="brand"
-          onChange={(event) => setSelectedBrand(event.target.value)}
-          value={selectedBrand}
+          onChange={(event) => {
+            setFilters((prev_filters) => {
+              return {
+                ...prev_filters,
+                brand: event.target.value,
+              };
+            });
+          }}
+          value={filters.brand}
         >
+          <option value="none">None</option>
           <option value="nike">Nike</option>
           <option value="adidas">Adidas</option>
           <option value="lotto">Lotto</option>
         </select>
-        <button onClick={() => setSelectedBrand("")}>Clear Filter</button>
       </div>
+
       <div>
-        <label htmlFor="availability">Inlcude out of stock</label> &nbsp;
+        <label htmlFor="availability">Include out of stock</label> &nbsp;
         <input
           type="checkbox"
           name="availability"
-          onChange={() => setAvailability(!availability)}
+          onChange={() => {
+            setFilters((prev_filters) => {
+              return {
+                ...prev_filters,
+                includesOutOfStock: !prev_filters.includesOutOfStock,
+              };
+            });
+          }}
         />
       </div>
     </div>
