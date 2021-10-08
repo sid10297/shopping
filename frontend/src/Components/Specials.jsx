@@ -25,7 +25,7 @@ const Specials = ({ product }) => {
             }}
           >
             <CardMedia
-              style={{ backgroundColor: "grey" }}
+              // style={{ backgroundColor: "grey" }}
               component="img"
               height="300"
               image={product.image}

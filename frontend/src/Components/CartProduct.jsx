@@ -38,7 +38,7 @@ const CartProduct = ({ product, quantity, cartItems }) => {
           }}
         >
           <CardMedia
-            style={{ backgroundColor: "grey" }}
+            style={{ objectFit: "cover" }}
             component="img"
             height="300px"
             image={product.image}

@@ -33,7 +33,7 @@ const Product = ({ product }) => {
             <CardMedia
               component="img"
               height="200"
-              style={{ backgroundColor: "grey", objectFit: "cover" }}
+              style={{ objectFit: "cover" }}
               image={product.image}
             />
             <Grid container>
