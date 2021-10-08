@@ -53,11 +53,17 @@ export const CartProvider = ({ children }) => {
     }
   };
 
-  const removeItem = (id) => {
-    const removeItemFromCart = items.filter(
-      (_product) => _product.product.id !== id
+  const removeItem = (product) => {
+    const removeItemFromCart = items.find(
+      (_product) => _product.product.id === product.id
     );
-    return setItems(removeItemFromCart);
+
+    product.quantityAvailable =
+      removeItemFromCart.quantity + product.quantityAvailable;
+
+    return setItems(
+      items.filter((_product) => _product.product.id !== product.id)
+    );
   };
 
   const getCartTotal = (total) => {

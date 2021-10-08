@@ -6,7 +6,6 @@ import {
   CardContent,
   Container,
   Grid,
-  Paper,
   Typography,
 } from "@mui/material";
 import { useContext, useEffect } from "react";

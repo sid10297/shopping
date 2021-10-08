@@ -8,8 +8,10 @@ import {
   Paper,
   Typography,
 } from "@mui/material";
+import { useHistory } from "react-router";
 
 const Specials = ({ product }) => {
+  const history = useHistory();
   return (
     <>
       <Grid item xs={12} sm={8} md={6} lg={3} margin={3}>
@@ -37,8 +39,13 @@ const Specials = ({ product }) => {
               </Typography>
             </CardContent>
             <CardActions style={{ justifyContent: "center" }}>
-              <Button size="small" color="primary" variant="contained">
-                Add to cart
+              <Button
+                size="small"
+                color="primary"
+                variant="contained"
+                onClick={() => history.push("/shop")}
+              >
+                View More
               </Button>
             </CardActions>
           </Card>

@@ -4,9 +4,7 @@ import {
   FormControlLabel,
   InputLabel,
   MenuItem,
-  OutlinedInput,
   Select,
-  Switch,
 } from "@mui/material";
 import { useEffect, useState } from "react";
 

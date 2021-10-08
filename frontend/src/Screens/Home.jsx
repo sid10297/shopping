@@ -12,7 +12,7 @@ const Home = () => {
     <>
       <Advertisment />
       <Brands />
-      <Grid container spacing={3} justifyContent="center">
+      <Grid container justifyContent="center" height="auto" spacing={3}>
         {products &&
           products
             .slice(0, 3)
