@@ -24,7 +24,7 @@ const Product = ({ product }) => {
           sx={{
             width: 300,
             height: "100%",
-            minWidth: "400px",
+            minWidth: "150px",
             textAlign: "center",
             justifyContent: "center",
           }}
@@ -32,7 +32,7 @@ const Product = ({ product }) => {
           <CardContent>
             <CardMedia
               component="img"
-              height="300"
+              height="200"
               style={{ backgroundColor: "grey", objectFit: "cover" }}
               image={product.image}
             />
@@ -40,15 +40,9 @@ const Product = ({ product }) => {
             <Typography variant="body1" gutterBottom margin={2}>
               {product.product}
             </Typography>
-            <Typography variant="body1" gutterBottom margin={2}>
-              {product.color}
-            </Typography>
-            <Typography variant="caption" gutterBottom>
-              Brilliant Shoe
-            </Typography>
-            <Typography variant="body2" gutterBottom>
-              {product.price} Rs
-            </Typography>
+            <Typography variant="body1">{product.color}</Typography>
+            <Typography variant="caption">Brilliant Shoe</Typography>
+            <Typography variant="body2">{product.price} Rs</Typography>
             <Typography variant="body2" gutterBottom>
               Quantity Available : {product.quantityAvailable}
             </Typography>

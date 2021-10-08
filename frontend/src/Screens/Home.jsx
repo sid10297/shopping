@@ -7,7 +7,7 @@ import Specials from "../Components/Specials";
 import { ProductsContext } from "../Contexts/ProductsContext";
 
 const Home = () => {
-  const products = useContext(ProductsContext);
+  const { products } = useContext(ProductsContext);
   return (
     <>
       <Advertisment />

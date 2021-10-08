@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 const Filters = ({ onFiltersUpdate }) => {
   const [filters, setFilters] = useState({
     brand: "none",
+    color: "none",
     includesOutOfStock: false,
   });
 
@@ -11,7 +12,7 @@ const Filters = ({ onFiltersUpdate }) => {
   }, [filters, onFiltersUpdate]);
 
   return (
-    <div>
+    <div style={{ margin: "2rem" }}>
       <div>
         <label htmlFor="brand">Brand</label> &nbsp;
         <select
@@ -34,6 +35,29 @@ const Filters = ({ onFiltersUpdate }) => {
       </div>
 
       <div>
+        <label htmlFor="color">Color</label> &nbsp;
+        <select
+          name="color"
+          onChange={(event) => {
+            setFilters((prev_filters) => {
+              return {
+                ...prev_filters,
+                color: event.target.value,
+              };
+            });
+          }}
+          value={filters.color}
+        >
+          <option value="none">None</option>
+          <option value="black">Black</option>
+          <option value="blue">Blue</option>
+          <option value="white">White</option>
+          <option value="grey">Grey</option>
+          <option value="brown">Brown</option>
+        </select>
+      </div>
+
+      <div>
         <label htmlFor="availability">Include out of stock</label> &nbsp;
         <input
           type="checkbox"
@@ -48,6 +72,18 @@ const Filters = ({ onFiltersUpdate }) => {
           }}
         />
       </div>
+
+      <button
+        onClick={() => {
+          setFilters({
+            brand: "none",
+            color: "none",
+            includesOutOfStock: false,
+          });
+        }}
+      >
+        Clear all filters
+      </button>
     </div>
   );
 };
