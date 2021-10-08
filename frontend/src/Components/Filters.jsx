@@ -13,6 +13,7 @@ const Filters = ({ onFiltersUpdate }) => {
     brand: "none",
     color: "none",
     includesOutOfStock: false,
+    exact: false,
   });
 
   useEffect(() => {
@@ -40,6 +41,9 @@ const Filters = ({ onFiltersUpdate }) => {
         <MenuItem value="adidas">Adidas</MenuItem>
         <MenuItem value="lotto">Lotto</MenuItem>
       </Select>
+
+      <br />
+      <br />
 
       <InputLabel htmlFor="color">Color</InputLabel>
       <Select
@@ -79,6 +83,23 @@ const Filters = ({ onFiltersUpdate }) => {
         label="Include Out of Stock"
       />
 
+      <FormControlLabel
+        checked={filters.exact}
+        control={
+          <Checkbox
+            onChange={() => {
+              setFilters((prev_filters) => {
+                return {
+                  ...prev_filters,
+                  exact: !prev_filters.exact,
+                };
+              });
+            }}
+          />
+        }
+        label="Exact Filter"
+      />
+
       <br />
 
       <Button
@@ -88,6 +109,7 @@ const Filters = ({ onFiltersUpdate }) => {
             brand: "none",
             color: "none",
             includesOutOfStock: false,
+            exact: false,
           });
         }}
       >

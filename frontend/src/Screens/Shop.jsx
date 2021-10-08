@@ -23,6 +23,16 @@ const Shop = () => {
         );
       }
 
+      if (filters.exact) {
+        setFilteredProducts(
+          (_filteredProducts = _filteredProducts.filter(
+            (_product) =>
+              _product.brand.toLowerCase() === filters.brand &&
+              _product.color.toLowerCase() === filters.color
+          ))
+        );
+      }
+
       if (filters.brand === "none" && filters.color === "none") {
         setFilteredProducts(_filteredProducts);
         return;
