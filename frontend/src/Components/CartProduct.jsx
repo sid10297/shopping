@@ -83,7 +83,6 @@ const CartProduct = ({ product, quantity, cartItems }) => {
                   color="error"
                   variant="contained"
                   onClick={decrementQuantity}
-                  disabled={product.quantityAvailable === 0}
                 >
                   <Remove />
                 </Button>
