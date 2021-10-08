@@ -25,8 +25,7 @@ const Product = ({ product }) => {
             width: 300,
             height: "100%",
             minWidth: "150px",
-            textAlign: "center",
-            justifyContent: "center",
+            justifyContent: "space-between",
           }}
         >
           <CardContent>
@@ -36,23 +35,31 @@ const Product = ({ product }) => {
               style={{ backgroundColor: "grey", objectFit: "cover" }}
               image={product.image}
             />
-
-            <Typography variant="body1" gutterBottom margin={2}>
-              {product.product}
-            </Typography>
-            <Typography variant="body1">{product.color}</Typography>
-            <Typography variant="caption">Brilliant Shoe</Typography>
-            <Typography variant="body2">{product.price} Rs</Typography>
-            <Typography variant="body2" gutterBottom>
-              Quantity Available : {product.quantityAvailable}
-            </Typography>
-            <Button
-              variant="contained"
-              onClick={addToCartHandler}
-              disabled={product.quantityAvailable === 0}
-            >
-              {product.quantityAvailable === 0 ? "Out of stock" : "Add to cart"}
-            </Button>
+            <Grid container>
+              <Grid item marginTop={1}>
+                <Typography variant="body1" gutterBottom>
+                  {product.product}
+                </Typography>
+                {/* <Typography variant="body1">{product.color}</Typography> */}
+                <Typography variant="caption">Brilliant Shoe</Typography>
+                <Typography variant="body2">{product.price} Rs</Typography>
+                {/* <Typography variant="body2" gutterBottom>
+                  Quantity Available : {product.quantityAvailable}
+                </Typography> */}
+              </Grid>
+              <Grid item marginTop={1} marginLeft={10}>
+                <Button
+                  variant="contained"
+                  size="small"
+                  onClick={addToCartHandler}
+                  disabled={product.quantityAvailable === 0}
+                >
+                  {product.quantityAvailable === 0
+                    ? "Out of stock"
+                    : "Add to cart"}
+                </Button>
+              </Grid>
+            </Grid>
           </CardContent>
         </Card>
       </Paper>

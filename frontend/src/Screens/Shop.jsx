@@ -47,7 +47,7 @@ const Shop = () => {
             sx={{
               height: "100vh",
               width: "19vw",
-              textAlign: "center",
+              textAlign: "left",
             }}
           >
             <Filters onFiltersUpdate={onFiltersUpdate} />{" "}
