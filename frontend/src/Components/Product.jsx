@@ -1,6 +1,7 @@
 import {
   Button,
   Card,
+  CardActions,
   CardContent,
   CardMedia,
   Grid,
@@ -48,16 +49,18 @@ const Product = ({ product }) => {
                 </Typography> */}
               </Grid>
               <Grid item marginTop={1} marginLeft={10}>
-                <Button
-                  variant="contained"
-                  size="small"
-                  onClick={addToCartHandler}
-                  disabled={product.quantityAvailable === 0}
-                >
-                  {product.quantityAvailable === 0
-                    ? "Out of stock"
-                    : "Add to cart"}
-                </Button>
+                <CardActions>
+                  <Button
+                    variant="contained"
+                    size="small"
+                    onClick={addToCartHandler}
+                    disabled={product.quantityAvailable === 0}
+                  >
+                    {product.quantityAvailable === 0
+                      ? "Out of stock"
+                      : "Add to cart"}
+                  </Button>
+                </CardActions>
               </Grid>
             </Grid>
           </CardContent>
