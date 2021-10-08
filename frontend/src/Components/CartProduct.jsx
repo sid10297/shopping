@@ -1,12 +1,4 @@
-import {
-  Add,
-  Delete,
-  DeleteRounded,
-  Remove,
-  RemoveCircleRounded,
-  RemoveFromQueue,
-  RemoveShoppingCart,
-} from "@mui/icons-material";
+import { Add, Remove, RemoveShoppingCart } from "@mui/icons-material";
 import {
   Button,
   Card,
@@ -14,25 +6,27 @@ import {
   CardContent,
   CardMedia,
   Grid,
-  Paper,
   Typography,
 } from "@mui/material";
 import { useContext } from "react";
 import { CartContext } from "../Contexts/CartContext";
 
 const CartProduct = ({ product, quantity }) => {
-  const { increaseQuantity, decreaseQuantity } = useContext(CartContext);
+  const { increaseQuantity, decreaseQuantity, removeItem } =
+    useContext(CartContext);
   const incrementQuantity = () => {
     increaseQuantity(product);
   };
   const decrementQuantity = () => {
     decreaseQuantity(product);
   };
+  const removeItemFromCart = () => {
+    removeItem(product.id);
+  };
 
   return (
     <>
       <Grid item xs={12} sm={12} lg={6} margin={2}>
-        {/* <Paper variant="outlined"> */}
         <Card
           sx={{
             width: 300,
@@ -75,12 +69,15 @@ const CartProduct = ({ product, quantity }) => {
             >
               <Remove />
             </Button>
-            <Button variant="contained" color="error">
+            <Button
+              variant="contained"
+              color="warning"
+              onClick={removeItemFromCart}
+            >
               <RemoveShoppingCart />
             </Button>
           </CardActions>
         </Card>
-        {/* </Paper> */}
       </Grid>
     </>
   );

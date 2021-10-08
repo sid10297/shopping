@@ -53,6 +53,13 @@ export const CartProvider = ({ children }) => {
     }
   };
 
+  const removeItem = (id) => {
+    const removeItemFromCart = items.filter(
+      (_product) => _product.product.id !== id
+    );
+    return setItems(removeItemFromCart);
+  };
+
   const getCartTotal = (total) => {
     setTotal(total);
   };
@@ -64,6 +71,7 @@ export const CartProvider = ({ children }) => {
     decreaseQuantity,
     cartTotal: total,
     getCartTotal,
+    removeItem,
   };
 
   return (
