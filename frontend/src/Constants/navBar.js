@@ -1,4 +1,4 @@
-const appTitle = "Shopping";
+const appTitle = "Shop";
 const home = "Home";
 const shop = "Shop";
 const contactUs = "Contact Us";

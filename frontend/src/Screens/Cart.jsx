@@ -32,7 +32,7 @@ const Cart = () => {
   };
   return (
     <>
-      <Container maxWidth="lg">
+      <Container maxWidth="lg" style={{ marginTop: "100px" }}>
         <Card sx={{ margin: "10px" }}>
           <Grid container justifyContent="left" position="relative">
             {cartItems.length > 0 ? (

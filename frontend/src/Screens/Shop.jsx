@@ -41,7 +41,7 @@ const Shop = () => {
 
   return (
     <>
-      <Grid container>
+      <Grid container marginTop={10}>
         <Grid item>
           <Card
             sx={{

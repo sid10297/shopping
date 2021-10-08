@@ -9,12 +9,18 @@ const Brands = () => {
   return (
     <Grid
       container
-      style={{ backgroundImage: `url(${brandsBackground})` }}
-      justifyContent="center"
-      spacing={3}
+      alignContent="center"
+      style={{ backgroundImage: `url(${brandsBackground})`, height: "100vh" }}
     >
       {arr.map((i) => (
-        <Grid item xs={12} md={6} lg={4} key={i}>
+        <Grid
+          item
+          xs={12}
+          md={6}
+          lg={4}
+          key={i}
+          style={{ display: "flex", justifyContent: "center" }}
+        >
           <img src={NewBalanceLogo} alt="logo" className={styles.image} />
         </Grid>
       ))}
