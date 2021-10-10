@@ -31,56 +31,58 @@ const Cart = () => {
   };
   return (
     <>
-      <Grid
-        container
-        marginTop={8}
-        spacing={2}
-        padding={3}
-        sx={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
-        {cartItems.length > 0 && (
-          <>
-            {cartItems.map((_product) => (
-              <CartProduct
-                product={_product.product}
-                key={_product.product.id}
-                quantity={_product.quantity}
-              />
-            ))}
-            <Grid marginTop={3} padding={3} item xs={12}>
-              <Card
-                sx={{
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                  textAlign: "center",
-                }}
-              >
-                <CardContent>
-                  <Typography>Price of {cartItems.length} items</Typography>
-                  <Typography gutterBottom variant="body1">
-                    Total {cartTotal} Rs
-                  </Typography>
-                  <CardActions>
-                    <Button variant="contained">
-                      <ShoppingBag /> &nbsp; Place Order
-                    </Button>
-                  </CardActions>
-                </CardContent>
-              </Card>
-            </Grid>
-          </>
-        )}
-      </Grid>
+      <Container maxWidth="md">
+        <Grid
+          container
+          marginTop={8}
+          spacing={2}
+          padding={1}
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          {cartItems.length > 0 && (
+            <>
+              {cartItems.map((_product) => (
+                <CartProduct
+                  product={_product.product}
+                  key={_product.product.id}
+                  quantity={_product.quantity}
+                />
+              ))}
+              <Grid marginTop={3} padding={1} item xs={12}>
+                <Card
+                  sx={{
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    textAlign: "center",
+                  }}
+                >
+                  <CardContent>
+                    <Typography>Price of {cartItems.length} items</Typography>
+                    <Typography gutterBottom variant="body1">
+                      Total {cartTotal} Rs
+                    </Typography>
+                    <CardActions>
+                      <Button variant="contained">
+                        <ShoppingBag /> &nbsp; Place Order
+                      </Button>
+                    </CardActions>
+                  </CardContent>
+                </Card>
+              </Grid>
+            </>
+          )}
+        </Grid>
+      </Container>
 
       {cartItems.length < 1 && (
         <Grid
           container
-          height="100vh"
+          height="80vh"
           justifyContent="center"
           alignItems="center"
         >

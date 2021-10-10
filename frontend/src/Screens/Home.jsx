@@ -12,6 +12,8 @@ const Home = () => {
     <>
       <Advertisment />
       <Brands />
+      <br />
+      <h1 style={{ textAlign: "center" }}>Specials</h1>
       <Grid container justifyContent="center" height="auto" spacing={3}>
         {products &&
           products

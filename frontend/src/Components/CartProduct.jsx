@@ -27,7 +27,7 @@ const CartProduct = ({ product, quantity }) => {
 
   return (
     <>
-      <Grid item xs={12} sm={6} md={6} lg={4} xl={3}>
+      <Grid item xs={12} sm={6} md={6} lg={4} xl={4}>
         <Card
           sx={{
             width: "auto",
@@ -36,7 +36,7 @@ const CartProduct = ({ product, quantity }) => {
           <CardMedia
             style={{ objectFit: "cover" }}
             component="img"
-            height="400px"
+            height="200px"
             image={product.image}
           />
           <CardContent>
@@ -67,11 +67,9 @@ const CartProduct = ({ product, quantity }) => {
                 >
                   <Add />
                 </Button>
-                &nbsp;&nbsp;
                 <Card sx={{ width: "50px", textAlign: "center" }}>
                   <Typography variant="h6">{quantity}</Typography>
                 </Card>
-                &nbsp;&nbsp;
                 <Button
                   color="error"
                   variant="contained"
@@ -86,7 +84,7 @@ const CartProduct = ({ product, quantity }) => {
                   color="warning"
                   onClick={removeItemFromCart}
                 >
-                  &nbsp; <RemoveShoppingCart />
+                  <RemoveShoppingCart />
                 </Button>
               </div>
             </div>

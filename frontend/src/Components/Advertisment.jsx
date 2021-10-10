@@ -4,7 +4,7 @@ import nikeShoePoster from "../Assets/Images/nikeShoePoster.jpg";
 import newBalanceLogo from "../Assets/Images/new-balance-logo.png";
 import { adTagLine, adTagLine1, adTagLine2 } from "../Constants/advertisment";
 import styles from "../Styles/advertisment.module.css";
-import { Button, Typography } from "@mui/material";
+import { Button, Grid, Typography } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import svg from "../Assets/Images/shopping.svg";
 

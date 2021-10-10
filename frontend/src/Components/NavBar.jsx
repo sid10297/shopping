@@ -19,9 +19,9 @@ const NavBar = () => {
           <NavLink to="/" exact>
             <Button color="inherit">{home}</Button>
           </NavLink>
-          <NavLink to="/contact">
+          {/* <NavLink to="/contact">
             <Button color="inherit">{contactUs}</Button>
-          </NavLink>
+          </NavLink> */}
           <NavLink to="/shop">
             <Button color="inherit">{shop}</Button>
           </NavLink>
