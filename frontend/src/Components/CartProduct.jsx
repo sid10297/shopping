@@ -11,7 +11,7 @@ import {
 import { useContext } from "react";
 import { CartContext } from "../Contexts/CartContext";
 
-const CartProduct = ({ product, quantity, cartItems }) => {
+const CartProduct = ({ product, quantity }) => {
   const { increaseQuantity, decreaseQuantity, removeItem } =
     useContext(CartContext);
 
@@ -27,29 +27,23 @@ const CartProduct = ({ product, quantity, cartItems }) => {
 
   return (
     <>
-      <Grid item xs={12} sm={12} lg={6} margin={2}>
+      <Grid item xs={12} sm={6} md={6} lg={4} xl={3}>
         <Card
           sx={{
-            width: 650,
-            height: "100%",
-            minWidth: "150px",
-            justifyContent: "space-between",
-            textAlign: "left",
+            width: "auto",
           }}
         >
           <CardMedia
             style={{ objectFit: "cover" }}
             component="img"
-            height="300px"
+            height="400px"
             image={product.image}
           />
           <CardContent>
-            <Typography gutterBottom variant="h5" component="div">
+            <Typography gutterBottom variant="h5">
               {product.product}
             </Typography>
-            <Typography variant="body2" color="text.secondary">
-              {product.price} Rs
-            </Typography>
+            <Typography variant="h6">{product.price} Rs</Typography>
           </CardContent>
           <CardActions>
             <div
@@ -57,7 +51,6 @@ const CartProduct = ({ product, quantity, cartItems }) => {
                 display: "flex",
                 justifyContent: "space-between",
                 width: "100%",
-                padding: "1rem",
               }}
             >
               <div
@@ -93,7 +86,7 @@ const CartProduct = ({ product, quantity, cartItems }) => {
                   color="warning"
                   onClick={removeItemFromCart}
                 >
-                  Remove From Cart &nbsp; <RemoveShoppingCart />
+                  &nbsp; <RemoveShoppingCart />
                 </Button>
               </div>
             </div>

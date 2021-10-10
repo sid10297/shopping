@@ -31,66 +31,60 @@ const Cart = () => {
   };
   return (
     <>
-      <Container maxWidth="lg" style={{ marginTop: "100px" }}>
-        <Card sx={{ margin: "10px" }}>
-          <Grid container justifyContent="left" position="relative">
-            {cartItems.length > 0 ? (
-              cartItems.map((_product) => (
+      <Card>
+        <Grid container marginTop={10} spacing={2}>
+          {cartItems.length > 0 && (
+            <>
+              {cartItems.map((_product) => (
                 <CartProduct
                   product={_product.product}
                   key={_product.product.id}
                   quantity={_product.quantity}
                 />
-              ))
-            ) : (
-              <Grid container justifyContent="center">
-                <Grid item xs={12} sm={6} md={3} margin={3}>
-                  <Card
-                    sx={{
-                      height: "100%",
-                      minWidth: "400px",
-                      textAlign: "center",
-                      justifyContent: "center",
-                    }}
-                  >
-                    <CardContent>
-                      <Typography gutterBottom variant="body1" color="primary">
-                        Cart is empty
-                      </Typography>
-                    </CardContent>
-                  </Card>
-                </Grid>
+              ))}
+              <Grid marginTop={3} padding={3} item xs={12}>
+                <Card
+                  sx={{
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    textAlign: "center",
+                  }}
+                >
+                  <CardContent>
+                    <Typography>Price of {cartItems.length} items</Typography>
+                    <Typography gutterBottom variant="body1">
+                      Total {cartTotal} Rs
+                    </Typography>
+                    <CardActions>
+                      <Button variant="contained">
+                        <ShoppingBag /> &nbsp; Place Order
+                      </Button>
+                    </CardActions>
+                  </CardContent>
+                </Card>
               </Grid>
-            )}
-            {cartItems.length > 0 && (
-              <Grid container justifyContent="right">
-                <Grid item position="absolute" top={20} marginRight={2}>
-                  <Card
-                    style={{
-                      height: "100%",
-                      textAlign: "left",
-                      justifyContent: "center",
-                      minWidth: "400px",
-                    }}
-                  >
-                    <CardContent>
-                      <Typography>Price of {cartItems.length} items</Typography>
-                      <Typography gutterBottom variant="body1">
-                        Total {cartTotal} Rs
-                      </Typography>
-                      <CardActions>
-                        <Button variant="contained">
-                          <ShoppingBag /> &nbsp; Place Order
-                        </Button>
-                      </CardActions>
-                    </CardContent>
-                  </Card>
-                </Grid>
-              </Grid>
-            )}
+            </>
+          )}
+        </Grid>
+      </Card>
+
+      {cartItems.length < 1 && (
+        <Grid
+          container
+          height="100vh"
+          justifyContent="center"
+          alignItems="center"
+        >
+          <Grid item>
+            <Card>
+              <CardContent>
+                <Typography variant="h1">Your Cart us Empty</Typography>
+              </CardContent>
+            </Card>
           </Grid>
-        </Card>
-      </Container>
+        </Grid>
+      )}
     </>
   );
 };
