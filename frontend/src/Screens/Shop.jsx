@@ -24,13 +24,11 @@ const Shop = () => {
       }
 
       if (filters.color !== "none" && filters.brand !== "none") {
-        console.log("HEY");
-        _filteredProducts = _filteredProducts.filter((_product) => {
-          return (
+        _filteredProducts = _filteredProducts.filter(
+          (_product) =>
             _product.brand.toLowerCase() === filters.brand &&
             _product.color.toLowerCase() === filters.color
-          );
-        });
+        );
       }
 
       if (filters.brand === "none" && filters.color === "none") {
@@ -52,19 +50,17 @@ const Shop = () => {
   return (
     <>
       <Grid container marginTop={10}>
-        <Grid item>
+        <Grid item xs={12} sm={4} md={12} lg={2} xl={2}>
           <Card
             sx={{
-              height: "100vh",
-              width: "19vw",
               textAlign: "left",
             }}
           >
-            <Filters onFiltersUpdate={onFiltersUpdate} />{" "}
+            <Filters onFiltersUpdate={onFiltersUpdate} />
           </Card>
         </Grid>
-        <Grid item>
-          <Card sx={{ minHeight: "100vh", width: "80vw" }}>
+        <Grid item xs={12} sm={8} md={12} lg={10} xl={10}>
+          <Card sx={{ minHeight: "100vh" }}>
             <ProductsShop products={filteredProducts} />
           </Card>
         </Grid>

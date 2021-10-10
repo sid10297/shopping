@@ -20,7 +20,7 @@ const Filters = ({ onFiltersUpdate }) => {
   }, [filters, onFiltersUpdate]);
 
   return (
-    <div style={{ margin: "2rem" }}>
+    <div style={{ margin: "1rem" }}>
       <InputLabel htmlFor="brand">Brand</InputLabel>
       <Select
         style={{ width: "100%" }}
