@@ -31,43 +31,41 @@ const Cart = () => {
   };
   return (
     <>
-      <Card>
-        <Grid container marginTop={10} spacing={2}>
-          {cartItems.length > 0 && (
-            <>
-              {cartItems.map((_product) => (
-                <CartProduct
-                  product={_product.product}
-                  key={_product.product.id}
-                  quantity={_product.quantity}
-                />
-              ))}
-              <Grid marginTop={3} padding={3} item xs={12}>
-                <Card
-                  sx={{
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center",
-                    textAlign: "center",
-                  }}
-                >
-                  <CardContent>
-                    <Typography>Price of {cartItems.length} items</Typography>
-                    <Typography gutterBottom variant="body1">
-                      Total {cartTotal} Rs
-                    </Typography>
-                    <CardActions>
-                      <Button variant="contained">
-                        <ShoppingBag /> &nbsp; Place Order
-                      </Button>
-                    </CardActions>
-                  </CardContent>
-                </Card>
-              </Grid>
-            </>
-          )}
-        </Grid>
-      </Card>
+      <Grid container marginTop={8} spacing={2} padding={3}>
+        {cartItems.length > 0 && (
+          <>
+            {cartItems.map((_product) => (
+              <CartProduct
+                product={_product.product}
+                key={_product.product.id}
+                quantity={_product.quantity}
+              />
+            ))}
+            <Grid marginTop={3} padding={3} item xs={12}>
+              <Card
+                sx={{
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  textAlign: "center",
+                }}
+              >
+                <CardContent>
+                  <Typography>Price of {cartItems.length} items</Typography>
+                  <Typography gutterBottom variant="body1">
+                    Total {cartTotal} Rs
+                  </Typography>
+                  <CardActions>
+                    <Button variant="contained">
+                      <ShoppingBag /> &nbsp; Place Order
+                    </Button>
+                  </CardActions>
+                </CardContent>
+              </Card>
+            </Grid>
+          </>
+        )}
+      </Grid>
 
       {cartItems.length < 1 && (
         <Grid
