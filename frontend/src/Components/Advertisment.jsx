@@ -1,4 +1,6 @@
 import advertismentImage from "../Assets/Images/PosterShoe.jpg";
+import nikeShoePoster from "../Assets/Images/nikeShoePoster.jpg";
+
 import newBalanceLogo from "../Assets/Images/new-balance-logo.png";
 import { adTagLine, adTagLine1, adTagLine2 } from "../Constants/advertisment";
 import styles from "../Styles/advertisment.module.css";
@@ -20,7 +22,7 @@ const Advertisment = () => {
       <div className={styles.advertismentContainer}>
         <div className={styles.imageContainer}>
           <img
-            src={advertismentImage}
+            src={nikeShoePoster}
             alt="PosterAd"
             className={styles.advertisment}
           />

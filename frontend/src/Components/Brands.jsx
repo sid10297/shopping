@@ -10,7 +10,11 @@ const Brands = () => {
     <Grid
       container
       alignContent="center"
-      style={{ backgroundImage: `url(${brandsBackground})`, height: "100vh" }}
+      style={{
+        backgroundImage: `url(${brandsBackground})`,
+        height: "auto",
+        minHeight: "100vh",
+      }}
     >
       {arr.map((i) => (
         <Grid
@@ -19,7 +23,7 @@ const Brands = () => {
           md={6}
           lg={4}
           key={i}
-          style={{ display: "flex", justifyContent: "center" }}
+          style={{ display: "flex", justifyContent: "center", padding: "1rem" }}
         >
           <img src={NewBalanceLogo} alt="logo" className={styles.image} />
         </Grid>
