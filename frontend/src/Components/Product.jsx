@@ -38,12 +38,12 @@ const Product = ({ product }) => {
               <Typography variant="body1" gutterBottom>
                 {product.product}
               </Typography>
-              {/* <Typography variant="body1">{product.color}</Typography> */}
+              <Typography variant="body1">{product.color}</Typography>
               <Typography variant="caption">Brilliant Shoe</Typography>
               <Typography variant="body2">{product.price} Rs</Typography>
-              {/* <Typography variant="body2" gutterBottom>
-                  Quantity Available : {product.quantityAvailable}
-                </Typography> */}
+              <Typography variant="body2" gutterBottom>
+                Quantity Available : {product.quantityAvailable}
+              </Typography>
             </Grid>
             <Grid item marginTop={1} marginLeft={10}>
               <CardActions>

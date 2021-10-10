@@ -31,7 +31,17 @@ const Cart = () => {
   };
   return (
     <>
-      <Grid container marginTop={8} spacing={2} padding={3}>
+      <Grid
+        container
+        marginTop={8}
+        spacing={2}
+        padding={3}
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
         {cartItems.length > 0 && (
           <>
             {cartItems.map((_product) => (
