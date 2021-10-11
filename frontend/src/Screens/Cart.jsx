@@ -34,6 +34,7 @@ const Cart = () => {
       <Container maxWidth="md">
         <Grid
           container
+          position="relative"
           marginTop={8}
           spacing={2}
           padding={1}
@@ -59,6 +60,9 @@ const Cart = () => {
                     justifyContent: "center",
                     alignItems: "center",
                     textAlign: "center",
+                    position: "absolute",
+                    top: "20px",
+                    right: "10%",
                   }}
                 >
                   <CardContent>

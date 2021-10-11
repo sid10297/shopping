@@ -31,6 +31,26 @@ const Shop = () => {
         );
       }
 
+      if (filters.customerRatings === "above4Star") {
+        _filteredProducts = _filteredProducts.filter((_product) => {
+          return _product.rating >= 4;
+        });
+      }
+
+      if (filters.customerRatings === "above3Star") {
+        _filteredProducts = _filteredProducts.filter((_product) => {
+          return _product.rating >= 3;
+        });
+      }
+
+      if (filters.sortBy === "lowToHigh") {
+        _filteredProducts = _filteredProducts.sort((a, b) => a.price - b.price);
+      }
+
+      if (filters.sortBy === "highToLow") {
+        _filteredProducts = _filteredProducts.sort((a, b) => b.price - a.price);
+      }
+
       if (filters.brand === "none" && filters.color === "none") {
         setFilteredProducts(_filteredProducts);
         return;
