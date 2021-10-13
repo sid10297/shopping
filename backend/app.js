@@ -6,6 +6,7 @@ const products = require("./routes/products");
 
 const app = express();
 
+app.use(express.json());
 app.use("/products", products);
 
 app.get("/", (req, res) => {

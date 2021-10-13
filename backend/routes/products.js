@@ -1,9 +1,10 @@
 const express = require("express");
+const Product = require("../models/product");
 
 const router = express.Router();
 
-router.get("/", (req, res) => {
-  res.send("Products here!");
+router.post("/", (req, res) => {
+  console.log(req.body);
 });
 
 module.exports = router;
