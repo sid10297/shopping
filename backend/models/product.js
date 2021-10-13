@@ -1,16 +1,26 @@
 const mongoose = require("mongoose");
 
-const ProductSchema = mongoose.Schema({
+const ProductSchema = new mongoose.Schema({
+  uid: {
+    type: String,
+    required: true,
+  },
   title: {
     type: String,
+    minlength: 3,
+    maxlength: 20,
     required: true,
   },
   description: {
     type: String,
+    minlength: 3,
+    maxlength: 40,
     required: true,
   },
   price: {
     type: Number,
+    min: 10,
+    max: 100000,
     required: true,
   },
   quantity: {
@@ -23,4 +33,4 @@ const ProductSchema = mongoose.Schema({
   },
 });
 
-module.exports = mongoose.model("Products", ProductSchema);
+module.exports = mongoose.model("Product", ProductSchema);
