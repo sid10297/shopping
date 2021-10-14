@@ -6,7 +6,7 @@ const products = require("./routes/products");
 
 const app = express();
 
-// push to check if pass is asked again
+// Test
 
 app.use(cors());
 app.use(express.json());
