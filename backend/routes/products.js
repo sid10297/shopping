@@ -17,6 +17,16 @@ router.get("/", async (req, res) => {
   }
 });
 
+// Get a single product
+router.get("/:id", async (req, res) => {
+  try {
+    const product = await Product.findById(req.params.id);
+    res.send(product);
+  } catch (error) {
+    res.status(404).send(error);
+  }
+});
+
 // Create a product
 router.post("/", async (req, res) => {
   const schema = Joi.object({
