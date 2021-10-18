@@ -1,12 +1,12 @@
-import advertismentImage from "../Assets/Images/PosterShoe.jpg";
+// import advertismentImage from "../Assets/Images/PosterShoe.jpg";
 import nikeShoePoster from "../Assets/Images/nikeShoePoster.jpg";
 
 import newBalanceLogo from "../Assets/Images/new-balance-logo.png";
 import { adTagLine, adTagLine1, adTagLine2 } from "../Constants/advertisment";
 import styles from "../Styles/advertisment.module.css";
-import { Button, Grid, Typography } from "@mui/material";
+import { Button, Typography } from "@mui/material";
 import { makeStyles } from "@mui/styles";
-import svg from "../Assets/Images/shopping.svg";
+// import svg from "../Assets/Images/shopping.svg";
 
 const useStyles = makeStyles({
   btn: {

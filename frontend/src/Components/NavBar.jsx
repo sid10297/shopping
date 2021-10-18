@@ -1,6 +1,6 @@
 import { AppBar, Button, Toolbar, Typography } from "@mui/material";
 import { Box } from "@mui/system";
-import { appTitle, contactUs, home, shop } from "../Constants/navBar";
+import { appTitle, home, shop } from "../Constants/navBar";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { NavLink } from "react-router-dom";
 import { useContext } from "react";
