@@ -42,7 +42,13 @@ const CartProduct = ({ product, quantity }) => {
           />
           <CardContent>
             <Typography gutterBottom variant="h5">
-              {product.product}
+              {product.title}
+            </Typography>
+            <Typography gutterBottom variant="h5">
+              {product.description}
+            </Typography>
+            <Typography gutterBottom variant="h5">
+              Quantity Available : {product.quantity}
             </Typography>
             <Typography variant="h6">{product.price} Rs</Typography>
           </CardContent>
