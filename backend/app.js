@@ -6,8 +6,6 @@ const products = require("./routes/products");
 
 const app = express();
 
-// Test
-
 app.use(cors());
 app.use(express.json());
 app.use("/products", products);

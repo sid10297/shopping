@@ -64,7 +64,7 @@ const CartProduct = ({ product, quantity }) => {
                   color="success"
                   variant="contained"
                   onClick={incrementQuantity}
-                  disabled={product.quantityAvailable === 0}
+                  disabled={product.quantity === 0}
                 >
                   <Add />
                 </Button>
@@ -75,6 +75,7 @@ const CartProduct = ({ product, quantity }) => {
                   color="error"
                   variant="contained"
                   onClick={decrementQuantity}
+                  disabled={quantity < 2}
                 >
                   <Remove />
                 </Button>

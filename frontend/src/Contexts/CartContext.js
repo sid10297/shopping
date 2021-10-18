@@ -7,27 +7,28 @@ export const CartProvider = ({ children }) => {
   const [total, setTotal] = useState(0);
 
   const addToCart = (product) => {
+    console.log(product, items);
     const productInCart = items.find(
-      (_product) => _product.product.id === product.id
+      (_product) => _product.product._id === product._id
     );
 
     if (productInCart) {
       productInCart.quantity += 1;
-      product.quantityAvailable -= 1;
+      product.quantity -= 1;
       return setItems([...items]);
     } else {
-      product.quantityAvailable -= 1;
+      product.quantity -= 1;
       return setItems([...items, { product, quantity: 1 }]);
     }
   };
 
   const increaseQuantity = (product) => {
     const productQuantityToIncrease = items.find(
-      (_product) => _product.product.id === product.id
+      (_product) => _product.product._id === product._id
     );
 
     if (productQuantityToIncrease) {
-      product.quantityAvailable -= 1;
+      product.quantity -= 1;
       productQuantityToIncrease.quantity += 1;
       return setItems([...items]);
     }
@@ -35,19 +36,19 @@ export const CartProvider = ({ children }) => {
 
   const decreaseQuantity = (product) => {
     const productQuantityToDecrease = items.find(
-      (_product) => _product.product.id === product.id
+      (_product) => _product.product._id === product._id
     );
 
     if (productQuantityToDecrease.quantity < 1) {
       const filterOut = items.filter(
-        (_product) => _product.product.id !== product.id
+        (_product) => _product.product._id !== product._id
       );
 
       return setItems(filterOut);
     }
 
     if (productQuantityToDecrease) {
-      product.quantityAvailable += 1;
+      product.quantity += 1;
       productQuantityToDecrease.quantity -= 1;
       return setItems([...items]);
     }
@@ -55,14 +56,13 @@ export const CartProvider = ({ children }) => {
 
   const removeItem = (product) => {
     const removeItemFromCart = items.find(
-      (_product) => _product.product.id === product.id
+      (_product) => _product.product._id === product._id
     );
 
-    product.quantityAvailable =
-      removeItemFromCart.quantity + product.quantityAvailable;
+    product.quantity = removeItemFromCart.quantity + product.quantity;
 
     return setItems(
-      items.filter((_product) => _product.product.id !== product.id)
+      items.filter((_product) => _product.product._id !== product._id)
     );
   };
 

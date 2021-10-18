@@ -18,7 +18,7 @@ const Home = () => {
         {products &&
           products
             .slice(0, 3)
-            .map((product) => <Specials product={product} key={product.id} />)}
+            .map((product) => <Specials product={product} key={product._id} />)}
       </Grid>
     </>
   );

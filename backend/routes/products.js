@@ -29,23 +29,23 @@ router.get("/:id", async (req, res) => {
 
 // Create a product
 router.post("/", async (req, res) => {
-  const schema = Joi.object({
-    title: Joi.string().min(3).max(20).required(),
-    description: Joi.string().min(3).max(40).required(),
-    price: Joi.number().min(10).max(100000).required(),
-    quantity: Joi.number().required(),
-    image: Joi.string().required(),
-  }).options({
-    abortEarly: false,
-  });
+  // const schema = Joi.object({
+  //   title: Joi.string().min(3).max(20).required(),
+  //   description: Joi.string().min(3).max(40).required(),
+  //   price: Joi.number().min(10).max(100000).required(),
+  //   quantity: Joi.number().required(),
+  //   image: Joi.string().required(),
+  // }).options({
+  //   abortEarly: false,
+  // });
 
-  const { error } = schema.validate(req.body);
+  // const { error } = schema.validate(req.body);
 
-  if (error) {
-    return res.status(400).send(error.details[0].message);
-  }
+  // if (error) {
+  //   return res.status(400).send(error.details[0].message);
+  // }
 
-  console.log(value, error);
+  // console.log(value, error);
 
   const { title, description, price, quantity, image } = req.body;
   const product = new Product({
@@ -64,23 +64,24 @@ router.post("/", async (req, res) => {
 });
 
 // Update a product
-router.put("/:id", async (req, res) => {
-  const schema = Joi.object({
-    title: Joi.string().min(3).max(20).required(),
-    description: Joi.string().min(3).max(40).required(),
-    price: Joi.number().min(10).max(100000).required(),
-    quantity: Joi.number().required(),
-    image: Joi.string().required(),
-  }).options({
-    abortEarly: false,
-  });
+router.patch("/:id", async (req, res) => {
+  // const schema = Joi.object({
+  //   title: Joi.string().min(3).max(20),
+  //   description: Joi.string().min(3).max(40),
+  //   price: Joi.number().min(10).max(100000),
+  //   quantity: Joi.number(),
+  //   image: Joi.string(),
+  // }).options({
+  //   abortEarly: false,
+  // });
 
-  const { error } = schema.validate(req.body);
-  if (error) {
-    return res.status(400).send(error.details[0].message);
-  }
+  // const { error } = schema.validate(req.body);
+  // console.log(error, value);
+  // if (error) {
+  //   return res.status(400).send(error.details[0].message);
+  // }
 
-  console.log(value, error);
+  // console.log(value, error);
 
   const product = await Product.findById(req.params.id);
 
@@ -88,17 +89,13 @@ router.put("/:id", async (req, res) => {
   const { title, description, price, quantity, image } = req.body;
 
   try {
-    const updatedProduct = await Product.findByIdAndUpdate(
-      req.params.id,
-      {
-        title,
-        description,
-        price,
-        quantity,
-        image,
-      },
-      { new: true }
-    );
+    const updatedProduct = await Product.findByIdAndUpdate(req.params.id, {
+      title,
+      description,
+      price,
+      quantity,
+      image,
+    });
     res.send(updatedProduct);
   } catch (error) {
     res.status(500).send(error.message);

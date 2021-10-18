@@ -5,7 +5,6 @@ import {
   CardContent,
   CardMedia,
   Grid,
-  Paper,
   Typography,
 } from "@mui/material";
 import { useContext } from "react";
@@ -36,17 +35,19 @@ const Product = ({ product }) => {
           <Grid container>
             <Grid item marginTop={1}>
               <Typography variant="body1" gutterBottom>
-                {product.product}
+                {product.title}
               </Typography>
-              <Typography variant="body1">{product.color}</Typography>
-              <Typography variant="caption">Brilliant Shoe</Typography>
+              <Typography variant="body1" gutterBottom>
+                {product.description}
+              </Typography>
+              {/* <Typography variant="body1">{product.color}</Typography> */}
               <Typography variant="body2">{product.price} Rs</Typography>
               <Typography variant="body2" gutterBottom>
-                Quantity Available : {product.quantityAvailable}
+                Quantity Available : {product.quantity}
               </Typography>
-              <Typography variant="body2" gutterBottom>
+              {/* <Typography variant="body2" gutterBottom>
                 Ratings : {product.rating}
-              </Typography>
+              </Typography> */}
             </Grid>
             <Grid item marginTop={1} marginLeft={10}>
               <CardActions>
@@ -54,11 +55,9 @@ const Product = ({ product }) => {
                   variant="contained"
                   size="small"
                   onClick={addToCartHandler}
-                  disabled={product.quantityAvailable === 0}
+                  disabled={product.quantity === 0}
                 >
-                  {product.quantityAvailable === 0
-                    ? "Out of stock"
-                    : "Add to cart"}
+                  {product.quantity === 0 ? "Out of stock" : "Add to cart"}
                 </Button>
               </CardActions>
             </Grid>
