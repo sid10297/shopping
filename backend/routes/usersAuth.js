@@ -2,23 +2,23 @@ const express = require("express");
 const Joi = require("joi");
 
 const User = require("../models/user");
+const { registerValidation } = require("../validation");
 
 const router = express.Router();
 
-const userValidationSchema = Joi.object({
-  name: Joi.string().min(6).max(255).required(),
-  email: Joi.string().min(6).email().required(),
-  password: Joi.string().min(6).required(),
-});
-
 router.post("/register", async (req, res) => {
-  const { error } = userValidationSchema.validate(req.body);
-  console.log(error);
-  if (error) return res.status(400).send(error.details[0].message);
+  const { error } = registerValidation(req.body);
+  if (error) return res.status(403).send(error.details[0].message);
+
+  const emailExists = await User.findOne({
+    email: req.body.email,
+  });
+
+  if (emailExists) return res.status(400).send("Email already exists");
 
   const user = new User({
     name: req.body.name,
-    email: req.body.password,
+    email: req.body.email,
     password: req.body.password,
   });
   try {
@@ -28,6 +28,8 @@ router.post("/register", async (req, res) => {
     res.send(error);
   }
 });
+
+router.post("/sign-in", async (req, res) => {});
 
 router.get("/users", async (req, res) => {
   try {
