@@ -46,7 +46,7 @@ const Filters = ({ onFiltersUpdate }) => {
       <br />
       <br />
 
-      <InputLabel htmlFor="color">Color</InputLabel>
+      {/* <InputLabel htmlFor="color">Color</InputLabel>
       <Select
         style={{ width: "100%" }}
         name="color"
@@ -68,7 +68,7 @@ const Filters = ({ onFiltersUpdate }) => {
       </Select>
 
       <br />
-      <br />
+      <br /> */}
       <InputLabel htmlFor="sortBy">Sort By</InputLabel>
       <Select
         style={{ width: "100%" }}
@@ -90,7 +90,7 @@ const Filters = ({ onFiltersUpdate }) => {
 
       <br />
       <br />
-      <InputLabel htmlFor="customerRatings">Customer Ratings</InputLabel>
+      {/* <InputLabel htmlFor="customerRatings">Customer Ratings</InputLabel>
       <Select
         style={{ width: "100%" }}
         name="customerRatings"
@@ -110,7 +110,7 @@ const Filters = ({ onFiltersUpdate }) => {
       </Select>
 
       <br />
-      <br />
+      <br /> */}
       <FormControlLabel
         checked={filters.includesOutOfStock}
         control={

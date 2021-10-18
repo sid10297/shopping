@@ -3,12 +3,14 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 require("dotenv").config();
 const products = require("./routes/products");
+const usersAuth = require("./routes/usersAuth");
 
 const app = express();
 
 app.use(cors());
 app.use(express.json());
 app.use("/products", products);
+app.use("/auth", usersAuth);
 
 app.get("/", (req, res) => {
   res.send("Home Page");
