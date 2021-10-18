@@ -16,7 +16,7 @@ export const ProductsProvider = ({ children }) => {
   // };
 
   const getProducts = async () => {
-    const response = await fetch("http://localhost:5000/products");
+    const response = await fetch("http://localhost:5000/api/products");
     const _products = await response.json();
     console.log(_products);
     return setProducts(_products);

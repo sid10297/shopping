@@ -6,7 +6,7 @@ const Product = require("../models/product");
 const router = express.Router();
 
 // Get all products
-router.get("/", async (req, res) => {
+router.get("/products", async (req, res) => {
   try {
     const products = await Product.find({
       price: { $gt: 0, $lt: 10000 },
@@ -18,7 +18,7 @@ router.get("/", async (req, res) => {
 });
 
 // Get a single product
-router.get("/:id", async (req, res) => {
+router.get("/products/:id", async (req, res) => {
   try {
     const product = await Product.findById(req.params.id);
     res.send(product);
@@ -28,7 +28,7 @@ router.get("/:id", async (req, res) => {
 });
 
 // Create a product
-router.post("/", async (req, res) => {
+router.post("/products", async (req, res) => {
   // const schema = Joi.object({
   //   title: Joi.string().min(3).max(20).required(),
   //   description: Joi.string().min(3).max(40).required(),
@@ -64,7 +64,7 @@ router.post("/", async (req, res) => {
 });
 
 // Update a product
-router.patch("/:id", async (req, res) => {
+router.patch("/products/:id", async (req, res) => {
   // const schema = Joi.object({
   //   title: Joi.string().min(3).max(20),
   //   description: Joi.string().min(3).max(40),
@@ -103,7 +103,7 @@ router.patch("/:id", async (req, res) => {
 });
 
 // Delete a product
-router.delete("/:id", async (req, res) => {
+router.delete("/products/:id", async (req, res) => {
   const product = await Product.findById(req.params.id);
   if (!product) return res.status(404).send("Product not found!");
 

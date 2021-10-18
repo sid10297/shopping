@@ -9,11 +9,15 @@ const app = express();
 
 app.use(cors());
 app.use(express.json());
-app.use("/products", products);
-app.use("/auth", usersAuth);
+app.use("/api", products);
+app.use("/api", usersAuth);
 
 app.get("/", (req, res) => {
-  res.send("Home Page");
+  res.send("Start with api endpoint");
+});
+
+app.get("/api", (req, res) => {
+  res.send("products (GET), users (GET), register (POST)");
 });
 
 mongoose.connect(process.env.DB_CONNECT, {

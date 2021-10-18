@@ -83,7 +83,7 @@ const Shop = () => {
           </Card>
         </Grid>
         <Grid item xs={12} sm={8} md={12} lg={10} xl={10}>
-          <Card sx={{ minHeight: "100vh" }}>
+          <Card sx={{ minHeight: "80vh" }}>
             <ProductsShop products={filteredProducts} />
           </Card>
         </Grid>
