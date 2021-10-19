@@ -8,7 +8,6 @@ const roleType = {
 const UserSchema = new mongoose.Schema({
   role: {
     type: String,
-    required: true,
     default: roleType.basic,
   },
   name: { type: String, required: true, min: 3, max: 255 },

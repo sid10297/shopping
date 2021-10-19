@@ -5,7 +5,7 @@ const registerValidation = (data) => {
     name: Joi.string().min(3).max(255).required(),
     email: Joi.string().min(3).email().required(),
     password: Joi.string().min(3).required(),
-    role: Joi.string().required().default("BASIC"),
+    role: Joi.string().default("BASIC"),
   });
 
   return userValidationSchema.validate(data);
