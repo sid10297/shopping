@@ -1,6 +1,7 @@
 const express = require("express");
 const Joi = require("joi");
 const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
 
 const User = require("../models/user");
 const { registerValidation, loginValidation } = require("../validation");
@@ -48,7 +49,14 @@ router.post("/login", async (req, res) => {
   if (!validPassword)
     return res.status(400).send("Email or password is invalid!");
 
-  res.send("Success");
+  const token = jwt.sign(
+    {
+      _id: user._id,
+    },
+    process.env.TOKEN_SECRET
+  );
+
+  res.header("auth-token", token).send(token);
 });
 
 router.get("/users", async (req, res) => {
