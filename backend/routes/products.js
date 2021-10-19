@@ -3,6 +3,7 @@ const Joi = require("joi");
 
 const Product = require("../models/product");
 const { productValidation } = require("../validation");
+const { verifyPermission } = require("../verifyToken");
 
 const router = express.Router();
 
@@ -29,7 +30,7 @@ router.get("/products/:id", async (req, res) => {
 });
 
 // Create a product
-router.post("/products", async (req, res) => {
+router.post("/products", verifyPermission("ADMIN"), async (req, res) => {
   const { error } = productValidation(req.body);
   if (error) return res.status(403).send(error.details[0].message);
 
@@ -50,7 +51,7 @@ router.post("/products", async (req, res) => {
 });
 
 // Update a product
-router.patch("/products/:id", async (req, res) => {
+router.patch("/products/:id", verifyPermission("ADMIN"), async (req, res) => {
   const product = await Product.findById(req.params.id);
 
   if (!product) return res.status(404).send("Product not found!");
@@ -71,7 +72,7 @@ router.patch("/products/:id", async (req, res) => {
 });
 
 // Delete a product
-router.delete("/products/:id", async (req, res) => {
+router.delete("/products/:id", verifyPermission("ADMIN"), async (req, res) => {
   const product = await Product.findById(req.params.id);
   if (!product) return res.status(404).send("Product not found!");
 

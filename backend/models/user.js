@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const roleTypes = {
+const roleType = {
   admin: "ADMIN",
   basic: "BASIC",
 };
@@ -9,7 +9,7 @@ const UserSchema = new mongoose.Schema({
   role: {
     type: String,
     required: true,
-    default: roleTypes.basic,
+    default: roleType.basic,
   },
   name: { type: String, required: true, min: 3, max: 255 },
   email: { type: String, required: true, min: 3, max: 255 },
