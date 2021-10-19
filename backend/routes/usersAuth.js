@@ -71,7 +71,7 @@ router.post("/login", async (req, res) => {
   res.header("auth-token", token).send(token);
 });
 
-router.get("/users", verify, async (req, res) => {
+router.get("/users", async (req, res) => {
   try {
     const users = await User.find();
     res.send(users);
