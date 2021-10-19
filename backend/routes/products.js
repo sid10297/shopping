@@ -1,7 +1,8 @@
 const express = require("express");
-// const Joi = require("joi");
+const Joi = require("joi");
 
 const Product = require("../models/product");
+const { productValidation } = require("../validation");
 
 const router = express.Router();
 
@@ -29,6 +30,9 @@ router.get("/products/:id", async (req, res) => {
 
 // Create a product
 router.post("/products", async (req, res) => {
+  const { error } = productValidation(req.body);
+  if (error) return res.status(403).send(error.details[0].message);
+
   const { title, description, price, quantity, image } = req.body;
   const product = new Product({
     title,

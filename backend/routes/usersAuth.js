@@ -1,5 +1,5 @@
 const express = require("express");
-const Joi = require("joi");
+// const Joi = require("joi");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const verify = require("../verifyToken");
