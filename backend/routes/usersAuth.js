@@ -2,6 +2,7 @@ const express = require("express");
 const Joi = require("joi");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
+const verify = require("../verifyToken");
 
 const User = require("../models/user");
 const { registerValidation, loginValidation } = require("../validation");
@@ -59,7 +60,7 @@ router.post("/login", async (req, res) => {
   res.header("auth-token", token).send(token);
 });
 
-router.get("/users", async (req, res) => {
+router.get("/users", verify, async (req, res) => {
   try {
     const users = await User.find();
     res.send(users);
