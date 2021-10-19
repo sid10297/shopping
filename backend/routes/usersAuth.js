@@ -2,10 +2,11 @@ const express = require("express");
 // const Joi = require("joi");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-const verify = require("../verifyToken");
+const { verifyToken, verifyPermission } = require("../verifyToken");
 
 const User = require("../models/user");
 const { registerValidation, loginValidation } = require("../validation");
+const user = require("../models/user");
 
 const router = express.Router();
 
@@ -26,6 +27,7 @@ router.post("/register", async (req, res) => {
     name: req.body.name,
     email: req.body.email,
     password: hashedPassword,
+    role: req.body.role,
   });
   try {
     const savedUser = await user.save();
@@ -34,6 +36,7 @@ router.post("/register", async (req, res) => {
         _id: user._id,
         email: user.email,
         name: user.name,
+        role: user.role,
       },
       process.env.TOKEN_SECRET
     );
@@ -64,6 +67,7 @@ router.post("/login", async (req, res) => {
       _id: user._id,
       email: user.email,
       name: user.name,
+      role: user.role,
     },
     process.env.TOKEN_SECRET
   );
@@ -71,7 +75,7 @@ router.post("/login", async (req, res) => {
   res.header("auth-token", token).send(token);
 });
 
-router.get("/users", async (req, res) => {
+router.get("/users", verifyPermission("ADMIN"), async (req, res) => {
   try {
     const users = await User.find();
     res.send(users);
