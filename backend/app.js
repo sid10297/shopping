@@ -4,6 +4,7 @@ const mongoose = require("mongoose");
 require("dotenv").config();
 const products = require("./routes/products");
 const usersAuth = require("./routes/usersAuth");
+const placeOrder = require("./routes/placeOrder");
 
 const app = express();
 
@@ -11,6 +12,7 @@ app.use(cors());
 app.use(express.json());
 app.use("/api", products);
 app.use("/api", usersAuth);
+app.use("/api", placeOrder);
 
 app.get("/", (req, res) => {
   res.send("Start with api endpoint");

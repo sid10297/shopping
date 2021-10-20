@@ -11,6 +11,7 @@ import {
 import { useContext, useEffect } from "react";
 import CartProduct from "../Components/CartProduct";
 import { CartContext } from "../Contexts/CartContext";
+import axios from "axios";
 
 const Cart = () => {
   const { cartItems, cartTotal, getCartTotal } = useContext(CartContext);
@@ -29,6 +30,18 @@ const Cart = () => {
       getCartTotal(total);
     }
   };
+
+  const placeOrder = (e) => {
+    e.preventDefault();
+    axios
+      .post("http://localhost:5000/api/place-order", {
+        cartItems,
+        cartTotal,
+      })
+      .then((response) => console.log(response))
+      .catch((error) => console.log(error));
+  };
+
   return (
     <>
       <Container maxWidth="md">
@@ -71,7 +84,11 @@ const Cart = () => {
                       Total {cartTotal} Rs
                     </Typography>
                     <CardActions>
-                      <Button variant="contained">
+                      <Button
+                        variant="contained"
+                        type="submit"
+                        onClick={placeOrder}
+                      >
                         <ShoppingBag /> &nbsp; Place Order
                       </Button>
                     </CardActions>
