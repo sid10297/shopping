@@ -16,10 +16,14 @@ export const ProductsProvider = ({ children }) => {
   // };
 
   const getProducts = async () => {
-    const response = await fetch("http://localhost:5000/api/products");
-    const _products = await response.json();
-    console.log(_products);
-    return setProducts(_products);
+    try {
+      const response = await fetch("http://localhost:5000/api/products");
+      const _products = await response.json();
+      console.log(_products);
+      return setProducts(_products);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const providerValue = {

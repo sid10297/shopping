@@ -12,9 +12,11 @@ import { useContext, useEffect } from "react";
 import CartProduct from "../Components/CartProduct";
 import { CartContext } from "../Contexts/CartContext";
 import axios from "axios";
+import { useCookies } from "react-cookie";
 
 const Cart = () => {
   const { cartItems, cartTotal, getCartTotal } = useContext(CartContext);
+  const cookies = useCookies(["access_token"])[0];
 
   useEffect(() => {
     calculateTotal(cartItems);
@@ -32,12 +34,21 @@ const Cart = () => {
   };
 
   const placeOrder = (e) => {
+    // const { title, description, image, price } = cartItems[0].product;
+    // const { quantity } = cartItems[0].quantity;
     e.preventDefault();
+    const headers = {
+      "auth-token": cookies.access_token,
+    };
     axios
-      .post("http://localhost:5000/api/place-order", {
-        cartItems,
-        cartTotal,
-      })
+      .post(
+        "http://localhost:5000/api/place-order",
+        {
+          cartItems,
+          cartTotal,
+        },
+        { headers }
+      )
       .then((response) => console.log(response))
       .catch((error) => console.log(error));
   };
