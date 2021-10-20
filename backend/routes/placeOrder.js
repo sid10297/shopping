@@ -2,8 +2,9 @@ const express = require("express");
 const router = express.Router();
 
 const Order = require("../models/placeOrder");
+const { verifyPermission } = require("../verifyToken");
 
-router.post("/place-order", async (req, res) => {
+router.post("/place-order", verifyPermission("BASIC"), async (req, res) => {
   const order = new Order({
     cartItems: req.body.cartItems,
     cartTotal: req.body.cartTotal,

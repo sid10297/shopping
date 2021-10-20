@@ -1,12 +1,10 @@
 const express = require("express");
-// const Joi = require("joi");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-const { verifyToken, verifyPermission } = require("../verifyToken");
+const { verifyPermission } = require("../verifyToken");
 
 const User = require("../models/user");
 const { registerValidation, loginValidation } = require("../validation");
-const user = require("../models/user");
 
 const router = express.Router();
 
@@ -31,17 +29,7 @@ router.post("/register", async (req, res) => {
   });
   try {
     const savedUser = await user.save();
-    // const token = jwt.sign(
-    //   {
-    //     _id: user._id,
-    //     email: user.email,
-    //     name: user.name,
-    //     role: user.role,
-    //   },
-    //   process.env.TOKEN_SECRET
-    // );
 
-    // res.header("auth-token", token).send(token);
     res.status(201).send("Account Created Successfully!");
   } catch (error) {
     res.status(400).send(error);
@@ -72,11 +60,6 @@ router.post("/login", async (req, res) => {
     },
     process.env.TOKEN_SECRET
   );
-  res.cookie("login-cookie", token, {
-    expires: new Date(Date.now() + 2000),
-    secure: false,
-    httpOnly: true,
-  });
 
   res.header("auth-token", token).send(token);
 });

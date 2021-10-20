@@ -15,10 +15,14 @@ function verifyToken(req, res, next) {
 function verifyPermission(roleType) {
   return (req, res, next) => {
     const token = req.header("auth-token");
-    if (!token) return res.status(401).send("Access Denied");
+    console.log(token === null || token === undefined || token === "undefined");
+    if (token === null || token === undefined || token === "undefined")
+      return res.status(401).send("Access Denied");
     const userDetails = jwt.verify(token, process.env.TOKEN_SECRET);
     if (userDetails.role !== roleType)
-      return res.status(401).send("ONLY ADMIN ACCESS");
+      return res
+        .status(401)
+        .send("You don't have permission to perform this action.");
     try {
       const verified = jwt.verify(token, process.env.TOKEN_SECRET);
       req.user = verified;
