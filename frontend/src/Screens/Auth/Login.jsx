@@ -1,5 +1,7 @@
-import { Button, TextField, Typography } from "@mui/material";
+import { Button, TextField } from "@mui/material";
 import { makeStyles } from "@mui/styles";
+import { useState } from "react";
+import axios from "axios";
 
 const useStyles = makeStyles({
   container: {
@@ -23,6 +25,30 @@ const useStyles = makeStyles({
 
 const Login = () => {
   const classes = useStyles();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleEmail = (e) => {
+    const value = e.target.value;
+    setEmail(value);
+  };
+
+  const handlePassword = (e) => {
+    const value = e.target.value;
+    setPassword(value);
+  };
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+    axios
+      .post("http://localhost:5000/api/login", {
+        email,
+        password,
+      })
+      .then((response) => console.log(response))
+      .catch((error) => console.log(error));
+  };
+
   return (
     <div className={classes.container}>
       <form noValidate autoComplete="off" className={classes.formStyles}>
@@ -32,14 +58,18 @@ const Login = () => {
           variant="outlined"
           fullWidth
           className={classes.spacing}
+          onChange={handleEmail}
+          type="email"
         />
 
         <TextField
-          id="entered-email"
+          id="entered-password"
           label="Password"
           variant="outlined"
           fullWidth
           className={classes.spacing}
+          onChange={handlePassword}
+          type="password"
         />
 
         <Button
@@ -47,6 +77,7 @@ const Login = () => {
           size="large"
           type="submit"
           className={classes.spacing}
+          onClick={handleLogin}
         >
           Login
         </Button>

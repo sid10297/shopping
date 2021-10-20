@@ -15,7 +15,7 @@ router.get("/products", async (req, res) => {
     }).sort({ price: -1 });
     res.send(products);
   } catch (error) {
-    res.status(500).send({ message: error });
+    res.status(500).json({ message: error });
   }
 });
 
@@ -23,7 +23,7 @@ router.get("/products", async (req, res) => {
 router.get("/products/:id", async (req, res) => {
   try {
     const product = await Product.findById(req.params.id);
-    res.send(product);
+    res.json(product);
   } catch (error) {
     res.status(404).send(error);
   }
@@ -44,9 +44,9 @@ router.post("/products", verifyPermission("ADMIN"), async (req, res) => {
   });
   try {
     const savedProduct = await product.save();
-    res.send(savedProduct);
+    res.json(savedProduct);
   } catch (error) {
-    res.send({ message: error });
+    res.json({ message: error });
   }
 });
 
@@ -65,9 +65,9 @@ router.patch("/products/:id", verifyPermission("ADMIN"), async (req, res) => {
       quantity,
       image,
     });
-    res.send(updatedProduct);
+    res.json(updatedProduct);
   } catch (error) {
-    res.status(500).send(error.message);
+    res.status(500).json(error.message);
   }
 });
 

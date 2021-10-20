@@ -31,17 +31,18 @@ router.post("/register", async (req, res) => {
   });
   try {
     const savedUser = await user.save();
-    const token = jwt.sign(
-      {
-        _id: user._id,
-        email: user.email,
-        name: user.name,
-        role: user.role,
-      },
-      process.env.TOKEN_SECRET
-    );
+    // const token = jwt.sign(
+    //   {
+    //     _id: user._id,
+    //     email: user.email,
+    //     name: user.name,
+    //     role: user.role,
+    //   },
+    //   process.env.TOKEN_SECRET
+    // );
 
-    res.header("auth-token", token).send(token);
+    // res.header("auth-token", token).send(token);
+    res.status(201).send("Account Created Successfully!");
   } catch (error) {
     res.status(400).send(error);
   }
@@ -49,7 +50,7 @@ router.post("/register", async (req, res) => {
 
 router.post("/login", async (req, res) => {
   const { error } = loginValidation(req.body);
-  if (error) return res.status(403).send(error.details[0].message);
+  if (error) return res.status(403).json(error.details[0].message);
 
   const user = await User.findOne({
     email: req.body.email,
@@ -71,6 +72,11 @@ router.post("/login", async (req, res) => {
     },
     process.env.TOKEN_SECRET
   );
+  res.cookie("login-cookie", token, {
+    expires: new Date(Date.now() + 2000),
+    secure: false,
+    httpOnly: true,
+  });
 
   res.header("auth-token", token).send(token);
 });
@@ -78,7 +84,7 @@ router.post("/login", async (req, res) => {
 router.get("/users", verifyPermission("ADMIN"), async (req, res) => {
   try {
     const users = await User.find();
-    res.send(users);
+    res.json(users);
   } catch (error) {
     res.send(error);
   }
