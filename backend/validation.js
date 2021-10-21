@@ -25,7 +25,7 @@ const productValidation = (data) => {
     title: Joi.string().max(255).required(),
     description: Joi.string().min(3).max(1024).required(),
     price: Joi.number().min(10).max(100000).required(),
-    quantity: Joi.number().min(1).required(),
+    quantityAvailable: Joi.number().min(1).required(),
     image: Joi.string(),
   });
 

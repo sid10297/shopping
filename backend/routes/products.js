@@ -34,12 +34,12 @@ router.post("/products", verifyPermission("ADMIN"), async (req, res) => {
   const { error } = productValidation(req.body);
   if (error) return res.status(403).send(error.details[0].message);
 
-  const { title, description, price, quantity, image } = req.body;
+  const { title, description, price, quantityAvailable, image } = req.body;
   const product = new Product({
     title,
     description,
     price,
-    quantity,
+    quantityAvailable,
     image,
   });
   try {
@@ -55,14 +55,14 @@ router.patch("/products/:id", verifyPermission("ADMIN"), async (req, res) => {
   const product = await Product.findById(req.params.id);
 
   if (!product) return res.status(404).send("Product not found!");
-  const { title, description, price, quantity, image } = req.body;
+  const { title, description, price, quantityAvailable, image } = req.body;
 
   try {
     const updatedProduct = await Product.findByIdAndUpdate(req.params.id, {
       title,
       description,
       price,
-      quantity,
+      quantityAvailable,
       image,
     });
     res.json(updatedProduct);
