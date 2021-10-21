@@ -5,6 +5,8 @@ import { useContext, useEffect, useState } from "react";
 import { ProductsContext } from "../Contexts/ProductsContext";
 import UserData from "../Components/User";
 import { UserAuthContext } from "../Contexts/UserAuthContext";
+import CreateProduct from "../Components/CreateProduct";
+import ProductsData from "../Components/ProductsData";
 
 const useStyles = makeStyles({
   adminContainer: {
@@ -15,6 +17,7 @@ const useStyles = makeStyles({
 const AdminDashboard = () => {
   const { accessToken } = useContext(UserAuthContext);
   const [users, setUsers] = useState([]);
+  const { products } = useContext(ProductsContext);
   // console.log(decoded.role === "ADMIN");
 
   useEffect(() => {
@@ -32,6 +35,10 @@ const AdminDashboard = () => {
     <div className={classes.adminContainer}>
       <Container>
         <UserData users={users} />
+        <br />
+
+        <ProductsData products={products} />
+        <CreateProduct />
       </Container>
     </div>
   );
