@@ -14,12 +14,11 @@ const Specials = ({ product }) => {
   const history = useHistory();
   return (
     <>
-      <Grid item xs={12} sm={8} md={6} lg={3} margin={3}>
+      <Grid item xs={12} sm={8} md={6} lg={3} margin={2}>
         <Paper variant="outlined">
           <Card
             style={{
               height: "100%",
-              minWidth: "400px",
               textAlign: "center",
               justifyContent: "center",
             }}

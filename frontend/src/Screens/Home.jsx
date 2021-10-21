@@ -14,7 +14,13 @@ const Home = () => {
       <Brands />
       <br />
       <h1 style={{ textAlign: "center" }}>Specials</h1>
-      <Grid container justifyContent="center" height="auto" spacing={3}>
+      <Grid
+        container
+        justifyContent="center"
+        alignItems="center"
+        height="auto"
+        spacing={1}
+      >
         {products &&
           products
             .slice(0, 3)
