@@ -5,9 +5,17 @@ export const CartContext = createContext({});
 export const CartProvider = ({ children }) => {
   const [items, setItems] = useState([]);
   const [total, setTotal] = useState(0);
+  const [open, setOpen] = useState(false);
+
+  const handleAgree = () => {
+    setOpen(true);
+  };
+
+  const handleCancel = () => {
+    setOpen(false);
+  };
 
   const addToCart = (product) => {
-    console.log(product, items);
     const productInCart = items.find(
       (_product) => _product.product._id === product._id
     );
@@ -78,6 +86,9 @@ export const CartProvider = ({ children }) => {
     cartTotal: total,
     getCartTotal,
     removeItem,
+    handleAgree,
+    handleCancel,
+    open,
   };
 
   return (

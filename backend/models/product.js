@@ -19,7 +19,7 @@ const ProductSchema = new mongoose.Schema({
     max: 100000,
     required: true,
   },
-  quantity: {
+  quantityAvailable: {
     type: Number,
     required: true,
   },

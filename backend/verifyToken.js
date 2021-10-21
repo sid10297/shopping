@@ -15,7 +15,6 @@ function verifyToken(req, res, next) {
 function verifyPermission(roleType) {
   return (req, res, next) => {
     const token = req.header("auth-token");
-    console.log(token === null || token === undefined || token === "undefined");
     if (token === null || token === undefined || token === "undefined")
       return res.status(401).send("Access Denied");
     const userDetails = jwt.verify(token, process.env.TOKEN_SECRET);

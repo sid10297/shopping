@@ -19,7 +19,6 @@ export const ProductsProvider = ({ children }) => {
     try {
       const response = await fetch("http://localhost:5000/api/products");
       const _products = await response.json();
-      console.log(_products);
       return setProducts(_products);
     } catch (error) {
       console.log(error);

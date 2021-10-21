@@ -1,9 +1,10 @@
 import { Button, TextField } from "@mui/material";
 import { makeStyles } from "@mui/styles";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import axios from "axios";
 import { useCookies } from "react-cookie";
 import { useHistory } from "react-router";
+import { CartContext } from "../../Contexts/CartContext";
 
 const useStyles = makeStyles({
   container: {
@@ -27,6 +28,7 @@ const useStyles = makeStyles({
 
 const Login = () => {
   const classes = useStyles();
+  const { cartItems } = useContext(CartContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const setCookie = useCookies(["access_token"])[1];
@@ -53,7 +55,7 @@ const Login = () => {
         setCookie("access_token", response.data, { path: "/" });
         setEmail("");
         setPassword("");
-        history.push("/");
+        cartItems.length > 0 ? history.push("/cart") : history.push("/");
       })
       .catch((error) => console.log(error));
   };

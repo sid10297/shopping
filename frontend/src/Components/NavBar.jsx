@@ -27,14 +27,14 @@ const NavBar = () => {
     history.push("/login");
   };
 
-  console.log(cookies);
-
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="fixed">
         <Toolbar>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            {appTitle}
+            <NavLink to="/" exact>
+              {appTitle}{" "}
+            </NavLink>
           </Typography>
           <NavLink to="/" exact>
             <Button color="inherit">{home}</Button>

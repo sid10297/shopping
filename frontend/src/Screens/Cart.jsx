@@ -13,11 +13,12 @@ import CartProduct from "../Components/CartProduct";
 import { CartContext } from "../Contexts/CartContext";
 import axios from "axios";
 import { useCookies } from "react-cookie";
+import { useHistory } from "react-router-dom";
 
 const Cart = () => {
   const { cartItems, cartTotal, getCartTotal } = useContext(CartContext);
   const cookies = useCookies(["access_token"])[0];
-
+  const history = useHistory();
   useEffect(() => {
     calculateTotal(cartItems);
   });
@@ -34,9 +35,8 @@ const Cart = () => {
   };
 
   const placeOrder = (e) => {
-    // const { title, description, image, price } = cartItems[0].product;
-    // const { quantity } = cartItems[0].quantity;
     e.preventDefault();
+
     const headers = {
       "auth-token": cookies.access_token,
     };
@@ -50,7 +50,10 @@ const Cart = () => {
         { headers }
       )
       .then((response) => console.log(response))
-      .catch((error) => console.log(error));
+      .catch((error) => {
+        console.log(error);
+        history.push("/login");
+      });
   };
 
   return (

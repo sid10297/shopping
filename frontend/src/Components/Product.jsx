@@ -40,14 +40,10 @@ const Product = ({ product }) => {
               <Typography variant="body1" gutterBottom>
                 {product.description}
               </Typography>
-              {/* <Typography variant="body1">{product.color}</Typography> */}
               <Typography variant="body2">{product.price} Rs</Typography>
               <Typography variant="body2" gutterBottom>
                 Quantity Available : {product.quantity}
               </Typography>
-              {/* <Typography variant="body2" gutterBottom>
-                Ratings : {product.rating}
-              </Typography> */}
             </Grid>
             <Grid item marginTop={1} marginLeft={10}>
               <CardActions>
