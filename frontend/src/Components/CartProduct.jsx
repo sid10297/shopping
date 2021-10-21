@@ -41,13 +41,14 @@ const CartProduct = ({ product, quantity }) => {
             image={product.image}
           />
           <CardContent>
-            <Typography gutterBottom variant="h5">
+            <Typography gutterBottom variant="h6">
               {product.title}
             </Typography>
-            <Typography gutterBottom variant="h5">
+            <Typography gutterBottom variant="body">
               {product.description}
             </Typography>
-            <Typography gutterBottom variant="h5">
+            <br />
+            <Typography gutterBottom variant="body">
               Quantity Available : {product.quantity}
             </Typography>
             <Typography variant="h6">{product.price} Rs</Typography>

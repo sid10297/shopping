@@ -39,9 +39,6 @@ const NavBar = () => {
           <NavLink to="/" exact>
             <Button color="inherit">{home}</Button>
           </NavLink>
-          {/* <NavLink to="/contact">
-            <Button color="inherit">{contactUs}</Button>
-          </NavLink> */}
           <NavLink to="/shop">
             <Button color="inherit">{shop}</Button>
           </NavLink>
@@ -55,18 +52,14 @@ const NavBar = () => {
             <>
               &nbsp;
               <Button
-                color="secondary"
+                color="primary"
                 onClick={handleSignUp}
                 variant="contained"
               >
                 &nbsp; Sign Up
               </Button>
               &nbsp;
-              <Button
-                color="secondary"
-                variant="contained"
-                onClick={handleLogin}
-              >
+              <Button color="primary" variant="contained" onClick={handleLogin}>
                 Log In
               </Button>
             </>

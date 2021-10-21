@@ -5,15 +5,6 @@ export const CartContext = createContext({});
 export const CartProvider = ({ children }) => {
   const [items, setItems] = useState([]);
   const [total, setTotal] = useState(0);
-  const [open, setOpen] = useState(false);
-
-  const handleAgree = () => {
-    setOpen(true);
-  };
-
-  const handleCancel = () => {
-    setOpen(false);
-  };
 
   const addToCart = (product) => {
     const productInCart = items.find(
@@ -21,12 +12,12 @@ export const CartProvider = ({ children }) => {
     );
 
     if (productInCart) {
-      productInCart.quantity += 1;
-      product.quantity -= 1;
+      productInCart.orderedQuantity += 1;
+      product.quantityAvailable -= 1;
       return setItems([...items]);
     } else {
-      product.quantity -= 1;
-      return setItems([...items, { product, quantity: 1 }]);
+      product.quantityAvailable -= 1;
+      return setItems([...items, { product, orderedQuantity: 1 }]);
     }
   };
 
@@ -36,8 +27,8 @@ export const CartProvider = ({ children }) => {
     );
 
     if (productQuantityToIncrease) {
-      product.quantity -= 1;
-      productQuantityToIncrease.quantity += 1;
+      product.quantityAvailable -= 1;
+      productQuantityToIncrease.orderedQuantity += 1;
       return setItems([...items]);
     }
   };
@@ -47,7 +38,7 @@ export const CartProvider = ({ children }) => {
       (_product) => _product.product._id === product._id
     );
 
-    if (productQuantityToDecrease.quantity < 1) {
+    if (productQuantityToDecrease.orderedQuantity < 1) {
       const filterOut = items.filter(
         (_product) => _product.product._id !== product._id
       );
@@ -56,8 +47,8 @@ export const CartProvider = ({ children }) => {
     }
 
     if (productQuantityToDecrease) {
-      product.quantity += 1;
-      productQuantityToDecrease.quantity -= 1;
+      product.quantityAvailable += 1;
+      productQuantityToDecrease.orderedQuantity -= 1;
       return setItems([...items]);
     }
   };
@@ -67,7 +58,8 @@ export const CartProvider = ({ children }) => {
       (_product) => _product.product._id === product._id
     );
 
-    product.quantity = removeItemFromCart.quantity + product.quantity;
+    product.quantityAvailable =
+      removeItemFromCart.orderedQuantity + product.quantityAvailable;
 
     return setItems(
       items.filter((_product) => _product.product._id !== product._id)
@@ -86,9 +78,6 @@ export const CartProvider = ({ children }) => {
     cartTotal: total,
     getCartTotal,
     removeItem,
-    handleAgree,
-    handleCancel,
-    open,
   };
 
   return (
