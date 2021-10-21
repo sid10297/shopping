@@ -46,7 +46,7 @@ const Login = () => {
     setPassword(value);
   };
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
     axios
       .post("http://localhost:5000/api/login", {
@@ -60,10 +60,13 @@ const Login = () => {
       })
       .catch((error) => console.log(error));
 
-    cartItems.length > 0 ? history.push("/cart") : history.push("/");
+    const role = await userData.role;
+    if (role === "ADMIN") {
+      history.push("/admin");
+    } else {
+      cartItems.length > 0 ? history.push("/cart") : history.push("/");
+    }
   };
-
-  // userData.role === "ADMIN" && history.push("/admin");
 
   return (
     <div className={classes.container}>

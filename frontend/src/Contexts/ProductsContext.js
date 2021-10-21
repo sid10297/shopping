@@ -7,7 +7,7 @@ export const ProductsProvider = ({ children }) => {
 
   useEffect(() => {
     getProducts();
-  }, []);
+  }, [products]);
 
   const getProducts = async () => {
     try {

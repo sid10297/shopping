@@ -42,7 +42,7 @@ const Product = ({ product }) => {
               </Typography>
               <Typography variant="body1">{product.price} Rs</Typography>
               <Typography variant="body2" gutterBottom>
-                Quantity Available : {product.quantity}
+                Quantity Available : {product.quantityAvailable}
               </Typography>
             </Grid>
             <Grid item marginTop={1} marginLeft={10}>

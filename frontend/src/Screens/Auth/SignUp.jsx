@@ -56,7 +56,13 @@ const SignUp = () => {
 
     axios
       .post("http://localhost:5000/api/register", user)
-      .then((response) => console.log(response))
+      .then((response) => {
+        setUser({
+          name: "",
+          email: "",
+          password: "",
+        });
+      })
       .catch((error) => console.log(error));
   };
 
@@ -85,6 +91,7 @@ const SignUp = () => {
           id="entered-email"
           label="Password"
           variant="outlined"
+          type="password"
           fullWidth
           className={classes.spacing}
           onChange={handlePassword}

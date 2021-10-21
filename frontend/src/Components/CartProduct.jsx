@@ -49,7 +49,7 @@ const CartProduct = ({ product, quantity }) => {
             </Typography>
             <br />
             <Typography gutterBottom variant="body">
-              Quantity Available : {product.quantity}
+              Quantity Available : {product.quantityAvailable}
             </Typography>
             <Typography variant="h6">{product.price} Rs</Typography>
           </CardContent>
