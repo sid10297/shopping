@@ -9,12 +9,6 @@ export const ProductsProvider = ({ children }) => {
     getProducts();
   }, []);
 
-  // const getProducts = async () => {
-  //   const response = await fetch("http://localhost:8000/products");
-  //   const _products = await response.json();
-  //   return setProducts(_products);
-  // };
-
   const getProducts = async () => {
     try {
       const response = await fetch("http://localhost:5000/api/products");

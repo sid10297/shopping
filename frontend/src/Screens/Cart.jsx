@@ -12,34 +12,40 @@ import { useContext, useEffect } from "react";
 import CartProduct from "../Components/CartProduct";
 import { CartContext } from "../Contexts/CartContext";
 import axios from "axios";
-import { useCookies } from "react-cookie";
 import { useHistory } from "react-router-dom";
+import { UserAuthContext } from "../Contexts/UserAuthContext";
 
 const Cart = () => {
   const { cartItems, cartTotal, getCartTotal } = useContext(CartContext);
-  const cookies = useCookies(["access_token"])[0];
+  const { accessToken } = useContext(UserAuthContext);
   const history = useHistory();
+
   useEffect(() => {
+    const calculateTotal = (cartItems) => {
+      const quantity = cartItems.map((_product) => _product.quantityToOrder);
+      const price = cartItems.map((_product) => _product.product.price);
+      let total = 0;
+
+      for (let i = 0; i <= cartItems.length - 1; i++) {
+        total += quantity[i] * price[i];
+        getCartTotal(total);
+      }
+    };
     calculateTotal(cartItems);
-  });
-
-  const calculateTotal = (cartItems) => {
-    const quantity = cartItems.map((_product) => _product.quantity);
-    const price = cartItems.map((_product) => _product.product.price);
-    let total = 0;
-
-    for (let i = 0; i <= cartItems.length - 1; i++) {
-      total += quantity[i] * price[i];
-      getCartTotal(total);
-    }
-  };
+  }, [cartItems, getCartTotal]);
 
   const placeOrder = (e) => {
     e.preventDefault();
 
+    if (!accessToken) {
+      history.push("/login");
+      return;
+    }
+
     const headers = {
-      "auth-token": cookies.access_token,
+      "auth-token": accessToken,
     };
+
     axios
       .post(
         "http://localhost:5000/api/place-order",

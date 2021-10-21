@@ -7,10 +7,12 @@ import { useContext } from "react";
 import { CartContext } from "../Contexts/CartContext";
 import { Logout } from "@mui/icons-material";
 import { useCookies } from "react-cookie";
+import { UserAuthContext } from "../Contexts/UserAuthContext";
 
 const NavBar = () => {
   const { cartItems } = useContext(CartContext);
-  const cookies = useCookies(["access_token"])[0];
+  const { accessToken } = useContext(UserAuthContext);
+
   const removeCookies = useCookies(["access_token"])[2];
 
   const history = useHistory();
@@ -28,51 +30,62 @@ const NavBar = () => {
   };
 
   return (
-    <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="fixed">
-        <Toolbar>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+    <>
+      <Box sx={{ flexGrow: 1 }}>
+        <AppBar position="fixed">
+          <Toolbar>
+            <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+              {appTitle}
+            </Typography>
             <NavLink to="/" exact>
-              {appTitle}{" "}
+              <Button color="inherit">{home}</Button>
             </NavLink>
-          </Typography>
-          <NavLink to="/" exact>
-            <Button color="inherit">{home}</Button>
-          </NavLink>
-          <NavLink to="/shop">
-            <Button color="inherit">{shop}</Button>
-          </NavLink>
-          <NavLink to="/cart">
-            <Button color="inherit">
-              {<ShoppingCartIcon />}
-              {cartItems.length > 0 && <span>{cartItems.length}</span>}
-            </Button>
-          </NavLink>
-          {!cookies.access_token && (
-            <>
-              &nbsp;
+            {/* <NavLink to="/contact">
+            <Button color="inherit">{contactUs}</Button>
+          </NavLink> */}
+            <NavLink to="/shop">
+              <Button color="inherit">{shop}</Button>
+            </NavLink>
+            <NavLink to="/cart">
+              <Button color="inherit">
+                {<ShoppingCartIcon />}
+                {cartItems.length > 0 && <span>{cartItems.length}</span>}
+              </Button>
+            </NavLink>
+            {!accessToken && (
+              <>
+                &nbsp;
+                <Button
+                  color="secondary"
+                  onClick={handleSignUp}
+                  variant="contained"
+                >
+                  &nbsp; Sign Up
+                </Button>
+                &nbsp;
+                <Button
+                  color="secondary"
+                  variant="contained"
+                  onClick={handleLogin}
+                >
+                  Log In
+                </Button>
+              </>
+            )}
+            &nbsp;
+            {accessToken && (
               <Button
-                color="primary"
-                onClick={handleSignUp}
+                color="warning"
                 variant="contained"
+                onClick={handleSignOut}
               >
-                &nbsp; Sign Up
+                {<Logout />} &nbsp; Sign Out
               </Button>
-              &nbsp;
-              <Button color="primary" variant="contained" onClick={handleLogin}>
-                Log In
-              </Button>
-            </>
-          )}
-          &nbsp;
-          {cookies.access_token && (
-            <Button color="warning" variant="contained" onClick={handleSignOut}>
-              {<Logout />} &nbsp; Sign Out
-            </Button>
-          )}
-        </Toolbar>
-      </AppBar>
-    </Box>
+            )}
+          </Toolbar>
+        </AppBar>
+      </Box>
+    </>
   );
 };
 

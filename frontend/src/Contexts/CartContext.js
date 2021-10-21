@@ -12,12 +12,12 @@ export const CartProvider = ({ children }) => {
     );
 
     if (productInCart) {
-      productInCart.orderedQuantity += 1;
+      productInCart.quantityToOrder += 1;
       product.quantityAvailable -= 1;
       return setItems([...items]);
     } else {
       product.quantityAvailable -= 1;
-      return setItems([...items, { product, orderedQuantity: 1 }]);
+      return setItems([...items, { product, quantityToOrder: 1 }]);
     }
   };
 
@@ -28,7 +28,7 @@ export const CartProvider = ({ children }) => {
 
     if (productQuantityToIncrease) {
       product.quantityAvailable -= 1;
-      productQuantityToIncrease.orderedQuantity += 1;
+      productQuantityToIncrease.quantityToOrder += 1;
       return setItems([...items]);
     }
   };
@@ -38,7 +38,7 @@ export const CartProvider = ({ children }) => {
       (_product) => _product.product._id === product._id
     );
 
-    if (productQuantityToDecrease.orderedQuantity < 1) {
+    if (productQuantityToDecrease.quantityToOrder < 1) {
       const filterOut = items.filter(
         (_product) => _product.product._id !== product._id
       );
@@ -48,7 +48,7 @@ export const CartProvider = ({ children }) => {
 
     if (productQuantityToDecrease) {
       product.quantityAvailable += 1;
-      productQuantityToDecrease.orderedQuantity -= 1;
+      productQuantityToDecrease.quantityToOrder -= 1;
       return setItems([...items]);
     }
   };
@@ -59,7 +59,7 @@ export const CartProvider = ({ children }) => {
     );
 
     product.quantityAvailable =
-      removeItemFromCart.orderedQuantity + product.quantityAvailable;
+      removeItemFromCart.quantityToOrder + product.quantityAvailable;
 
     return setItems(
       items.filter((_product) => _product.product._id !== product._id)

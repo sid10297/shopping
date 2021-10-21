@@ -1,5 +1,6 @@
 import { Route, Switch } from "react-router";
 import NotFound from "../Components/NotFound";
+import AdminDashboard from "../Screens/AdminDashboard";
 import Login from "../Screens/Auth/Login";
 import SignUp from "../Screens/Auth/SignUp";
 import Cart from "../Screens/Cart";
@@ -11,6 +12,7 @@ const Routes = () => {
   return (
     <Switch>
       <Route path="/login" component={Login} />
+      <Route path="/admin" component={AdminDashboard} />
       <Route path="/signup" component={SignUp} />
       <Route path="/" component={Home} exact />
       {/* <Route path="/contact" component={ContactUs} /> */}

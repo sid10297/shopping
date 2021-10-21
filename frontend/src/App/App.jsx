@@ -6,6 +6,7 @@ import { ProductsProvider } from "../Contexts/ProductsContext";
 import { CookiesProvider } from "react-cookie";
 
 import Routes from "../Routes/Routes";
+import { UserAuthProvider } from "../Contexts/UserAuthContext";
 
 const App = () => {
   return (
@@ -13,12 +14,14 @@ const App = () => {
       <CookiesProvider>
         <CssBaseline />
         <BrowserRouter>
-          <CartProvider>
-            <NavBar />
-            <ProductsProvider>
-              <Routes />
-            </ProductsProvider>
-          </CartProvider>
+          <UserAuthProvider>
+            <CartProvider>
+              <NavBar />
+              <ProductsProvider>
+                <Routes />
+              </ProductsProvider>
+            </CartProvider>
+          </UserAuthProvider>
         </BrowserRouter>
       </CookiesProvider>
     </>
