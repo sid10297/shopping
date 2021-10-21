@@ -22,6 +22,7 @@ export const UserAuthProvider = ({ children }) => {
   const providerValue = {
     accessToken: cookies.access_token,
     userData,
+    setUserData,
   };
 
   return (

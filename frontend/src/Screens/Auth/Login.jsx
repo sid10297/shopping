@@ -1,11 +1,11 @@
 import { Button, TextField } from "@mui/material";
 import { makeStyles } from "@mui/styles";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import axios from "axios";
 import { useCookies } from "react-cookie";
 import { useHistory } from "react-router";
 import { CartContext } from "../../Contexts/CartContext";
-import { UserAuthContext } from "../../Contexts/UserAuthContext";
+import jwt_decode from "jwt-decode";
 
 const useStyles = makeStyles({
   container: {
@@ -29,7 +29,6 @@ const useStyles = makeStyles({
 
 const Login = () => {
   const classes = useStyles();
-  const { userData } = useContext(UserAuthContext);
   const { cartItems } = useContext(CartContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -57,15 +56,14 @@ const Login = () => {
         setCookie("access_token", response.data, { path: "/" });
         setEmail("");
         setPassword("");
+        const user = jwt_decode(response.data);
+        if (user.role === "ADMIN") {
+          history.push("/admin");
+        } else {
+          cartItems.length > 0 ? history.push("/cart") : history.push("/");
+        }
       })
       .catch((error) => console.log(error));
-
-    const role = await userData.role;
-    if (role === "ADMIN") {
-      history.push("/admin");
-    } else {
-      cartItems.length > 0 ? history.push("/cart") : history.push("/");
-    }
   };
 
   return (

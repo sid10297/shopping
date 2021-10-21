@@ -11,7 +11,7 @@ import { UserAuthContext } from "../Contexts/UserAuthContext";
 
 const NavBar = () => {
   const { cartItems } = useContext(CartContext);
-  const { accessToken } = useContext(UserAuthContext);
+  const { accessToken, userData, setUserData } = useContext(UserAuthContext);
 
   const removeCookies = useCookies(["access_token"])[2];
 
@@ -19,6 +19,7 @@ const NavBar = () => {
 
   const handleSignOut = () => {
     removeCookies("access_token", { path: "/" });
+    setUserData(null);
     history.push("/login");
   };
   const handleSignUp = () => {
@@ -31,60 +32,110 @@ const NavBar = () => {
 
   return (
     <>
-      <Box sx={{ flexGrow: 1 }}>
-        <AppBar position="fixed">
-          <Toolbar>
-            <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-              {appTitle}
-            </Typography>
-            <NavLink to="/" exact>
-              <Button color="inherit">{home}</Button>
-            </NavLink>
-            {/* <NavLink to="/contact">
-            <Button color="inherit">{contactUs}</Button>
-          </NavLink> */}
-            <NavLink to="/shop">
-              <Button color="inherit">{shop}</Button>
-            </NavLink>
-            <NavLink to="/cart">
-              <Button color="inherit">
-                {<ShoppingCartIcon />}
-                {cartItems.length > 0 && <span>{cartItems.length}</span>}
-              </Button>
-            </NavLink>
-            {!accessToken && (
-              <>
-                &nbsp;
-                <Button
-                  color="secondary"
-                  onClick={handleSignUp}
-                  variant="contained"
-                >
-                  &nbsp; Sign Up
+      {(userData === null || userData.role === "BASIC") && (
+        <Box sx={{ flexGrow: 1 }}>
+          <AppBar position="fixed">
+            <Toolbar>
+              <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+                {appTitle}
+              </Typography>
+              <NavLink to="/" exact>
+                <Button color="inherit">{home}</Button>
+              </NavLink>
+              <NavLink to="/shop">
+                <Button color="inherit">{shop}</Button>
+              </NavLink>
+              <NavLink to="/cart">
+                <Button color="inherit">
+                  {<ShoppingCartIcon />}
+                  {cartItems.length > 0 && <span>{cartItems.length}</span>}
                 </Button>
-                &nbsp;
+              </NavLink>
+              {!accessToken && (
+                <>
+                  &nbsp;
+                  <Button
+                    color="secondary"
+                    onClick={handleSignUp}
+                    variant="contained"
+                  >
+                    &nbsp; Sign Up
+                  </Button>
+                  &nbsp;
+                  <Button
+                    color="secondary"
+                    variant="contained"
+                    onClick={handleLogin}
+                  >
+                    Log In
+                  </Button>
+                </>
+              )}
+              &nbsp;
+              {accessToken && (
                 <Button
-                  color="secondary"
+                  color="warning"
                   variant="contained"
-                  onClick={handleLogin}
+                  onClick={handleSignOut}
                 >
-                  Log In
+                  {<Logout />} &nbsp; Sign Out
                 </Button>
-              </>
-            )}
-            &nbsp;
-            {accessToken && (
-              <Button
-                color="warning"
-                variant="contained"
-                onClick={handleSignOut}
-              >
-                {<Logout />} &nbsp; Sign Out
-              </Button>
-            )}
-          </Toolbar>
-        </AppBar>
-      </Box>
+              )}
+            </Toolbar>
+          </AppBar>
+        </Box>
+      )}
+
+      {(userData === null || userData.role === "ADMIN") && (
+        <Box sx={{ flexGrow: 1 }}>
+          <AppBar position="fixed">
+            <Toolbar>
+              <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+                ADMIN PANEL
+              </Typography>
+              <NavLink to="/admin" exact>
+                <Button color="inherit">Dashboard</Button>
+              </NavLink>
+              <NavLink to="/admin">
+                <Button color="inherit">Create Product</Button>
+              </NavLink>
+              <NavLink to="/admin">
+                <Button color="inherit">Orders</Button>
+              </NavLink>
+              {!accessToken && (
+                <>
+                  &nbsp;
+                  <Button
+                    color="secondary"
+                    onClick={handleSignUp}
+                    variant="contained"
+                  >
+                    &nbsp; Sign Up
+                  </Button>
+                  &nbsp;
+                  <Button
+                    color="secondary"
+                    variant="contained"
+                    onClick={handleLogin}
+                  >
+                    Log In
+                  </Button>
+                </>
+              )}
+              &nbsp;
+              {accessToken && (
+                <Button
+                  color="warning"
+                  variant="contained"
+                  onClick={handleSignOut}
+                >
+                  {<Logout />} &nbsp; Sign Out
+                </Button>
+              )}
+            </Toolbar>
+          </AppBar>
+        </Box>
+      )}
     </>
   );
 };
