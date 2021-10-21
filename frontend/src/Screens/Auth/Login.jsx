@@ -3,6 +3,7 @@ import { makeStyles } from "@mui/styles";
 import { useState } from "react";
 import axios from "axios";
 import { useCookies } from "react-cookie";
+import { useHistory } from "react-router";
 
 const useStyles = makeStyles({
   container: {
@@ -29,6 +30,7 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const setCookie = useCookies(["access_token"])[1];
+  const history = useHistory();
 
   const handleEmail = (e) => {
     const value = e.target.value;
@@ -49,6 +51,9 @@ const Login = () => {
       })
       .then((response) => {
         setCookie("access_token", response.data, { path: "/" });
+        setEmail("");
+        setPassword("");
+        history.push("/");
       })
       .catch((error) => console.log(error));
   };

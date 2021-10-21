@@ -11,10 +11,12 @@ import { useCookies } from "react-cookie";
 const NavBar = () => {
   const { cartItems } = useContext(CartContext);
   const cookies = useCookies(["access_token"])[0];
+  const removeCookies = useCookies(["access_token"])[2];
 
   const history = useHistory();
 
   const handleSignOut = () => {
+    removeCookies("access_token", { path: "/" });
     history.push("/login");
   };
   const handleSignUp = () => {
