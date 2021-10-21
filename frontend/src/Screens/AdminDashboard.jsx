@@ -1,4 +1,4 @@
-import { Container } from "@mui/material";
+import { Container, Grid } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import axios from "axios";
 import { useContext, useEffect, useState } from "react";
@@ -37,8 +37,14 @@ const AdminDashboard = () => {
         <UserData users={users} />
         <br />
 
-        <ProductsData products={products} />
-        <CreateProduct />
+        <Grid container margin={3}>
+          <Grid item lg={8}>
+            <ProductsData products={products} />
+          </Grid>
+          <Grid item lg={4}>
+            <CreateProduct />
+          </Grid>
+        </Grid>
       </Container>
     </div>
   );
