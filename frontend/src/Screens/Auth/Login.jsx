@@ -12,8 +12,8 @@ const useStyles = makeStyles({
     display: "flex",
     justifyContent: "center",
     alignContent: "center",
-    height: "100vh",
-    width: "100vw",
+    maxHeight: "80vh",
+    maxWidth: "100vw",
     marginTop: "100px",
     textAlign: "center",
   },
@@ -23,7 +23,7 @@ const useStyles = makeStyles({
     borderRadius: "10px",
   },
   spacing: {
-    marginTop: "10px",
+    marginTop: "20px",
   },
 });
 

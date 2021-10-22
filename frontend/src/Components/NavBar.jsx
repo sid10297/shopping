@@ -30,6 +30,7 @@ const NavBar = () => {
     history.push("/login");
   };
 
+  console.log(userData);
   return (
     <>
       {(userData === null || userData.role === "ADMIN") && (
@@ -129,7 +130,8 @@ const NavBar = () => {
                   variant="contained"
                   onClick={handleSignOut}
                 >
-                  {<Logout />} &nbsp; Sign Out
+                  {<Logout />} &nbsp; Logout{" "}
+                  {userData ? userData.name.split(" ")[0] : null}
                 </Button>
               )}
             </Toolbar>
