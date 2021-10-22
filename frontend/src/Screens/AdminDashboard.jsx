@@ -3,7 +3,7 @@ import { makeStyles } from "@mui/styles";
 import axios from "axios";
 import { useContext, useEffect, useState } from "react";
 import { ProductsContext } from "../Contexts/ProductsContext";
-import UserData from "../Components/User";
+import UserData from "../Components/Users";
 import { UserAuthContext } from "../Contexts/UserAuthContext";
 import CreateProduct from "../Components/CreateProduct";
 import ProductsData from "../Components/ProductsData";
@@ -18,7 +18,6 @@ const AdminDashboard = () => {
   const { accessToken } = useContext(UserAuthContext);
   const [users, setUsers] = useState([]);
   const { products } = useContext(ProductsContext);
-  // console.log(decoded.role === "ADMIN");
 
   useEffect(() => {
     const headers = {
