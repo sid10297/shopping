@@ -10,9 +10,7 @@ const router = express.Router();
 // Get all products
 router.get("/products", async (req, res) => {
   try {
-    const products = await Product.find({
-      price: { $gt: 0, $lt: 10000 },
-    }).sort({ price: -1 });
+    const products = await Product.find();
     res.send(products);
   } catch (error) {
     res.status(500).json({ message: error });

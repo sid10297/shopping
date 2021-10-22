@@ -20,13 +20,12 @@ const Cart = () => {
   const { cartItems, cartTotal, getCartTotal } = useContext(CartContext);
   const { accessToken } = useContext(UserAuthContext);
   const history = useHistory();
-
+  console.log(cartItems);
   useEffect(() => {
     const calculateTotal = (cartItems) => {
       const quantity = cartItems.map((_product) => _product.quantityToOrder);
       const price = cartItems.map((_product) => _product.product.price);
       let total = 0;
-
       for (let i = 0; i <= cartItems.length - 1; i++) {
         total += quantity[i] * price[i];
         getCartTotal(total);
@@ -87,7 +86,7 @@ const Cart = () => {
                 <CartProduct
                   product={_product.product}
                   key={_product.product._id}
-                  quantity={_product.quantity}
+                  quantity={_product.quantityToOrder}
                 />
               ))}
               <Grid marginTop={3} padding={1} item xs={12}>
@@ -134,7 +133,7 @@ const Cart = () => {
           <Grid item>
             <Card>
               <CardContent>
-                <Typography variant="h1">Your Cart us Empty</Typography>
+                <Typography variant="h6">Your Cart us Empty</Typography>
               </CardContent>
             </Card>
           </Grid>

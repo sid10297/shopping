@@ -12,6 +12,7 @@ import { useContext } from "react";
 import { CartContext } from "../Contexts/CartContext";
 
 const CartProduct = ({ product, quantity }) => {
+  console.log(quantity);
   const { increaseQuantity, decreaseQuantity, removeItem } =
     useContext(CartContext);
 
@@ -71,7 +72,7 @@ const CartProduct = ({ product, quantity }) => {
                   color="success"
                   variant="contained"
                   onClick={incrementQuantity}
-                  disabled={product.quantity === 0}
+                  disabled={product.quantityAvailable === 0}
                 >
                   <Add />
                 </Button>

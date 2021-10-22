@@ -51,9 +51,11 @@ const Product = ({ product }) => {
                   variant="contained"
                   size="small"
                   onClick={addToCartHandler}
-                  disabled={product.quantity === 0}
+                  disabled={product.quantityToOrder}
                 >
-                  {product.quantity === 0 ? "Out of stock" : "Add to cart"}
+                  {product.quantityAvailable === 0
+                    ? "Out of stock"
+                    : "Add to cart"}
                 </Button>
               </CardActions>
             </Grid>

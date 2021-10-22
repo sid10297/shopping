@@ -19,7 +19,7 @@ const Shop = () => {
 
       if (!filters.includesOutOfStock) {
         _filteredProducts = _filteredProducts.filter(
-          (_product) => _product.quantity
+          (_product) => _product.quantityAvailable
         );
       }
 
