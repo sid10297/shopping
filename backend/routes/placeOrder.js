@@ -8,6 +8,7 @@ router.post("/place-order", verifyPermission("BASIC"), async (req, res) => {
   const order = new Order({
     cartItems: req.body.cartItems,
     cartTotal: req.body.cartTotal,
+    userDetails: req.body.userDetails,
   });
 
   try {
@@ -15,6 +16,15 @@ router.post("/place-order", verifyPermission("BASIC"), async (req, res) => {
     res.json(newOrder);
   } catch (error) {
     res.status(400).json({ error: error.message });
+  }
+});
+
+router.get("/orders", verifyPermission("ADMIN"), async (req, res) => {
+  try {
+    const orders = await Order.find();
+    res.json(orders);
+  } catch (error) {
+    res.send(error);
   }
 });
 

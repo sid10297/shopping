@@ -111,7 +111,7 @@ const CreateProduct = () => {
           className={classes.spacing}
           onClick={createUser}
         >
-          ADD
+          ADD PRODUCT
         </Button>
       </Box>
     </div>

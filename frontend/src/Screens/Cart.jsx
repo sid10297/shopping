@@ -14,6 +14,7 @@ import { CartContext } from "../Contexts/CartContext";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
 import { UserAuthContext } from "../Contexts/UserAuthContext";
+import jwtDecode from "jwt-decode";
 
 const Cart = () => {
   const { cartItems, cartTotal, getCartTotal } = useContext(CartContext);
@@ -42,6 +43,8 @@ const Cart = () => {
       return;
     }
 
+    const userDetails = jwtDecode(accessToken);
+
     const headers = {
       "auth-token": accessToken,
     };
@@ -52,6 +55,7 @@ const Cart = () => {
         {
           cartItems,
           cartTotal,
+          userDetails,
         },
         { headers }
       )

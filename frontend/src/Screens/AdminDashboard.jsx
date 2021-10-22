@@ -1,12 +1,9 @@
-import { Container, Grid } from "@mui/material";
+import { Container } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import axios from "axios";
 import { useContext, useEffect, useState } from "react";
-import { ProductsContext } from "../Contexts/ProductsContext";
 import UserData from "../Components/Users";
 import { UserAuthContext } from "../Contexts/UserAuthContext";
-import CreateProduct from "../Components/CreateProduct";
-import ProductsData from "../Components/ProductsData";
 
 const useStyles = makeStyles({
   adminContainer: {
@@ -17,7 +14,6 @@ const useStyles = makeStyles({
 const AdminDashboard = () => {
   const { accessToken } = useContext(UserAuthContext);
   const [users, setUsers] = useState([]);
-  const { products } = useContext(ProductsContext);
 
   useEffect(() => {
     const headers = {
@@ -34,16 +30,6 @@ const AdminDashboard = () => {
     <div className={classes.adminContainer}>
       <Container>
         <UserData users={users} />
-        <br />
-
-        <Grid container margin={3}>
-          <Grid item lg={8}>
-            <ProductsData products={products} />
-          </Grid>
-          <Grid item lg={4}>
-            <CreateProduct />
-          </Grid>
-        </Grid>
       </Container>
     </div>
   );

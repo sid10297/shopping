@@ -1,11 +1,13 @@
 import { Route, Switch } from "react-router";
 import NotFound from "../Components/NotFound";
+import Orders from "../Components/Orders";
 import AdminDashboard from "../Screens/AdminDashboard";
 import Login from "../Screens/Auth/Login";
 import SignUp from "../Screens/Auth/SignUp";
 import Cart from "../Screens/Cart";
 // import ContactUs from "../Screens/ContactUs";
 import Home from "../Screens/Home";
+import Products from "../Screens/Products";
 import Shop from "../Screens/Shop";
 
 const Routes = () => {
@@ -13,6 +15,9 @@ const Routes = () => {
     <Switch>
       <Route path="/login" component={Login} />
       <Route path="/admin" component={AdminDashboard} />
+      <Route path="/products" component={Products} />
+      <Route path="/orders" component={Orders} />
+
       <Route path="/signup" component={SignUp} />
       <Route path="/" component={Home} exact />
       {/* <Route path="/contact" component={ContactUs} /> */}

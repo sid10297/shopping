@@ -32,24 +32,21 @@ const NavBar = () => {
 
   return (
     <>
-      {(userData === null || userData.role === "BASIC") && (
+      {(userData === null || userData.role === "ADMIN") && (
         <Box sx={{ flexGrow: 1 }}>
           <AppBar position="fixed">
             <Toolbar>
               <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-                {appTitle}
+                ADMIN PANEL
               </Typography>
-              <NavLink to="/" exact>
-                <Button color="inherit">{home}</Button>
+              <NavLink to="/admin" exact>
+                <Button color="inherit">Users</Button>
               </NavLink>
-              <NavLink to="/shop">
-                <Button color="inherit">{shop}</Button>
+              <NavLink to="/products">
+                <Button color="inherit">Products</Button>
               </NavLink>
-              <NavLink to="/cart">
-                <Button color="inherit">
-                  {<ShoppingCartIcon />}
-                  {cartItems.length > 0 && <span>{cartItems.length}</span>}
-                </Button>
+              <NavLink to="/orders">
+                <Button color="inherit">Orders</Button>
               </NavLink>
               {!accessToken && (
                 <>
@@ -86,21 +83,24 @@ const NavBar = () => {
         </Box>
       )}
 
-      {(userData === null || userData.role === "ADMIN") && (
+      {(userData === null || userData.role === "BASIC") && (
         <Box sx={{ flexGrow: 1 }}>
           <AppBar position="fixed">
             <Toolbar>
               <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-                ADMIN PANEL
+                {appTitle}
               </Typography>
-              <NavLink to="/admin" exact>
-                <Button color="inherit">Dashboard</Button>
+              <NavLink to="/" exact>
+                <Button color="inherit">{home}</Button>
               </NavLink>
-              <NavLink to="/admin">
-                <Button color="inherit">Create Product</Button>
+              <NavLink to="/shop">
+                <Button color="inherit">{shop}</Button>
               </NavLink>
-              <NavLink to="/admin">
-                <Button color="inherit">Orders</Button>
+              <NavLink to="/cart">
+                <Button color="inherit">
+                  {<ShoppingCartIcon />}
+                  {cartItems.length > 0 && <span>{cartItems.length}</span>}
+                </Button>
               </NavLink>
               {!accessToken && (
                 <>
