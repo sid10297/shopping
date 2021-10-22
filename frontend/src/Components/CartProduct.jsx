@@ -12,7 +12,6 @@ import { useContext } from "react";
 import { CartContext } from "../Contexts/CartContext";
 
 const CartProduct = ({ product, quantity }) => {
-  console.log(quantity);
   const { increaseQuantity, decreaseQuantity, removeItem } =
     useContext(CartContext);
 

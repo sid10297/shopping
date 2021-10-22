@@ -8,7 +8,7 @@ import {
   Grid,
   Typography,
 } from "@mui/material";
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import CartProduct from "../Components/CartProduct";
 import { CartContext } from "../Contexts/CartContext";
 import axios from "axios";
@@ -17,10 +17,12 @@ import { UserAuthContext } from "../Contexts/UserAuthContext";
 import jwtDecode from "jwt-decode";
 
 const Cart = () => {
-  const { cartItems, cartTotal, getCartTotal } = useContext(CartContext);
+  const { cartItems, cartTotal, getCartTotal, setCartItems } =
+    useContext(CartContext);
   const { accessToken } = useContext(UserAuthContext);
   const history = useHistory();
-  console.log(cartItems);
+  const [purchasePopup, setPurchasePopup] = useState(false);
+
   useEffect(() => {
     const calculateTotal = (cartItems) => {
       const quantity = cartItems.map((_product) => _product.quantityToOrder);
@@ -58,11 +60,15 @@ const Cart = () => {
         },
         { headers }
       )
-      .then((response) => console.log(response))
+      .then((response) => {
+        setCartItems([]);
+        setPurchasePopup(true);
+      })
       .catch((error) => {
-        console.log(error);
+        console.log(error, purchasePopup);
         history.push("/login");
       });
+    setPurchasePopup(true);
   };
 
   return (
@@ -133,7 +139,14 @@ const Cart = () => {
           <Grid item>
             <Card>
               <CardContent>
-                <Typography variant="h6">Your Cart us Empty</Typography>
+                {purchasePopup ? (
+                  <Typography variant="h6">
+                    {" "}
+                    Order Placed Successfully{" "}
+                  </Typography>
+                ) : (
+                  <Typography variant="h6">Your Cart us Empty </Typography>
+                )}
               </CardContent>
             </Card>
           </Grid>

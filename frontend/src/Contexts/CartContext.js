@@ -7,18 +7,18 @@ export const CartProvider = ({ children }) => {
   const [total, setTotal] = useState(0);
 
   const addToCart = (product) => {
-    // const productInCart = items.find(
-    //   (_product) => _product.product._id === product._id
-    // );
+    const productInCart = items.find(
+      (_product) => _product.product._id === product._id
+    );
 
-    // if (productInCart) {
-    //   productInCart.quantityToOrder += 1;
-    //   product.quantityAvailable -= 1;
-    //   return setItems([...items]);
-    // } else {
-    product.quantityAvailable -= 1;
-    return setItems([...items, { product, quantityToOrder: 1 }]);
-    // }
+    if (productInCart) {
+      productInCart.quantityToOrder += 1;
+      product.quantityAvailable -= 1;
+      return setItems([...items]);
+    } else {
+      product.quantityAvailable -= 1;
+      return setItems([...items, { product, quantityToOrder: 1 }]);
+    }
   };
 
   const increaseQuantity = (product) => {
@@ -78,6 +78,7 @@ export const CartProvider = ({ children }) => {
     cartTotal: total,
     getCartTotal,
     removeItem,
+    setCartItems: setItems,
   };
 
   return (

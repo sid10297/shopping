@@ -53,7 +53,7 @@ const NavBar = () => {
                 <>
                   &nbsp;
                   <Button
-                    color="secondary"
+                    color="warning"
                     onClick={handleSignUp}
                     variant="contained"
                   >
@@ -61,7 +61,7 @@ const NavBar = () => {
                   </Button>
                   &nbsp;
                   <Button
-                    color="secondary"
+                    color="success"
                     variant="contained"
                     onClick={handleLogin}
                   >
@@ -107,7 +107,7 @@ const NavBar = () => {
                 <>
                   &nbsp;
                   <Button
-                    color="secondary"
+                    color="warning"
                     onClick={handleSignUp}
                     variant="contained"
                   >
@@ -115,7 +115,7 @@ const NavBar = () => {
                   </Button>
                   &nbsp;
                   <Button
-                    color="secondary"
+                    color="success"
                     variant="contained"
                     onClick={handleLogin}
                   >
