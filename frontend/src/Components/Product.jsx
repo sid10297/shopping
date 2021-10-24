@@ -51,9 +51,9 @@ const Product = ({ product }) => {
                   variant="contained"
                   size="small"
                   onClick={addToCartHandler}
-                  disabled={product.quantityToOrder}
+                  disabled={product.quantityAvailable < 1}
                 >
-                  {product.quantityAvailable === 0
+                  {product.quantityAvailable < 1
                     ? "Out of stock"
                     : "Add to cart"}
                 </Button>

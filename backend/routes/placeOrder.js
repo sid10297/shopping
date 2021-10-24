@@ -14,13 +14,6 @@ router.post("/place-order", verifyPermission("BASIC"), async (req, res) => {
 
   try {
     const newOrder = await order.save();
-    // const product = await newOrder.cartItems.map((_product) => {
-    //   const quantity = _product.quantityToOrder;
-    //   const id = _product.product._id;
-    //   const found = Product.findById(id);
-    //   console.log(found);
-    // });
-
     res.json(newOrder);
   } catch (error) {
     res.status(400).json({ error: error.message });

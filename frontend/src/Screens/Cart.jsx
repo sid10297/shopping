@@ -145,7 +145,7 @@ const Cart = () => {
                     Order Placed Successfully{" "}
                   </Typography>
                 ) : (
-                  <Typography variant="h6">Your Cart us Empty </Typography>
+                  <Typography variant="h6">Your Cart is Empty </Typography>
                 )}
               </CardContent>
             </Card>
