@@ -9,6 +9,7 @@ import { Logout } from "@mui/icons-material";
 import { useCookies } from "react-cookie";
 import { UserAuthContext } from "../Contexts/UserAuthContext";
 import styles from "../Styles/navBar.module.css";
+import { ADMIN, BASIC } from "../Constants";
 
 const NavBar = () => {
   const { cartItems } = useContext(CartContext);
@@ -33,7 +34,7 @@ const NavBar = () => {
 
   return (
     <>
-      {(userData === null || userData.role === "ADMIN") && (
+      {(userData === null || userData.role === ADMIN) && (
         <Box sx={{ flexGrow: 1 }}>
           <AppBar position="fixed">
             <Toolbar>
@@ -86,7 +87,7 @@ const NavBar = () => {
 
       {/* BASIC */}
 
-      {(userData === null || userData.role === "BASIC") && (
+      {(userData === null || userData.role === BASIC) && (
         <Box sx={{ flexGrow: 1 }}>
           <AppBar position="fixed">
             <Toolbar>

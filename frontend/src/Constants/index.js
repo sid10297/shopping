@@ -6,5 +6,7 @@ Unde tempora deleniti, cupiditate corrupti fugiat voluptate`;
 const LOW_TO_HIGH = "lowToHigh";
 const HIGH_TO_LOW = "highToLow";
 const NONE = "none";
+const BASIC = "BASIC";
+const ADMIN = "ADMIN";
 
-export { LOREM_IPSUM, LOW_TO_HIGH, HIGH_TO_LOW, NONE };
+export { LOREM_IPSUM, LOW_TO_HIGH, HIGH_TO_LOW, NONE, BASIC, ADMIN };
