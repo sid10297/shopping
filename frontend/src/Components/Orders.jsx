@@ -19,7 +19,7 @@ const Orders = () => {
   }, [accessToken]);
 
   return (
-    <Container>
+    <Container maxWidth="md">
       <Grid container marginTop={10}>
         <Grid item lg={12}>
           <OrderedItemUserDetails orders={orders} />

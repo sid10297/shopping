@@ -28,7 +28,7 @@ const AdminDashboard = () => {
   const classes = useStyles();
   return (
     <div className={classes.adminContainer}>
-      <Container>
+      <Container maxWidth="xl">
         <UserData users={users} />
       </Container>
     </div>

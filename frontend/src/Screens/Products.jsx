@@ -7,7 +7,7 @@ import { ProductsContext } from "../Contexts/ProductsContext";
 const Products = () => {
   const { products } = useContext(ProductsContext);
   return (
-    <Container maxWidth="lg">
+    <Container maxWidth="xl">
       <Grid container margin={3} marginTop={10}>
         <Grid item lg={8}>
           <ProductsData products={products} />
