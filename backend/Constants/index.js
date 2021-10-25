@@ -1,3 +1,4 @@
+// Constants to provide repetitive words throughout backend app
 const ADMIN = "ADMIN";
 const BASIC = "BASIC";
 const PRODUCT_NOT_FOUND = "Product not found!";

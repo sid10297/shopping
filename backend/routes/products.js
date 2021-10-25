@@ -1,7 +1,6 @@
 const express = require("express");
-const Joi = require("joi");
-const { ADMIN, PRODUCT_NOT_FOUND } = require("../Constants");
 
+const { ADMIN, PRODUCT_NOT_FOUND } = require("../Constants");
 const Product = require("../models/product");
 const { productValidation } = require("../validation");
 const { verifyPermission } = require("../verifyToken");

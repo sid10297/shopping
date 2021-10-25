@@ -1,7 +1,9 @@
 const Joi = require("joi");
 const { BASIC } = require("./Constants");
 
+// Middleware to validate user while registering
 const registerValidation = (data) => {
+  // Create JOI object with required field and validation
   const userValidationSchema = Joi.object({
     name: Joi.string().min(3).max(255).required(),
     email: Joi.string().min(3).email().required(),
@@ -9,9 +11,11 @@ const registerValidation = (data) => {
     role: Joi.string().default(BASIC),
   });
 
+  // Return schema by validating it which can be used as middleware in for the API's
   return userValidationSchema.validate(data);
 };
 
+// Validate user while logging in
 const loginValidation = (data) => {
   const loginValidationSchema = Joi.object({
     email: Joi.string().min(3).email().required(),
