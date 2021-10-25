@@ -28,6 +28,7 @@ const CreatedProduct = ({ product }) => {
       </TableCell>
       <TableCell align="right">{product.description}</TableCell>
       <TableCell align="right">{product.price}</TableCell>
+      <TableCell align="right">{product.quantityAvailable}</TableCell>
       <TableCell align="right">{product._id}</TableCell>
       <TableCell align="right">
         <Button

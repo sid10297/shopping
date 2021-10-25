@@ -16,7 +16,8 @@ const ProductsData = ({ products }) => {
             <TableCell>Title</TableCell>
             <TableCell align="right">Description</TableCell>
             <TableCell align="right">Price</TableCell>
-            <TableCell align="right">Product ID</TableCell>
+            <TableCell align="right">Quantity</TableCell>
+            <TableCell align="right">Id</TableCell>
             <TableCell align="left">Delete</TableCell>
           </TableRow>
         </TableHead>
