@@ -18,6 +18,22 @@ const CreatedProduct = ({ product }) => {
       .catch((err) => console.log(err));
   };
 
+  const handleEdit = () => {
+    const headers = {
+      "auth-token": accessToken,
+    };
+    axios
+      .patch(
+        `http://localhost:5000/api/products/${product._id}`,
+        { quantityAvailable: product.quantityAvailable + 10 },
+        {
+          headers,
+        }
+      )
+      .then((res) => window.location.reload(false))
+      .catch((err) => console.log(err));
+  };
+
   return (
     <TableRow
       key={product._id}
@@ -38,6 +54,16 @@ const CreatedProduct = ({ product }) => {
           onClick={handleDelete}
         >
           Remove
+        </Button>
+      </TableCell>
+      <TableCell align="right">
+        <Button
+          color="success"
+          variant="contained"
+          size="small"
+          onClick={handleEdit}
+        >
+          +
         </Button>
       </TableCell>
     </TableRow>

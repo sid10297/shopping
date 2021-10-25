@@ -19,6 +19,7 @@ const ProductsData = ({ products }) => {
             <TableCell align="right">Quantity</TableCell>
             <TableCell align="right">Id</TableCell>
             <TableCell align="left">Delete</TableCell>
+            <TableCell align="left">Quan+10</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
