@@ -38,7 +38,7 @@ const Shop = () => {
 
       setFilteredProducts(
         _filteredProducts.filter(
-          (_product) => _product.title.toLowerCase() === filters.brand
+          (_product) => _product.title.trim("").toLowerCase() === filters.brand
         )
       );
     },

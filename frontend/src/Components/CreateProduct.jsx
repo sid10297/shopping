@@ -35,7 +35,7 @@ const CreateProduct = () => {
     image: String,
   });
 
-  const createUser = () => {
+  const handleAddProduct = () => {
     const headers = {
       "auth-token": accessToken,
     };
@@ -44,6 +44,7 @@ const CreateProduct = () => {
       .then((response) => window.location.reload(false))
       .catch((error) => console.log(error));
   };
+
   const handleTitle = (e) =>
     setProduct({
       ...product,
@@ -109,7 +110,7 @@ const CreateProduct = () => {
           variant="contained"
           fullWidth
           className={classes.spacing}
-          onClick={createUser}
+          onClick={handleAddProduct}
         >
           ADD PRODUCT
         </Button>
