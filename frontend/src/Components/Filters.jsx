@@ -46,29 +46,6 @@ const Filters = ({ onFiltersUpdate }) => {
       <br />
       <br />
 
-      {/* <InputLabel htmlFor="color">Color</InputLabel>
-      <Select
-        style={{ width: "100%" }}
-        name="color"
-        onChange={(event) => {
-          setFilters((prev_filters) => {
-            return {
-              ...prev_filters,
-              color: event.target.value,
-            };
-          });
-        }}
-        value={filters.color}
-      >
-        <MenuItem value="none">None</MenuItem>
-        <MenuItem value="black">Black</MenuItem>
-        <MenuItem value="blue">Blue</MenuItem>
-        <MenuItem value="grey">Grey</MenuItem>
-        <MenuItem value="white">White</MenuItem>
-      </Select>
-
-      <br />
-      <br /> */}
       <InputLabel htmlFor="sortBy">Sort By</InputLabel>
       <Select
         style={{ width: "100%" }}
@@ -90,27 +67,7 @@ const Filters = ({ onFiltersUpdate }) => {
 
       <br />
       <br />
-      {/* <InputLabel htmlFor="customerRatings">Customer Ratings</InputLabel>
-      <Select
-        style={{ width: "100%" }}
-        name="customerRatings"
-        onChange={(event) => {
-          setFilters((prev_filters) => {
-            return {
-              ...prev_filters,
-              customerRatings: event.target.value,
-            };
-          });
-        }}
-        value={filters.customerRatings}
-      >
-        <MenuItem value="none">None</MenuItem>
-        <MenuItem value="above4Star">4 Or Above</MenuItem>
-        <MenuItem value="above3Star">3 Or Above</MenuItem>
-      </Select>
 
-      <br />
-      <br /> */}
       <FormControlLabel
         checked={filters.includesOutOfStock}
         control={

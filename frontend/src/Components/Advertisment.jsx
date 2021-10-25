@@ -5,6 +5,7 @@ import { adTagLine, adTagLine1, adTagLine2 } from "../Constants/advertisment";
 import styles from "../Styles/advertisment.module.css";
 import { Button, Typography } from "@mui/material";
 import { makeStyles } from "@mui/styles";
+import { LOREM_IPSUM } from "../Constants";
 
 const useStyles = makeStyles({
   btn: {
@@ -56,10 +57,7 @@ const Advertisment = () => {
           </div>
           <div className={styles.descriptionRightDesc}>
             <Typography variant="p" align="left" color="white" gutterBottom>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure
-              rerum consectetur perspiciatis optio sapiente obcaecati nulla
-              incidunt magnam deleniti inventore molestias, officiis blanditiis.
-              Unde tempora deleniti, cupiditate corrupti fugiat voluptate.
+              {LOREM_IPSUM}
             </Typography>
           </div>
           <div className={styles.descriptionRightButton}>
