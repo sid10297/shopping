@@ -31,10 +31,14 @@ router.post(
         return item - quantityToOrder[index];
       });
 
-      console.log(ids, "Id's");
-      console.log(quantityAvailable, "Available Quantity");
-      console.log(quantityToOrder, " quantityToOrder");
-      console.log(decrementQuantity, "Decremented Quantity");
+      for (let i = 0; i < ids.length; i++) {
+        await Product.findByIdAndUpdate(
+          { _id: ids[i] },
+          {
+            quantityAvailable: decrementQuantity[i],
+          }
+        );
+      }
 
       res.json(newOrder);
     } catch (error) {
