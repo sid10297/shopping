@@ -7,14 +7,15 @@ import {
   Select,
 } from "@mui/material";
 import { useEffect, useState } from "react";
+import { NONE } from "../Constants";
 
 const Filters = ({ onFiltersUpdate }) => {
   const [filters, setFilters] = useState({
-    brand: "none",
-    color: "none",
+    brand: NONE,
+    color: NONE,
     includesOutOfStock: false,
-    sortBy: "none",
-    customerRatings: "none",
+    sortBy: NONE,
+    customerRatings: NONE,
   });
 
   useEffect(() => {
@@ -37,7 +38,7 @@ const Filters = ({ onFiltersUpdate }) => {
         }}
         value={filters.brand}
       >
-        <MenuItem value="none">None</MenuItem>
+        <MenuItem value={NONE}>None</MenuItem>
         <MenuItem value="nike">Nike</MenuItem>
         <MenuItem value="adidas">Adidas</MenuItem>
         <MenuItem value="lotto">Lotto</MenuItem>
@@ -60,7 +61,7 @@ const Filters = ({ onFiltersUpdate }) => {
         }}
         value={filters.sortBy}
       >
-        <MenuItem value="none">None</MenuItem>
+        <MenuItem value={NONE}>None</MenuItem>
         <MenuItem value="highToLow">High to Low</MenuItem>
         <MenuItem value="lowToHigh">Low to High</MenuItem>
       </Select>
@@ -91,11 +92,11 @@ const Filters = ({ onFiltersUpdate }) => {
         variant="contained"
         onClick={() => {
           setFilters({
-            brand: "none",
-            color: "none",
+            brand: NONE,
+            color: NONE,
             includesOutOfStock: false,
-            sortBy: "none",
-            customerRatings: "none",
+            sortBy: NONE,
+            customerRatings: NONE,
           });
         }}
       >

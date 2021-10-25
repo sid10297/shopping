@@ -3,6 +3,7 @@ import { useCallback, useContext, useEffect, useState } from "react";
 import Filters from "../Components/Filters";
 
 import ProductsShop from "../Components/ProductsShop";
+import { HIGH_TO_LOW, LOW_TO_HIGH, NONE } from "../Constants";
 import { ProductsContext } from "../Contexts/ProductsContext";
 
 const Shop = () => {
@@ -23,15 +24,15 @@ const Shop = () => {
         );
       }
 
-      if (filters.sortBy === "lowToHigh") {
+      if (filters.sortBy === LOW_TO_HIGH) {
         _filteredProducts = _filteredProducts.sort((a, b) => a.price - b.price);
       }
 
-      if (filters.sortBy === "highToLow") {
+      if (filters.sortBy === HIGH_TO_LOW) {
         _filteredProducts = _filteredProducts.sort((a, b) => b.price - a.price);
       }
 
-      if (filters.brand === "none") {
+      if (filters.brand === NONE) {
         setFilteredProducts(_filteredProducts);
         return;
       }

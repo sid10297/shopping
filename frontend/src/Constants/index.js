@@ -3,4 +3,8 @@ rerum consectetur perspiciatis optio sapiente obcaecati nulla
 incidunt magnam deleniti inventore molestias, officiis blanditiis.
 Unde tempora deleniti, cupiditate corrupti fugiat voluptate`;
 
-export { LOREM_IPSUM };
+const LOW_TO_HIGH = "lowToHigh";
+const HIGH_TO_LOW = "highToLow";
+const NONE = "none";
+
+export { LOREM_IPSUM, LOW_TO_HIGH, HIGH_TO_LOW, NONE };

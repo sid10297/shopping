@@ -1,4 +1,5 @@
 const jwt = require("jsonwebtoken");
+
 const { INVALID_TOKEN, ACCESS_DENIED } = require("./Constants");
 
 function verifyToken(req, res, next) {
