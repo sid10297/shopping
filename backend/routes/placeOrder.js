@@ -49,7 +49,7 @@ router.post(
 
 router.get("/orders", verifyPermission(ADMIN), async (req, res) => {
   try {
-    const orders = await Order.find();
+    const orders = await Order.find().sort({ $natural: -1 });
     res.json(orders);
   } catch (error) {
     res.send(error);
