@@ -1,5 +1,6 @@
 const express = require("express");
 const Joi = require("joi");
+const { ADMIN, PRODUCT_NOT_FOUND } = require("../Constants");
 
 const Product = require("../models/product");
 const { productValidation } = require("../validation");
@@ -28,7 +29,7 @@ router.get("/products/:id", async (req, res) => {
 });
 
 // Create a product
-router.post("/products", verifyPermission("ADMIN"), async (req, res) => {
+router.post("/products", verifyPermission(ADMIN), async (req, res) => {
   const { error } = productValidation(req.body);
   if (error) return res.status(403).send(error.details[0].message);
 
@@ -49,10 +50,10 @@ router.post("/products", verifyPermission("ADMIN"), async (req, res) => {
 });
 
 // Update a product
-router.patch("/products/:id", verifyPermission("ADMIN"), async (req, res) => {
+router.patch("/products/:id", verifyPermission(ADMIN), async (req, res) => {
   const product = await Product.findById(req.params.id);
 
-  if (!product) return res.status(404).send("Product not found!");
+  if (!product) return res.status(404).send(PRODUCT_NOT_FOUND);
   const { title, description, price, quantityAvailable, image } = req.body;
 
   try {
@@ -72,7 +73,7 @@ router.patch("/products/:id", verifyPermission("ADMIN"), async (req, res) => {
 // Delete a product
 router.delete("/products/:id", verifyPermission("ADMIN"), async (req, res) => {
   const product = await Product.findById(req.params.id);
-  if (!product) return res.status(404).send("Product not found!");
+  if (!product) return res.status(404).send(PRODUCT_NOT_FOUND);
 
   try {
     const product = await Product.findByIdAndDelete(req.params.id);

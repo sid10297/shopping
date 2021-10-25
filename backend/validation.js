@@ -1,11 +1,12 @@
 const Joi = require("joi");
+const { BASIC } = require("./Constants");
 
 const registerValidation = (data) => {
   const userValidationSchema = Joi.object({
     name: Joi.string().min(3).max(255).required(),
     email: Joi.string().min(3).email().required(),
     password: Joi.string().min(3).required(),
-    role: Joi.string().default("BASIC"),
+    role: Joi.string().default(BASIC),
   });
 
   return userValidationSchema.validate(data);

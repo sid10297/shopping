@@ -1,8 +1,9 @@
 const mongoose = require("mongoose");
+const { ADMIN, BASIC } = require("../Constants");
 
 const roleType = {
-  admin: "ADMIN",
-  basic: "BASIC",
+  admin: ADMIN,
+  basic: BASIC,
 };
 
 const UserSchema = new mongoose.Schema({

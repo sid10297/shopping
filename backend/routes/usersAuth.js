@@ -5,6 +5,12 @@ const { verifyPermission } = require("../verifyToken");
 
 const User = require("../models/user");
 const { registerValidation, loginValidation } = require("../validation");
+const {
+  ADMIN,
+  EMAIL_EXISTS,
+  ACCOUNT_CREATED,
+  CREDENTIALS_INVALID,
+} = require("../Constants");
 
 const router = express.Router();
 
@@ -16,7 +22,7 @@ router.post("/register", async (req, res) => {
     email: req.body.email,
   });
 
-  if (emailExists) return res.status(400).send("Email already exists");
+  if (emailExists) return res.status(400).send(EMAIL_EXISTS);
 
   const salt = await bcrypt.genSalt(10);
   const hashedPassword = await bcrypt.hash(req.body.password, salt);
@@ -30,7 +36,7 @@ router.post("/register", async (req, res) => {
   try {
     const savedUser = await user.save();
 
-    res.status(201).send("Account Created Successfully!");
+    res.status(201).send(ACCOUNT_CREATED);
   } catch (error) {
     res.status(400).send(error);
   }
@@ -44,12 +50,11 @@ router.post("/login", async (req, res) => {
     email: req.body.email,
   });
 
-  if (!user) return res.status(400).send("Email or password is invalid!");
+  if (!user) return res.status(400).send(CREDENTIALS_INVALID);
 
   const validPassword = await bcrypt.compare(req.body.password, user.password);
 
-  if (!validPassword)
-    return res.status(400).send("Email or password is invalid!");
+  if (!validPassword) return res.status(400).send(CREDENTIALS_INVALID);
 
   const token = jwt.sign(
     {
@@ -64,7 +69,7 @@ router.post("/login", async (req, res) => {
   res.header("auth-token", token).send(token);
 });
 
-router.get("/users", verifyPermission("ADMIN"), async (req, res) => {
+router.get("/users", verifyPermission(ADMIN), async (req, res) => {
   try {
     const users = await User.find();
     res.json(users);
