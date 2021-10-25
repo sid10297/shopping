@@ -8,6 +8,7 @@ import { CartContext } from "../Contexts/CartContext";
 import { Logout } from "@mui/icons-material";
 import { useCookies } from "react-cookie";
 import { UserAuthContext } from "../Contexts/UserAuthContext";
+import styles from "../Styles/navBar.module.css";
 
 const NavBar = () => {
   const { cartItems } = useContext(CartContext);
@@ -39,13 +40,13 @@ const NavBar = () => {
               <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
                 ADMIN PANEL
               </Typography>
-              <NavLink to="/admin" exact>
+              <NavLink to="/admin" exact activeClassName={styles.isActive}>
                 <Button color="inherit">Users</Button>
               </NavLink>
-              <NavLink to="/products">
+              <NavLink to="/products" activeClassName={styles.isActive}>
                 <Button color="inherit">Products</Button>
               </NavLink>
-              <NavLink to="/orders">
+              <NavLink to="/orders" activeClassName={styles.isActive}>
                 <Button color="inherit">Orders</Button>
               </NavLink>
               {!accessToken && (
@@ -83,6 +84,8 @@ const NavBar = () => {
         </Box>
       )}
 
+      {/* BASIC */}
+
       {(userData === null || userData.role === "BASIC") && (
         <Box sx={{ flexGrow: 1 }}>
           <AppBar position="fixed">
@@ -90,18 +93,19 @@ const NavBar = () => {
               <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
                 {appTitle}
               </Typography>
-              <NavLink to="/" exact>
+              <NavLink to="/" exact activeClassName={styles.isActive}>
                 <Button color="inherit">{home}</Button>
               </NavLink>
-              <NavLink to="/shop">
+              <NavLink to="/shop" activeClassName={styles.isActive}>
                 <Button color="inherit">{shop}</Button>
               </NavLink>
-              <NavLink to="/cart">
+              <NavLink to="/cart" activeClassName={styles.isActive}>
                 <Button color="inherit">
                   {<ShoppingCartIcon />}
                   {cartItems.length > 0 && <span>{cartItems.length}</span>}
                 </Button>
               </NavLink>
+              &nbsp;
               {!accessToken && (
                 <>
                   &nbsp;
