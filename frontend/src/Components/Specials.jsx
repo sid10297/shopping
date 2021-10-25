@@ -23,12 +23,7 @@ const Specials = ({ product }) => {
               justifyContent: "center",
             }}
           >
-            <CardMedia
-              // style={{ backgroundColor: "grey" }}
-              component="img"
-              height="300"
-              image={product.image}
-            />
+            <CardMedia component="img" height="300" image={product.image} />
             <CardContent>
               <Typography gutterBottom variant="h5" component="div">
                 {product.product}

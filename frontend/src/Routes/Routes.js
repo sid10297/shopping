@@ -5,7 +5,6 @@ import AdminDashboard from "../Screens/AdminDashboard";
 import Login from "../Screens/Auth/Login";
 import SignUp from "../Screens/Auth/SignUp";
 import Cart from "../Screens/Cart";
-// import ContactUs from "../Screens/ContactUs";
 import Home from "../Screens/Home";
 import Products from "../Screens/Products";
 import Shop from "../Screens/Shop";

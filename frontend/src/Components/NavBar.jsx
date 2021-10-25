@@ -30,7 +30,6 @@ const NavBar = () => {
     history.push("/login");
   };
 
-  console.log(userData);
   return (
     <>
       {(userData === null || userData.role === "ADMIN") && (

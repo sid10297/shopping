@@ -18,8 +18,6 @@ const Orders = () => {
       .catch((err) => console.log(err));
   }, [accessToken]);
 
-  console.log(orders);
-
   return (
     <Container>
       <Grid container marginTop={10}>

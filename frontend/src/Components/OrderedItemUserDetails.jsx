@@ -1,7 +1,6 @@
 import { Card, Typography } from "@mui/material";
 
 const OrderedItemUserDetails = ({ orders }) => {
-  console.log(orders);
   return (
     <>
       {orders.map((order) => (
