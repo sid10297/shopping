@@ -1,4 +1,5 @@
 import { Typography } from "@mui/material";
+import { NavLink } from "react-router-dom";
 
 const Footer = () => {
   return (
@@ -24,7 +25,9 @@ const Footer = () => {
         }}
       >
         <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-          &copy; Shoe Kart
+          <NavLink to="/" exact>
+            &copy; Shoe Kart
+          </NavLink>
         </Typography>
       </div>
     </div>

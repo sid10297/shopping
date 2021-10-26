@@ -53,7 +53,9 @@ const NavBar = () => {
           <AppBar position="fixed">
             <Toolbar>
               <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-                ADMIN PANEL
+                <NavLink to="/admin" exact>
+                  ADMIN PANEL
+                </NavLink>
               </Typography>
               <NavLink to="/admin" exact activeClassName={styles.isActive}>
                 <Button color="inherit">Users</Button>
@@ -106,7 +108,9 @@ const NavBar = () => {
           <AppBar position="fixed">
             <Toolbar>
               <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-                {appTitle}
+                <NavLink to="/" exact>
+                  {appTitle}
+                </NavLink>
               </Typography>
               <NavLink to="/" exact activeClassName={styles.isActive}>
                 <Button color="inherit">{home}</Button>
