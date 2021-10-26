@@ -3,19 +3,33 @@ import { Box } from "@mui/system";
 import { appTitle, home, shop } from "../Constants/navBar";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { NavLink, useHistory } from "react-router-dom";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { CartContext } from "../Contexts/CartContext";
 import { Logout } from "@mui/icons-material";
 import { useCookies } from "react-cookie";
 import { UserAuthContext } from "../Contexts/UserAuthContext";
 import styles from "../Styles/navBar.module.css";
 import { ADMIN, BASIC } from "../Constants";
+import jwtDecode from "jwt-decode";
 
 const NavBar = () => {
   const { cartItems } = useContext(CartContext);
   const { accessToken, userData, setUserData } = useContext(UserAuthContext);
+  const [getId, setGetId] = useState("");
 
   const removeCookies = useCookies(["access_token"])[2];
+  const cookies = useCookies(["access_token"])[0];
+
+  useEffect(() => {
+    if (cookies.access_token) {
+      try {
+        const { _id } = jwtDecode(cookies.access_token);
+        setGetId(_id);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+  }, [cookies.access_token, setUserData, userData]);
 
   const history = useHistory();
 
@@ -100,6 +114,18 @@ const NavBar = () => {
               <NavLink to="/shop" activeClassName={styles.isActive}>
                 <Button color="inherit">{shop}</Button>
               </NavLink>
+              {!accessToken ? (
+                <NavLink to={`/orders-basic`} activeClassName={styles.isActive}>
+                  <Button color="inherit">Orders</Button>
+                </NavLink>
+              ) : (
+                <NavLink
+                  to={`/orders-basic/${getId}`}
+                  activeClassName={styles.isActive}
+                >
+                  <Button color="inherit">Orders</Button>
+                </NavLink>
+              )}
               <NavLink to="/cart" activeClassName={styles.isActive}>
                 <Button color="inherit">
                   {<ShoppingCartIcon />}
