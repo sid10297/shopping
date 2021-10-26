@@ -8,6 +8,7 @@ import Cart from "../Screens/Cart";
 import Home from "../Screens/Home";
 import Products from "../Screens/Products";
 import Shop from "../Screens/Shop";
+import UserOrderInfo from "../Screens/UserOrderInfo";
 
 const Routes = () => {
   return (
@@ -20,6 +21,7 @@ const Routes = () => {
       <Route path="/" component={Home} exact />
       <Route path="/shop" component={Shop} />
       <Route path="/cart" component={Cart} />
+      <Route path="/orders-basic/:id" component={UserOrderInfo} />
       <Route path="*" component={NotFound} />
     </Switch>
   );
