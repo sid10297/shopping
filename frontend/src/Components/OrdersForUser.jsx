@@ -1,4 +1,4 @@
-import { Card, Typography } from "@mui/material";
+import { Card, CardContent, Grid, Typography } from "@mui/material";
 
 const OrdersForUser = ({ orders }) => {
   console.log(orders);
@@ -47,11 +47,20 @@ const OrdersForUser = ({ orders }) => {
           </Card>
         ))}
       {orders.length < 1 && (
-        <Card sx={{ padding: "1rem", marginTop: "10rem" }}>
-          <Typography gutterBottom variant="body1">
-            Please buy something to view orders
-          </Typography>
-        </Card>
+        <Grid
+          container
+          height="80vh"
+          justifyContent="center"
+          alignItems="center"
+        >
+          <Grid item>
+            <Card>
+              <CardContent>
+                <Typography variant="h6">Your orders are empty</Typography>
+              </CardContent>
+            </Card>
+          </Grid>
+        </Grid>
       )}
     </>
   );
