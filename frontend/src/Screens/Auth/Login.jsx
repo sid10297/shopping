@@ -63,7 +63,7 @@ const Login = () => {
           cartItems.length > 0 ? history.push("/cart") : history.push("/");
         }
       })
-      .catch((error) => console.log(error));
+      .catch((error) => console.log("Email or password is wrong!"));
   };
 
   return (

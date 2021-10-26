@@ -1,10 +1,13 @@
-import { BottomNavigation, Typography } from "@mui/material";
+import { Typography } from "@mui/material";
 
 const Footer = () => {
   return (
-    <div style={{ marginTop: "100px" }}>
-      <BottomNavigation
-        showLabels
+    <div
+      style={{
+        marginTop: "100px",
+      }}
+    >
+      <div
         style={{
           position: "fixed",
           left: "0",
@@ -23,7 +26,7 @@ const Footer = () => {
         <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
           &copy; Shoe Kart
         </Typography>
-      </BottomNavigation>
+      </div>
     </div>
   );
 };
