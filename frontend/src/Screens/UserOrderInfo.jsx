@@ -27,23 +27,11 @@ const UserOrderInfo = () => {
       .catch((err) => console.log(err));
   }, [id, accessToken, history]);
 
-  const cartItems = orders.map((_product) => _product._id);
-
-  const getIds = () => {
-    for (let i = 0; i <= cartItems.length; i++) {
-      const id = cartItems[i];
-      return id;
-    }
-  };
-
-  console.log(getIds());
-
-  //   const productId = cartItems.map((_product) => _product);
   return (
     <Container maxWidth="md">
       <Grid container marginTop={10}>
         <Grid item lg={12}>
-          <OrdersForUser orders={orders} key={getIds()} />
+          <OrdersForUser orders={orders} />
         </Grid>
       </Grid>
     </Container>

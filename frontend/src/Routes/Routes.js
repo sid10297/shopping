@@ -1,4 +1,5 @@
 import { Route, Switch } from "react-router";
+import LoginFirst from "../Components/LoginFirst";
 import NotFound from "../Components/NotFound";
 import Orders from "../Components/Orders";
 import AdminDashboard from "../Screens/AdminDashboard";
@@ -21,6 +22,7 @@ const Routes = () => {
       <Route path="/" component={Home} exact />
       <Route path="/shop" component={Shop} />
       <Route path="/cart" component={Cart} />
+      <Route path="/orders-basic" component={LoginFirst} exact />
       <Route path="/orders-basic/:id" component={UserOrderInfo} />
       <Route path="*" component={NotFound} />
     </Switch>
