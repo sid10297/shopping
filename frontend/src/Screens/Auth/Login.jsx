@@ -1,4 +1,4 @@
-import { Button, TextField } from "@mui/material";
+import { Button, TextField, Typography } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import { useContext, useState } from "react";
 import axios from "axios";
@@ -25,6 +25,9 @@ const useStyles = makeStyles({
   spacing: {
     marginTop: "20px",
   },
+  popup: {
+    color: "red",
+  },
 });
 
 const Login = () => {
@@ -34,6 +37,7 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const setCookie = useCookies(["access_token"])[1];
   const history = useHistory();
+  const [InvalidCredentials, setInvalidCredentials] = useState(false);
 
   const handleEmail = (e) => {
     const value = e.target.value;
@@ -63,13 +67,21 @@ const Login = () => {
           cartItems.length > 0 ? history.push("/cart") : history.push("/");
         }
       })
-      .catch((error) => console.log("Email or password is wrong!"));
+      .catch((error) => setInvalidCredentials(true));
   };
 
   return (
     <div className={classes.container}>
-      <form noValidate autoComplete="off" className={classes.formStyles}>
+      <form noValidate autoComplete="off" className={classes["formStyles"]}>
+        {InvalidCredentials && (
+          <>
+            <Typography className={classes.popup}>
+              Email or password is wrong
+            </Typography>
+          </>
+        )}
         <TextField
+          error={InvalidCredentials}
           id="entered-email"
           label="Email"
           variant="outlined"
@@ -80,6 +92,7 @@ const Login = () => {
         />
 
         <TextField
+          error={InvalidCredentials}
           id="entered-password"
           label="Password"
           variant="outlined"

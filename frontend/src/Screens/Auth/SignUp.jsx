@@ -1,4 +1,4 @@
-import { Button, TextField } from "@mui/material";
+import { Button, TextField, Typography } from "@mui/material";
 import axios from "axios";
 import { makeStyles } from "@mui/styles";
 import { useState } from "react";
@@ -22,6 +22,9 @@ const useStyles = makeStyles({
   spacing: {
     marginTop: "10px",
   },
+  popup: {
+    color: "red",
+  },
 });
 
 const SignUp = () => {
@@ -30,6 +33,8 @@ const SignUp = () => {
     email: String,
     password: String,
   });
+
+  const [InvalidCredentials, setInvalidCredentials] = useState(false);
 
   const history = useHistory();
 
@@ -67,13 +72,21 @@ const SignUp = () => {
         });
         history.push("/login");
       })
-      .catch((error) => console.log(error));
+      .catch((error) => setInvalidCredentials(true));
   };
 
   return (
     <div className={classes.container}>
       <form noValidate autoComplete="off" className={classes.formStyles}>
+        {InvalidCredentials && (
+          <>
+            <Typography className={classes.popup}>
+              Email already exists
+            </Typography>
+          </>
+        )}
         <TextField
+          error={InvalidCredentials}
           id="entered-name"
           label="Name"
           variant="outlined"
@@ -83,6 +96,7 @@ const SignUp = () => {
         />
 
         <TextField
+          error={InvalidCredentials}
           id="entered-email"
           label="Email"
           variant="outlined"
@@ -92,6 +106,7 @@ const SignUp = () => {
         />
 
         <TextField
+          error={InvalidCredentials}
           id="entered-email"
           label="Password"
           variant="outlined"
