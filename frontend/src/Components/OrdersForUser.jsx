@@ -16,7 +16,6 @@ const OrdersForUser = ({ orders }) => {
             <Typography gutterBottom variant="body1">
               UserID: {order.userDetails._id}
             </Typography>
-            {/* <Typography gutterBottom variant="body1"> */}
             {order.cartItems.map((product) => (
               <>
                 <Card
@@ -37,7 +36,6 @@ const OrdersForUser = ({ orders }) => {
                 </Card>
               </>
             ))}
-            {/* </Typography> */}
             <Typography
               align="right"
               marginRight="20px"

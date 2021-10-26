@@ -22,7 +22,9 @@ const Orders = () => {
     <Container maxWidth="md">
       <Grid container marginTop={10}>
         <Grid item lg={12}>
-          <OrderedItemUserDetails orders={orders} />
+          {orders.map((_order) => (
+            <OrderedItemUserDetails key={_order._id} orders={orders} />
+          ))}
         </Grid>
       </Grid>
     </Container>
