@@ -1,18 +1,23 @@
+import { Button, Card, CardContent, Grid, Typography } from "@mui/material";
+import { NavLink } from "react-router-dom";
+
 const NotFound = () => {
   return (
-    <div
-      style={{
-        display: "flex",
-        justifyContent: "center",
-        alignContent: "center",
-        height: "100vh",
-        width: "100vw",
-        marginTop: "100px",
-        textAlign: "center",
-      }}
-    >
-      <h1>Route Not Found : 404</h1>
-    </div>
+    <Grid container height="80vh" justifyContent="center" alignItems="center">
+      <Grid item>
+        <Card>
+          <CardContent>
+            <Typography variant="h6">Page not found</Typography>
+            <br />
+            <NavLink to="/" exact>
+              <Button variant="contained" color="primary">
+                Home
+              </Button>
+            </NavLink>
+          </CardContent>
+        </Card>
+      </Grid>
+    </Grid>
   );
 };
 
