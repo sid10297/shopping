@@ -71,4 +71,39 @@ router.get("/orders", verifyPermission(ADMIN), async (req, res) => {
   }
 });
 
+// Get all the orders (Only for BASIC)
+router.get("/orders/:id", verifyPermission(BASIC), async (req, res) => {
+  try {
+    // sort orders based on latest orders made
+    console.log(req.params.id);
+    const orders = await Order.find().sort({
+      $natural: -1,
+    });
+
+    // Get all orders
+    const order = orders.map((_order) => _order.userDetails._id);
+
+    // Get orders only for specific user
+    const getOrdersForUserWithId = () => {
+      for (let i = 0; i <= order.length; i++) {
+        const output = order[i];
+
+        // compare the ids
+        if (output === req.params.id) {
+          // filter the ids and get orders
+          const ordersList = orders.filter(
+            (_order) => _order.userDetails._id === req.params.id
+          );
+
+          // return the orders
+          return ordersList;
+        }
+      }
+    };
+    res.json(getOrdersForUserWithId());
+  } catch (error) {
+    res.send(error);
+  }
+});
+
 module.exports = router;
