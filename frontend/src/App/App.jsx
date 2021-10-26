@@ -7,6 +7,7 @@ import { CookiesProvider } from "react-cookie";
 
 import Routes from "../Routes/Routes";
 import { UserAuthProvider } from "../Contexts/UserAuthContext";
+import Footer from "../Components/Footer";
 
 const App = () => {
   return (
@@ -20,6 +21,7 @@ const App = () => {
               <ProductsProvider>
                 <Routes />
               </ProductsProvider>
+              <Footer />
             </CartProvider>
           </UserAuthProvider>
         </BrowserRouter>
