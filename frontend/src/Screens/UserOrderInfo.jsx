@@ -13,11 +13,6 @@ const UserOrderInfo = () => {
   const { id } = useParams();
 
   useEffect(() => {
-    if (!accessToken) {
-      history.push("/login");
-      return;
-    }
-
     const headers = {
       "auth-token": accessToken,
     };

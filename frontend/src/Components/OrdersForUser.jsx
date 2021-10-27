@@ -16,25 +16,24 @@ const OrdersForUser = ({ orders }) => {
             <Typography gutterBottom variant="body1">
               UserID: {order.userDetails._id}
             </Typography>
+
             {order.cartItems.map((product) => (
-              <>
-                <Card
-                  sx={{ margin: "1rem", padding: "1rem" }}
-                  key={product.product._id}
-                >
-                  <img
-                    style={{
-                      height: "200px",
-                      width: "200px",
-                      borderRadius: "10px",
-                    }}
-                    src={product.product.image}
-                    alt="productImage"
-                  />
-                  <p>Product: {product.product.title}</p>
-                  <p>ID: {product.product._id}</p>
-                </Card>
-              </>
+              <Card
+                sx={{ margin: "1rem", padding: "1rem" }}
+                key={product.product._id}
+              >
+                <img
+                  style={{
+                    height: "200px",
+                    width: "200px",
+                    borderRadius: "10px",
+                  }}
+                  src={product.product.image}
+                  alt="productImage"
+                />
+                <p>Product: {product.product.title}</p>
+                <p>ID: {product.product._id}</p>
+              </Card>
             ))}
             <Typography
               align="right"

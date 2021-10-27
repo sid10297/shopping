@@ -39,20 +39,7 @@ const Cart = () => {
   const placeOrder = (e) => {
     e.preventDefault();
 
-    if (!accessToken) {
-      history.push("/login");
-      return;
-    }
-
-    const productDetails = cartItems.map((item) => [
-      {
-        _id: item.product._id,
-        quantityAvailable: item.product.quantityAvailable,
-        quantityToOrder: item.quantityToOrder,
-      },
-    ]);
-
-    console.log(productDetails);
+    if (!accessToken) return history.push("/login");
 
     const userDetails = jwtDecode(accessToken);
 
