@@ -44,6 +44,16 @@ const Cart = () => {
       return;
     }
 
+    const productDetails = cartItems.map((item) => [
+      {
+        _id: item.product._id,
+        quantityAvailable: item.product.quantityAvailable,
+        quantityToOrder: item.quantityToOrder,
+      },
+    ]);
+
+    console.log(productDetails);
+
     const userDetails = jwtDecode(accessToken);
 
     const headers = {
@@ -65,8 +75,7 @@ const Cart = () => {
         setPurchasePopup(true);
       })
       .catch((error) => {
-        console.log(error, purchasePopup);
-        history.push("/login");
+        console.log(error);
       });
     setPurchasePopup(true);
   };
@@ -145,7 +154,7 @@ const Cart = () => {
                     Order Placed Successfully{" "}
                   </Typography>
                 ) : (
-                  <Typography variant="h6">Your Cart is Empty </Typography>
+                  <Typography variant="h6">Your Cart is Empty</Typography>
                 )}
               </CardContent>
             </Card>
