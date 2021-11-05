@@ -1,8 +1,9 @@
 import { Button, TextField, Typography } from "@mui/material";
 import axios from "axios";
 import { makeStyles } from "@mui/styles";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { UserAuthContext } from "../../Contexts/UserAuthContext";
 
 const useStyles = makeStyles({
   container: {
@@ -35,6 +36,7 @@ const SignUp = () => {
   });
 
   const [InvalidCredentials, setInvalidCredentials] = useState(false);
+  const { setAccountCreated } = useContext(UserAuthContext);
 
   const history = useNavigate();
 
@@ -70,6 +72,8 @@ const SignUp = () => {
           email: "",
           password: "",
         });
+        console.log("Account created! Please login.");
+        setAccountCreated(true);
         history("/login", { replace: true });
       })
       .catch((error) => setInvalidCredentials(true));

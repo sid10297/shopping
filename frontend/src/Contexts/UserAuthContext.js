@@ -7,6 +7,7 @@ export const UserAuthContext = createContext({});
 export const UserAuthProvider = ({ children }) => {
   const cookies = useCookies(["access_token"])[0];
   const [userData, setUserData] = useState(null);
+  const [accountCreated, setAccountCreated] = useState(false);
 
   useEffect(() => {
     if (cookies.access_token) {
@@ -23,6 +24,8 @@ export const UserAuthProvider = ({ children }) => {
     accessToken: cookies.access_token,
     userData,
     setUserData,
+    setAccountCreated,
+    accountCreated,
   };
 
   return (

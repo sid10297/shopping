@@ -6,6 +6,7 @@ import { useCookies } from "react-cookie";
 import { useNavigate } from "react-router-dom";
 import { CartContext } from "../../Contexts/CartContext";
 import jwt_decode from "jwt-decode";
+import { UserAuthContext } from "../../Contexts/UserAuthContext";
 
 const useStyles = makeStyles({
   container: {
@@ -28,11 +29,15 @@ const useStyles = makeStyles({
   popup: {
     color: "red",
   },
+  success: {
+    color: "green",
+  },
 });
 
 const Login = () => {
   const classes = useStyles();
   const { cartItems } = useContext(CartContext);
+  const { accountCreated } = useContext(UserAuthContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const setCookie = useCookies(["access_token"])[1];
@@ -75,6 +80,13 @@ const Login = () => {
   return (
     <div className={classes.container}>
       <form noValidate autoComplete="off" className={classes["formStyles"]}>
+        {accountCreated && (
+          <>
+            <Typography className={classes.success}>
+              Account Created! Please Login!
+            </Typography>
+          </>
+        )}
         {InvalidCredentials && (
           <>
             <Typography className={classes.popup}>
