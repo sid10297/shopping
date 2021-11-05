@@ -2,14 +2,14 @@ import { Container, Grid } from "@mui/material";
 import axios from "axios";
 import { useContext, useState } from "react";
 import { useEffect } from "react";
-import { useHistory, useParams } from "react-router";
+import { useNavigate, useParams } from "react-router-dom";
 import { UserAuthContext } from "../Contexts/UserAuthContext";
 import OrdersForUser from "../Components/OrdersForUser";
 
 const UserOrderInfo = () => {
   const [orders, setOrders] = useState([]);
   const { accessToken } = useContext(UserAuthContext);
-  const history = useHistory();
+  const history = useNavigate();
   const { id } = useParams();
 
   useEffect(() => {

@@ -2,7 +2,7 @@ import { Button, TextField, Typography } from "@mui/material";
 import axios from "axios";
 import { makeStyles } from "@mui/styles";
 import { useState } from "react";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const useStyles = makeStyles({
   container: {
@@ -36,7 +36,7 @@ const SignUp = () => {
 
   const [InvalidCredentials, setInvalidCredentials] = useState(false);
 
-  const history = useHistory();
+  const history = useNavigate();
 
   const classes = useStyles();
 
@@ -70,7 +70,7 @@ const SignUp = () => {
           email: "",
           password: "",
         });
-        history.push("/login");
+        history("/login");
       })
       .catch((error) => setInvalidCredentials(true));
   };

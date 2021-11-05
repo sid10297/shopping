@@ -5,9 +5,9 @@ import { CartProvider } from "../Contexts/CartContext";
 import { ProductsProvider } from "../Contexts/ProductsContext";
 import { CookiesProvider } from "react-cookie";
 
-import Routes from "../Routes/Routes";
 import { UserAuthProvider } from "../Contexts/UserAuthContext";
 import Footer from "../Components/Footer";
+import MyRoutes from "../Routes/Routes";
 
 const App = () => {
   return (
@@ -19,7 +19,7 @@ const App = () => {
             <CartProvider>
               <NavBar />
               <ProductsProvider>
-                <Routes />
+                <MyRoutes />
               </ProductsProvider>
               <Footer />
             </CartProvider>

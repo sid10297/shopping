@@ -2,7 +2,7 @@ import { AppBar, Button, Toolbar, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import { appTitle, home, shop } from "../Constants/navBar";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-import { NavLink, useHistory } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
 import { CartContext } from "../Contexts/CartContext";
 import { Logout } from "@mui/icons-material";
@@ -31,19 +31,19 @@ const NavBar = () => {
     }
   }, [cookies.access_token, setUserData, userData]);
 
-  const history = useHistory();
+  const history = useNavigate();
 
   const handleSignOut = () => {
     removeCookies("access_token", { path: "/" });
     setUserData(null);
-    history.push("/login");
+    history("/login");
   };
   const handleSignUp = () => {
-    history.push("/signup");
+    history("/signup");
   };
 
   const handleLogin = () => {
-    history.push("/login");
+    history("/login");
   };
 
   return (
@@ -53,17 +53,24 @@ const NavBar = () => {
           <AppBar position="fixed">
             <Toolbar>
               <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-                <NavLink to="/admin" exact>
-                  ADMIN PANEL
-                </NavLink>
+                <NavLink to="/admin">ADMIN PANEL</NavLink>
               </Typography>
-              <NavLink to="/admin" exact activeClassName={styles.isActive}>
+              <NavLink
+                to="/admin"
+                className={(navData) => (navData ? styles.isActive : "")}
+              >
                 <Button color="inherit">Users</Button>
               </NavLink>
-              <NavLink to="/products" activeClassName={styles.isActive}>
+              <NavLink
+                to="/products"
+                className={(navData) => (navData ? styles.isActive : "")}
+              >
                 <Button color="inherit">Products</Button>
               </NavLink>
-              <NavLink to="/orders" activeClassName={styles.isActive}>
+              <NavLink
+                to="/orders"
+                className={(navData) => (navData ? styles.isActive : "")}
+              >
                 <Button color="inherit">Orders</Button>
               </NavLink>
               {!accessToken && (
@@ -108,29 +115,39 @@ const NavBar = () => {
           <AppBar position="fixed">
             <Toolbar>
               <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-                <NavLink to="/" exact>
-                  {appTitle}
-                </NavLink>
+                <NavLink to="/">{appTitle}</NavLink>
               </Typography>
-              <NavLink to="/" exact activeClassName={styles.isActive}>
+              <NavLink
+                to="/"
+                className={(navData) => (navData ? styles.isActive : "")}
+              >
                 <Button color="inherit">{home}</Button>
               </NavLink>
-              <NavLink to="/shop" activeClassName={styles.isActive}>
+              <NavLink
+                to="/shop"
+                className={(navData) => (navData ? styles.isActive : "")}
+              >
                 <Button color="inherit">{shop}</Button>
               </NavLink>
               {!accessToken ? (
-                <NavLink to={`/orders-basic`} activeClassName={styles.isActive}>
+                <NavLink
+                  to={`/orders-basic`}
+                  className={(navData) => (navData ? styles.isActive : "")}
+                >
                   <Button color="inherit">Orders</Button>
                 </NavLink>
               ) : (
                 <NavLink
                   to={`/orders-basic/${getId}`}
-                  activeClassName={styles.isActive}
+                  className={(navData) => (navData ? styles.isActive : "")}
                 >
                   <Button color="inherit">Orders</Button>
                 </NavLink>
               )}
-              <NavLink to="/cart" activeClassName={styles.isActive}>
+              <NavLink
+                to="/cart"
+                className={(navData) => (navData ? styles.isActive : "")}
+              >
                 <Button color="inherit">
                   {<ShoppingCartIcon />}
                   {cartItems.length > 0 && <span>{cartItems.length}</span>}

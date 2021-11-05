@@ -12,15 +12,16 @@ import { useContext, useEffect, useState } from "react";
 import CartProduct from "../Components/CartProduct";
 import { CartContext } from "../Contexts/CartContext";
 import axios from "axios";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { UserAuthContext } from "../Contexts/UserAuthContext";
 import jwtDecode from "jwt-decode";
+import CardContainer from "../Components/CardContainer";
 
 const Cart = () => {
   const { cartItems, cartTotal, getCartTotal, setCartItems } =
     useContext(CartContext);
   const { accessToken } = useContext(UserAuthContext);
-  const history = useHistory();
+  const history = useNavigate();
   const [purchasePopup, setPurchasePopup] = useState(false);
 
   useEffect(() => {
@@ -39,7 +40,7 @@ const Cart = () => {
   const placeOrder = (e) => {
     e.preventDefault();
 
-    if (!accessToken) return history.push("/login");
+    if (!accessToken) return history("/login");
 
     const userDetails = jwtDecode(accessToken);
 
@@ -126,27 +127,11 @@ const Cart = () => {
       </Container>
 
       {cartItems.length < 1 && (
-        <Grid
-          container
-          height="80vh"
-          justifyContent="center"
-          alignItems="center"
-        >
-          <Grid item>
-            <Card>
-              <CardContent>
-                {purchasePopup ? (
-                  <Typography variant="h6">
-                    {" "}
-                    Order Placed Successfully{" "}
-                  </Typography>
-                ) : (
-                  <Typography variant="h6">Your Cart is Empty</Typography>
-                )}
-              </CardContent>
-            </Card>
-          </Grid>
-        </Grid>
+        <CardContainer
+          value={
+            purchasePopup ? "Order Placed Successfully" : "Your Cart is Empty"
+          }
+        />
       )}
     </>
   );

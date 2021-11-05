@@ -25,9 +25,7 @@ const Footer = () => {
         }}
       >
         <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-          <NavLink to="/" exact>
-            &copy; Shoe Kart
-          </NavLink>
+          <NavLink to="/">&copy; Shoe Kart</NavLink>
         </Typography>
       </div>
     </div>

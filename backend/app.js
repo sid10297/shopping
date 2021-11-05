@@ -18,7 +18,7 @@ const {
 // Initialize App
 const app = express();
 
-// Basic middleware
+//  middleware
 app.use(cors());
 app.use(express.json());
 app.use("/api", products);

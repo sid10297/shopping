@@ -8,10 +8,10 @@ import {
   Paper,
   Typography,
 } from "@mui/material";
-import { useHistory } from "react-router";
+import { useNavigate } from "react-router-dom";
 
 const Specials = ({ product }) => {
-  const history = useHistory();
+  const history = useNavigate();
   return (
     <>
       <Grid item xs={12} sm={8} md={6} lg={3} margin={2}>
@@ -37,7 +37,7 @@ const Specials = ({ product }) => {
                 size="small"
                 color="primary"
                 variant="contained"
-                onClick={() => history.push("/shop")}
+                onClick={() => history("/shop")}
               >
                 View More
               </Button>

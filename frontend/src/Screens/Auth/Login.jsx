@@ -3,7 +3,7 @@ import { makeStyles } from "@mui/styles";
 import { useContext, useState } from "react";
 import axios from "axios";
 import { useCookies } from "react-cookie";
-import { useHistory } from "react-router";
+import { useNavigate } from "react-router-dom";
 import { CartContext } from "../../Contexts/CartContext";
 import jwt_decode from "jwt-decode";
 
@@ -36,7 +36,7 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const setCookie = useCookies(["access_token"])[1];
-  const history = useHistory();
+  const history = useNavigate();
   const [InvalidCredentials, setInvalidCredentials] = useState(false);
 
   const handleEmail = (e) => {
@@ -62,9 +62,9 @@ const Login = () => {
         setPassword("");
         const user = jwt_decode(response.data);
         if (user.role === "ADMIN") {
-          history.push("/admin");
+          history("/admin");
         } else {
-          cartItems.length > 0 ? history.push("/cart") : history.push("/");
+          cartItems.length > 0 ? history("/cart") : history("/");
         }
       })
       .catch((error) => setInvalidCredentials(true));

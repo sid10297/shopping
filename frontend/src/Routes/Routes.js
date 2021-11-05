@@ -1,4 +1,4 @@
-import { Route, Switch } from "react-router";
+import { Route, Routes } from "react-router-dom";
 import LoginFirst from "../Components/LoginFirst";
 import NotFound from "../Components/NotFound";
 import Orders from "../Components/Orders";
@@ -11,22 +11,22 @@ import Products from "../Screens/Products";
 import Shop from "../Screens/Shop";
 import UserOrderInfo from "../Screens/UserOrderInfo";
 
-const Routes = () => {
+const MyRoutes = () => {
   return (
-    <Switch>
-      <Route path="/login" component={Login} />
-      <Route path="/admin" component={AdminDashboard} />
-      <Route path="/products" component={Products} />
-      <Route path="/orders" component={Orders} />
-      <Route path="/signup" component={SignUp} />
-      <Route path="/" component={Home} exact />
-      <Route path="/shop" component={Shop} />
-      <Route path="/cart" component={Cart} />
-      <Route path="/orders-basic" component={LoginFirst} exact />
-      <Route path="/orders-basic/:id" component={UserOrderInfo} />
-      <Route path="*" component={NotFound} />
-    </Switch>
+    <Routes>
+      <Route path="/login" element={<Login />} />
+      <Route path="/admin" element={<AdminDashboard />} />
+      <Route path="/products" element={<Products />} />
+      <Route path="/orders" element={<Orders />} />
+      <Route path="/signup" element={<SignUp />} />
+      <Route path="/" element={<Home />} />
+      <Route path="/shop" element={<Shop />} />
+      <Route path="/cart" element={<Cart />} />
+      <Route path="/orders-basic" element={<LoginFirst />} />
+      <Route path="/orders-basic/:id" element={<UserOrderInfo />} />
+      <Route path="*" element={<NotFound />} />
+    </Routes>
   );
 };
 
-export default Routes;
+export default MyRoutes;
