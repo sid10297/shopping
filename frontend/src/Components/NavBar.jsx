@@ -57,21 +57,27 @@ const NavBar = () => {
               </Typography>
               <NavLink
                 to="/admin"
-                className={(navData) => (navData ? styles.isActive : "")}
+                className={(navData) =>
+                  navData.isActive ? styles.isActive : ""
+                }
               >
                 <Button color="inherit">Users</Button>
               </NavLink>{" "}
               &nbsp;
               <NavLink
                 to="/products"
-                className={(navData) => (navData ? styles.isActive : "")}
+                className={(navData) =>
+                  navData.isActive ? styles.isActive : ""
+                }
               >
                 <Button color="inherit">Products</Button>
               </NavLink>{" "}
               &nbsp;
               <NavLink
                 to="/orders"
-                className={(navData) => (navData ? styles.isActive : "")}
+                className={(navData) =>
+                  navData.isActive ? styles.isActive : ""
+                }
               >
                 <Button color="inherit">Orders</Button>
               </NavLink>{" "}
@@ -122,14 +128,18 @@ const NavBar = () => {
               </Typography>
               <NavLink
                 to="/"
-                className={(navData) => (navData ? styles.isActive : "")}
+                className={(navData) =>
+                  navData.isActive ? styles.isActive : ""
+                }
               >
                 <Button color="inherit">{home}</Button>
               </NavLink>{" "}
               &nbsp;
               <NavLink
                 to="/shop"
-                className={(navData) => (navData ? styles.isActive : "")}
+                className={(navData) =>
+                  navData.isActive ? styles.isActive : ""
+                }
               >
                 <Button color="inherit">{shop}</Button>
               </NavLink>{" "}
@@ -138,7 +148,9 @@ const NavBar = () => {
                 <>
                   <NavLink
                     to={`/orders-basic`}
-                    className={(navData) => (navData ? styles.isActive : "")}
+                    className={(navData) =>
+                      navData.isActive ? styles.isActive : ""
+                    }
                   >
                     <Button color="inherit">Orders</Button>
                   </NavLink>{" "}
@@ -148,7 +160,9 @@ const NavBar = () => {
                 <>
                   <NavLink
                     to={`/orders-basic/${getId}`}
-                    className={(navData) => (navData ? styles.isActive : "")}
+                    className={(navData) =>
+                      navData.isActive ? styles.isActive : ""
+                    }
                   >
                     <Button color="inherit">Orders</Button>
                   </NavLink>{" "}
@@ -158,7 +172,9 @@ const NavBar = () => {
               <>
                 <NavLink
                   to="/cart"
-                  className={(navData) => (navData ? styles.isActive : "")}
+                  className={(navData) =>
+                    navData.isActive ? styles.isActive : ""
+                  }
                 >
                   <Button color="inherit">
                     {<ShoppingCartIcon />}
