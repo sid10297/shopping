@@ -37,7 +37,7 @@ const Specials = ({ product }) => {
                 size="small"
                 color="primary"
                 variant="contained"
-                onClick={() => history("/shop")}
+                onClick={(() => history("/shop"), { replace: true })}
               >
                 View More
               </Button>

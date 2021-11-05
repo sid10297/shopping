@@ -70,7 +70,7 @@ const SignUp = () => {
           email: "",
           password: "",
         });
-        history("/login");
+        history("/login", { replace: true });
       })
       .catch((error) => setInvalidCredentials(true));
   };

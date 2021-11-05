@@ -36,14 +36,14 @@ const NavBar = () => {
   const handleSignOut = () => {
     removeCookies("access_token", { path: "/" });
     setUserData(null);
-    history("/login");
+    history("/login", { replace: true });
   };
   const handleSignUp = () => {
-    history("/signup");
+    history("/signup", { replace: true });
   };
 
   const handleLogin = () => {
-    history("/login");
+    history("/login", { replace: true });
   };
 
   return (
@@ -60,19 +60,22 @@ const NavBar = () => {
                 className={(navData) => (navData ? styles.isActive : "")}
               >
                 <Button color="inherit">Users</Button>
-              </NavLink>
+              </NavLink>{" "}
+              &nbsp;
               <NavLink
                 to="/products"
                 className={(navData) => (navData ? styles.isActive : "")}
               >
                 <Button color="inherit">Products</Button>
-              </NavLink>
+              </NavLink>{" "}
+              &nbsp;
               <NavLink
                 to="/orders"
                 className={(navData) => (navData ? styles.isActive : "")}
               >
                 <Button color="inherit">Orders</Button>
-              </NavLink>
+              </NavLink>{" "}
+              &nbsp;
               {!accessToken && (
                 <>
                   &nbsp;
@@ -115,45 +118,55 @@ const NavBar = () => {
           <AppBar position="fixed">
             <Toolbar>
               <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-                <NavLink to="/">{appTitle}</NavLink>
+                <NavLink to="/">{appTitle}</NavLink> &nbsp;
               </Typography>
               <NavLink
                 to="/"
                 className={(navData) => (navData ? styles.isActive : "")}
               >
                 <Button color="inherit">{home}</Button>
-              </NavLink>
+              </NavLink>{" "}
+              &nbsp;
               <NavLink
                 to="/shop"
                 className={(navData) => (navData ? styles.isActive : "")}
               >
                 <Button color="inherit">{shop}</Button>
-              </NavLink>
-              {!accessToken ? (
-                <NavLink
-                  to={`/orders-basic`}
-                  className={(navData) => (navData ? styles.isActive : "")}
-                >
-                  <Button color="inherit">Orders</Button>
-                </NavLink>
-              ) : (
-                <NavLink
-                  to={`/orders-basic/${getId}`}
-                  className={(navData) => (navData ? styles.isActive : "")}
-                >
-                  <Button color="inherit">Orders</Button>
-                </NavLink>
-              )}
-              <NavLink
-                to="/cart"
-                className={(navData) => (navData ? styles.isActive : "")}
-              >
-                <Button color="inherit">
-                  {<ShoppingCartIcon />}
-                  {cartItems.length > 0 && <span>{cartItems.length}</span>}
-                </Button>
-              </NavLink>
+              </NavLink>{" "}
               &nbsp;
+              {!accessToken ? (
+                <>
+                  <NavLink
+                    to={`/orders-basic`}
+                    className={(navData) => (navData ? styles.isActive : "")}
+                  >
+                    <Button color="inherit">Orders</Button>
+                  </NavLink>{" "}
+                  &nbsp;
+                </>
+              ) : (
+                <>
+                  <NavLink
+                    to={`/orders-basic/${getId}`}
+                    className={(navData) => (navData ? styles.isActive : "")}
+                  >
+                    <Button color="inherit">Orders</Button>
+                  </NavLink>{" "}
+                  &nbsp;
+                </>
+              )}
+              <>
+                <NavLink
+                  to="/cart"
+                  className={(navData) => (navData ? styles.isActive : "")}
+                >
+                  <Button color="inherit">
+                    {<ShoppingCartIcon />}
+                    {cartItems.length > 0 && <span>{cartItems.length}</span>}
+                  </Button>
+                </NavLink>{" "}
+                &nbsp; &nbsp;
+              </>
               {!accessToken && (
                 <>
                   &nbsp;
@@ -174,7 +187,6 @@ const NavBar = () => {
                   </Button>
                 </>
               )}
-              &nbsp;
               {accessToken && (
                 <Button
                   color="warning"

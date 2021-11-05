@@ -40,7 +40,7 @@ const Cart = () => {
   const placeOrder = (e) => {
     e.preventDefault();
 
-    if (!accessToken) return history("/login");
+    if (!accessToken) return history("/login", { replace: true });
 
     const userDetails = jwtDecode(accessToken);
 

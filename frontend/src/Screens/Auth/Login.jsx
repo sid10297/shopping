@@ -62,9 +62,11 @@ const Login = () => {
         setPassword("");
         const user = jwt_decode(response.data);
         if (user.role === "ADMIN") {
-          history("/admin");
+          history("/admin", { replace: true });
         } else {
-          cartItems.length > 0 ? history("/cart") : history("/");
+          cartItems.length > 0
+            ? history("/cart", { replace: true })
+            : history("/", { replace: true });
         }
       })
       .catch((error) => setInvalidCredentials(true));
