@@ -12,6 +12,7 @@ import { useNavigate } from "react-router-dom";
 
 const Specials = ({ product }) => {
   const history = useNavigate();
+  const handleClick = () => {};
   return (
     <>
       <Grid item xs={12} sm={8} md={6} lg={3} margin={2}>
@@ -37,7 +38,7 @@ const Specials = ({ product }) => {
                 size="small"
                 color="primary"
                 variant="contained"
-                onClick={(() => history("/shop"), { replace: true })}
+                onClick={() => history("/shop", { replace: true })}
               >
                 View More
               </Button>
